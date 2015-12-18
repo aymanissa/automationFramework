@@ -238,6 +238,9 @@ public class EsiActivity
 	 * Implementing code to delete workspace based on the name provided rather than 
 	 * deleting the first workspace available will come in later.<br> 
 	 * It will fail if the workspace element cannot be found.
+	 * 
+	 * 
+	 * Doesn't check if theres any workspaces. Assumes there's at least one workspace.
 	 * @param driver Web browser being used at the moment
 	 * @param workspaceName Name of the workspace to be deleted
 	 * @throws InterruptedException For using Thread.sleep(long). A better solution needs to made
@@ -247,10 +250,28 @@ public class EsiActivity
     	//Thread.sleep(WAIT_TIME);
         //driver.findElement(By.linkText("Workspaces")).click();
     	goToWorkspaces(driver);
-        Thread.sleep(WAIT_TIME);
-        driver.findElement(By.xpath("//div[@id='page-wrapper']/div[2]/div[2]/div/div/div/div/div/ibox-content/div/table/tbody/tr/td[4]/div[2]/a[5]/i")).click();
-        Thread.sleep(WAIT_TIME);
-        driver.findElement(By.xpath("//button[@type='button']")).click();
+//        Thread.sleep(WAIT_TIME);
+//        driver.findElement(By.xpath("//div[@id='page-wrapper']/div[2]/div[2]/div/div/div/div/div/ibox-content/div/table/tbody/tr/td[4]/div[2]/a[5]/i")).click();
+//        Thread.sleep(WAIT_TIME);
+//        driver.findElement(By.xpath("//button[@type='button']")).click();
+    	
+    	ArrayList<WebElement> workspaceItems = getWorkspacesItems(driver);
+    	for(int i = 0; i < workspaceItems.size(); i++)
+    	{
+    		
+    		//*[@id="page-wrapper"]/div[2]/div[2]/div/div/div/div/div/ibox-content/div/table/tbody/tr[1]/td[4]/div[2]/a[5]
+    		
+    		System.out.println("[" + i + "]");
+    		if(getWorkspaceItemName(driver, workspaceItems.get(i)).equals(workspaceName))
+    		{
+    			System.out.println("\t[" + i + "]");
+    			workspaceItems.get(i).findElements(By.cssSelector("a.btn.btn-white.btn-sm.core-perm-allow")).get(2).click();
+    			Thread.sleep(WAIT_TIME);
+    	        driver.findElement(By.xpath("//button[@type='button']")).click();
+    			
+    		}
+    		
+    	}
     	
     }//END METHOD deleteWorkspace(WebDriver, String)
 
@@ -266,8 +287,11 @@ public class EsiActivity
 	 */
 	public static void deleteMeasure(WebDriver driver, String measureName) throws InterruptedException
 	{
+		WebElement measure = getMeasure(driver, measureName);
 		Thread.sleep(WAIT_TIME);
-        driver.findElement(By.xpath("(//input[@type='checkbox'])[2]")).click();
+//        measure.findElement(By.xpath("(//input[@type='checkbox'])[2]")).click();
+		System.out.println("//////////////checkbox");
+		measure.findElement(By.cssSelector("input")).click();
         Thread.sleep(WAIT_TIME);
         driver.findElement(By.xpath("//div[@id='page-wrapper']/div[2]/div[2]/div/div/div[2]/div/div/ibox-title/div[2]/a")).click();
         Thread.sleep(WAIT_TIME);
@@ -551,7 +575,9 @@ public class EsiActivity
 		goToCalculations(driver);
 		
 		Thread.sleep(WAIT_TIME);
-		driver.findElement(By.cssSelector("i.fa.fa-eye")).click();
+		WebElement measure = getMeasure(driver, measureName);
+		
+		measure.findElement(By.cssSelector("i.fa.fa-eye")).click();
 		for(int i = 0; i < filters.size(); i++)
         {
         	switch((ElementTypes)filters.get(i)[0])
@@ -723,6 +749,7 @@ public class EsiActivity
 		
 	}
 	
+	
 	public static ArrayList<WebElement> getDashboardItems(WebDriver driver)
 	{
 		ArrayList<WebElement> dashboardItems = new ArrayList<WebElement>();
@@ -765,119 +792,126 @@ public class EsiActivity
 		
 	}
 	
-	public static void maximizeDashboardGraph(WebElement graph)
+	public static void maximizeDashboardGraph(WebElement graph) throws InterruptedException
 	{
-		
+		Thread.sleep(WAIT_TIME);
+		graph.findElement(By.cssSelector("i.fa.fa-plus-square-o")).click();
+		Thread.sleep(WAIT_TIME);
 		
 	}
 	
-	/*
-	public static void loadInventory(WebDriver driver, InventoryType inventoryType, String itemName, ArrayList<Object[]> filters) throws InterruptedException
+	public static void restoreDashboardGraph(WebElement graph) throws InterruptedException
 	{
-		switch(inventoryType)
-		{
-			case DASHBOARD_GRAPH:
-			{
-				goToDashboard(driver);
-				driver.findElement(By.linkText("Chart")).click();
-				
-				break;
-				
-			}
-			
-			case OPPORTUNITIES:
-			{
-				goToOpportunities(driver);
-				//driver.findElement(By.linkText(itemName)).click();
-				
-				break;
-				
-			}
-			
-			case MASTER_DATA:
-			{
-				goToMasterData(driver);
-				
-				break;
-				
-			}
-			
-			case CONFIGURATION:
-			{
-				goToConfiguration(driver);
-				
-				break;
-				
-			}
-			
-			case CALCULATIONS:
-			{
-				goToCalculations(driver);
-				driver.findElement(By.cssSelector("i.fa.fa-eye")).click();
-				
-				break;
-				
-			}
-			
-			default:
-			{
-				
-				break;
-			}
-			
-		}
-        
-        for(int i = 0; i < filters.size(); i++)
-        {
-        	switch((ElementTypes)filters.get(i)[0])
-        	{
-        		case LINKTEXT:
-        		{
-        			System.out.println("LINKTEXT");
-        			Thread.sleep(WAIT_TIME);
-        	        driver.findElement(By.linkText((String) filters.get(i)[1])).click();
-        			
-        			break;
-        			
-        		}//END CASE LINKTEXT
-        		
-        		case XPATH: 
-        		{
-        			System.out.println("XPATH");
-        			Thread.sleep(WAIT_TIME);
-        	        driver.findElement(By.xpath((String) filters.get(i)[1])).click();
-        			
-        			break;
-        			
-        		}//END CASE XPATH
-        		
-        		case CSS:
-        		{
-        			System.out.println("CSS");
-        			Thread.sleep(WAIT_TIME);
-        			driver.findElement(By.cssSelector((String) filters.get(i)[1])).click();
-        			break;
-        			
-        		}//END CASE CSS
-        		
-        		case INPUTTEXT:
-        		{
-        			
-        			
-        		}
-        		
-        		default:
-        		{
-        			System.out.println("Invalid element type");
-        			break;
-        			
-        		}//END CASE default
-        		
-        	}//END SWITCH((ElementTypes)filters.get(i)[0])
-        	
-        }//END for(int i = 0; i < filters.size(); i++)
+		Thread.sleep(WAIT_TIME);
+		graph.findElement(By.cssSelector("i.fa.fa-columns")).click();
+		Thread.sleep(WAIT_TIME);
 		
 	}
-	*/
+	
+	public static void deleteDashboardGraph(WebElement graph) throws InterruptedException
+	{
+		Thread.sleep(WAIT_TIME);
+        graph.findElement(By.cssSelector("i.fa.fa-times")).click();
+        Thread.sleep(WAIT_TIME);
+        graph.findElement(By.xpath("//button[@type='button']")).click();
+        Thread.sleep(WAIT_TIME);
+		
+	}
+	
+	public static ArrayList<WebElement> getWorkspacesItems(WebDriver driver) throws InterruptedException
+	{
+		goToWorkspaces(driver);
+		Thread.sleep(WAIT_TIME);
+		
+		ArrayList<WebElement> workspaceItems = null;
+		
+		//dashboardItems = (ArrayList<WebElement>) driver.findElements(By.cssSelector("g.highcharts-series.highcharts-tracker > rect"));
+		workspaceItems = (ArrayList<WebElement>) driver.findElements(By.cssSelector("tr.ng-scope"));
+		
+		return workspaceItems;
+		
+	}
+	
+	public static String getWorkspaceItemName(WebDriver driver, WebElement workspaceItem)
+	{
+		String jQuerySelector = "arguments[0]";
+		
+		//((JavascriptExecutor) driver).executeScript("var foo = _.clone($(" + jQuerySelector + "));", dashboardItem);
+		//((JavascriptExecutor) driver).executeScript("$($(foo).children()[0]).remove();");
+		//get the text
+		
+		return workspaceItem.findElement(By.cssSelector("a.ng-binding")).getText();
+		
+	}
+	
+	public static ArrayList<WebElement> getMeasureItems(WebDriver driver) throws InterruptedException
+	{
+		goToCalculations(driver);
+		ArrayList<WebElement> measureItems = new ArrayList<WebElement> ();
+		WebElement measures = null;
+		measures = driver.findElements(By.cssSelector("div.ui-view-row.ng-scope")).get(1);
+		System.out.println("class: " + measures.getAttribute("class"));
+		
+		measures = measures.findElement(By.cssSelector("div.col-sm-12.table.ng-scope"));
+		System.out.println("class: " + measures.getAttribute("class"));
+		
+		measureItems = (ArrayList<WebElement>) measures.findElements(By.xpath("div"));
+		measureItems.remove(0);
+		
+		return measureItems;
+		
+	}
+	
+	 public static String getMeasureName(WebElement measure)
+	 {
+		 String measureName = "";
+		 
+		 measureName = measure.findElement(By.cssSelector("span.ng-binding.ng-scope")).getText();
+		 
+		 
+		 return measureName;
+		 
+	 }
+	 
+	 public static WebElement getMeasure(WebDriver driver, String measureName) throws InterruptedException
+	 {
+		 ArrayList<WebElement> measureItems = getMeasureItems(driver);
+		 
+		 for(int i = 0; i < measureItems.size(); i++)
+		 {
+			 if(getMeasureName(measureItems.get(i)).equals(measureName))
+			 {
+				 return measureItems.get(i);
+				 
+			 }
+			 
+		 }
+		return null;
+		 
+	 }
+	 
+	 public static ArrayList<WebElement> getDashboardMetric(WebDriver driver)
+	 {
+		 ArrayList<WebElement> dashboardMetricItems = new ArrayList<WebElement>();
+		 /*
+		 System.out.println("inside getDashboardGraph");
+			System.out.println("getDashboardGraph.graphName: " + graphName);
+			for(int i = 0; i < dashboardItems.size(); i++)
+			{
+				System.out.println("getDashboardGraphItemName: " + getDashboardItemName(driver, dashboardItems.get(i)) + ";");
+				if(getDashboardItemName(driver, dashboardItems.get(i)).equals(graphName))
+				{
+					System.out.println("Graph found, returning graph");
+					return dashboardItems.get(i);
+				}
+							
+			}
+			
+		 */
+		 
+		 
+		 return dashboardMetricItems;
+		 
+	 }
 	
 }//END CLASS EsiActivity

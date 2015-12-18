@@ -41,29 +41,13 @@ public class Simple
 		WebDriver driver = webi.instantiateBrowser(BrowserType.CHROME);
 		Thread.sleep(WAIT_TIME);
 		driver.get("http://3es0240:8080/esi.activity/app/#/workspaces");
-		Thread.sleep(WAIT_TIME);
+		Thread.sleep(WAIT_TIME + 1000);
 		driver.findElement(By.xpath("(//a[contains(text(),'WorkSpaceTestr')])[2]")).click();
 		Thread.sleep(WAIT_TIME);
-		dashboardItems = EsiActivity.getDashboardItems(driver);
-		System.out.println("dashboardItems.size()" + dashboardItems.size());
-		
-		/*
-		for(int i = 0; i < dashboardItems.size(); i++)
-		{
-			System.out.println("Dashboard Item name: " + EsiActivity.getDashboardItemName(driver, dashboardItems.get(i)) + ";");
-			//System.out.println("\tNumber of svg in each dashboard items: " + dashboardItems.get(i).findElements(By.cssSelector("svg")).size());
-			
-			
-		}
-		*/
+		EsiActivity.goToCalculations(driver);
+		Thread.sleep(WAIT_TIME);
 		
 		
-		//validate revenue oil high graph
-		WebElement graph = EsiActivity.getDashboardGraph(driver, dashboardItems, "Revenue Oil High").findElement(By.cssSelector("svg"));
-		EsiActivity.validateGraph(driver, graph, "lnllk", ChartType.COLUMN, excelFileLocation, sheetName, "USD", 11, 10, 42);
-		System.out.println("finished validating revenue oil high graph");
-		
-		//validate variable OpCost oil electricity graph
 		
 		Thread.sleep(5000);
 		driver.quit();

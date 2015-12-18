@@ -784,7 +784,7 @@ public class Es284TestCase1{
     	
     	EsiActivity.goToCalculations(driver);
     	
-    	String measureName = "Revenue";
+    	String measureName = "Variable OpCost";
     	String excelFileLocation = "res\\importFiles\\ES-284\\ES-284 - Step 4 - Aggregations - Test to Automate.xlsx"; 
     	String sheetName = "Case 1";
     	String reporterGraphValidateName = "Calculations > Variable OpCost > Gas > Low > Column";
@@ -816,7 +816,7 @@ public class Es284TestCase1{
     	
     	EsiActivity.goToCalculations(driver);
     	
-    	String measureName = "Revenue";
+    	String measureName = "Variable OpCost";
     	String excelFileLocation = "res\\importFiles\\ES-284\\ES-284 - Step 4 - Aggregations - Test to Automate.xlsx"; 
     	String sheetName = "Case 1";
     	String reporterGraphValidateName = "Calculations > Variable OpCost > Gas > Low > Column";
@@ -848,7 +848,7 @@ public class Es284TestCase1{
     	
     	EsiActivity.goToCalculations(driver);
     	
-    	String measureName = "Revenue";
+    	String measureName = "Variable OpCost";
     	String excelFileLocation = "res\\importFiles\\ES-284\\ES-284 - Step 4 - Aggregations - Test to Automate.xlsx"; 
     	String sheetName = "Case 1";
     	String reporterGraphValidateName = "Calculations > Variable OpCost > Gas > Electricity > Column";
@@ -877,7 +877,7 @@ public class Es284TestCase1{
     	//apply filters
     	//validate graph
     	
-    	String measureName = "Revenue";
+    	String measureName = "Variable OpCost";
     	String excelFileLocation = "res\\importFiles\\ES-284\\ES-284 - Step 4 - Aggregations - Test to Automate.xlsx"; 
     	String sheetName = "Case 1";
     	String reporterGraphValidateName = "Calculations > Variable OpCost > Gas > Electricity > Column";

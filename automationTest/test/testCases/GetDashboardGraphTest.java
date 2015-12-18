@@ -101,6 +101,7 @@ public class GetDashboardGraphTest
 		driver.findElement(By.xpath("(//a[contains(text(),'WorkSpaceTestr')])[2]")).click();
 		Thread.sleep(WAIT_TIME);
     	this.validateGraphDashboard_Revenue_Oil_High_Column();
+		this.validateGraphDashboard_VariableOpCost_Oil_Electricity_Column();
 		
 		//end: web browser commands to be executed.
 		
@@ -127,13 +128,45 @@ public class GetDashboardGraphTest
     	String sheetName = "Case 1";
     	String reporterGraphValidateName = "Dashboard > Chart > Revenue > Oil > High > Column";
     	filters = new ArrayList<Object []> ();
+    	WebElement dashboardItem = EsiActivity.getDashboardGraph(driver, EsiActivity.getDashboardItems(driver), "Revenue Oil High");
     	
     	Thread.sleep(WAIT_TIME);
-    	WebElement graph = EsiActivity.getDashboardGraph(driver, EsiActivity.getDashboardItems(driver), "Revenue Oil High").findElement(By.cssSelector("svg"));
+    	EsiActivity.maximizeDashboardGraph(dashboardItem);
+    	Thread.sleep(3000);
+    	WebElement graph = dashboardItem.findElement(By.cssSelector("svg"));
     	EsiActivity.validateGraph(driver, graph, reporterGraphValidateName, ChartType.COLUMN, excelFileLocation, sheetName, "USD", 11, 10, 42);
+    	EsiActivity.restoreDashboardGraph(dashboardItem);
     	
     	//EsiActivity.deleteDashboardGraph(driver, graphName);
     	
     }//END METHOD validateGraphDashboard_Revenue_Oil_High_Column()
+	
+	private void validateGraphDashboard_VariableOpCost_Oil_Electricity_Column() throws IOException, InterruptedException
+    {    	
+    	//go to dashboard
+    	//add new chart
+    	//apply filters
+    	//validate graph
+    	
+    	EsiActivity.goToDashboard(driver);
+    	
+    	String graphName = "Variable OpCost Oil Electricity";
+    	String excelFileLocation = "res\\importFiles\\ES-284\\ES-284 - Step 4 - Aggregations - Test to Automate.xlsx"; 
+    	String sheetName = "Case 1";
+    	String reporterGraphValidateName = "Dashboard > Chart > Variable OpCost > Oil > Electricity > Column";
+    	filters = new ArrayList<Object []> ();
+    	WebElement dashboardItem = EsiActivity.getDashboardGraph(driver, EsiActivity.getDashboardItems(driver), graphName);
+    	
+    	
+    	Thread.sleep(WAIT_TIME);
+    	EsiActivity.maximizeDashboardGraph(dashboardItem);
+    	Thread.sleep(WAIT_TIME);
+    	WebElement graph = dashboardItem.findElement(By.cssSelector("svg"));
+    	EsiActivity.validateGraph(driver, graph, reporterGraphValidateName, ChartType.BAR, excelFileLocation, sheetName, "USD", 11, 10, 56);
+    	EsiActivity.restoreDashboardGraph(dashboardItem);
+    	Thread.sleep(WAIT_TIME);
+    	//EsiActivity.deleteDashboardGraph(dashboardItem);
+    	
+    }//END METHOD validateGraphDashboard_VariableOpCost_Oil_Electricity_Column()
 	
 }//END CLASS 
