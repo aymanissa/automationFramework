@@ -5,8 +5,10 @@ Currently it supports 3 browser. Google Chrome, Mozilla Firefox and Internet Exp
 
 Open source tools being used:
 - Selenium
--- Web driver connecter. Chrome, Firefox, Internet Explorer
--- Selenium IDE (Firefox plugin)
+	- Web driver connecter. Chrome, Firefox, Internet Explorer
+	- Selenium IDE (Firefox plugin)
 - Apache POI
 - Apache ANT
 - TestNG
+
+ANT file: ANT_build.xml is used to clean, compile and run the files in the project.
