@@ -187,7 +187,7 @@ public class Es284TestCase1{
     	EsiActivity.loadOpportunityGraph(driver, opportunityName, filters);
     	WebElement graph = driver.findElement(By.cssSelector("svg"));
     	
-		EsiActivity.validateGraph(driver, graph, reporterGraphValidateName , ChartType.COLUMN, "res\\importFiles\\ES-284\\ES-284 - Step 4 - Aggregations - Test to Automate.xlsx", "Case 1", " bbl", 11, 10, 12);
+		EsiActivity.validateGraph(driver, graph, reporterGraphValidateName , ChartType.COLUMN, "res\\importFiles\\ES-284\\ES-284 - Step 4 - Aggregations - Test to Automate.xlsx", "Case 1", "bbl", 11, 10, 12);
     	Thread.sleep(WAIT_TIME);
         driver.findElement(By.xpath("(//button[@type='button'])[11]")).click();
     	
@@ -215,7 +215,7 @@ public class Es284TestCase1{
     	Thread.sleep(WAIT_TIME);
 	    WebElement graph = driver.findElement(By.cssSelector("svg"));
 	    //GraphValidator.validateGraph(chart, new File("res\\importFiles\\ES-284\\ES-284 - Step 4 - Aggregations - Test to Automate.xlsx").getCanonicalPath(), "Case 1", 11, 10, 13, " cfe", WAIT_TIME);
-	    EsiActivity.validateGraph(driver, graph, reporterGraphValidateName , ChartType.COLUMN, "res\\importFiles\\ES-284\\ES-284 - Step 4 - Aggregations - Test to Automate.xlsx", "Case 1", " cfe", 11, 10, 13);
+	    EsiActivity.validateGraph(driver, graph, reporterGraphValidateName , ChartType.COLUMN, "res\\importFiles\\ES-284\\ES-284 - Step 4 - Aggregations - Test to Automate.xlsx", "Case 1", "cfe", 11, 10, 13);
     	Thread.sleep(WAIT_TIME);
     	driver.findElement(By.xpath("(//button[@type='button'])[11]")).click();
     	
@@ -245,7 +245,7 @@ public class Es284TestCase1{
     	
     	Thread.sleep(WAIT_TIME);
     	WebElement graph = driver.findElement(By.cssSelector("svg"));
-    	EsiActivity.validateGraph(driver, graph, reporterGraphValidateName , ChartType.COLUMN, excelFileLocation, sheetName, " person", 11, 10, 14);
+    	EsiActivity.validateGraph(driver, graph, reporterGraphValidateName , ChartType.COLUMN, excelFileLocation, sheetName, "person", 11, 10, 14);
     	
     	Thread.sleep(WAIT_TIME);
     	driver.findElement(By.xpath("(//button[@type='button'])[13]")).click();
@@ -276,7 +276,7 @@ public class Es284TestCase1{
     	
     	Thread.sleep(WAIT_TIME);
     	WebElement graph = driver.findElement(By.cssSelector("svg"));
-    	EsiActivity.validateGraph(driver, graph, reporterGraphValidateName, ChartType.COLUMN, excelFileLocation, sheetName, " person", 11, 10, 15);
+    	EsiActivity.validateGraph(driver, graph, reporterGraphValidateName, ChartType.COLUMN, excelFileLocation, sheetName, "person", 11, 10, 15);
     	
     	Thread.sleep(WAIT_TIME);
     	driver.findElement(By.xpath("(//button[@type='button'])[13]")).click();
@@ -307,7 +307,7 @@ public class Es284TestCase1{
     	
     	Thread.sleep(WAIT_TIME);
     	WebElement graph = driver.findElement(By.cssSelector("svg"));
-    	EsiActivity.validateGraph(driver, graph, reporterGraphValidateName, ChartType.COLUMN, excelFileLocation, sheetName, " person", 11, 10, 15);
+    	EsiActivity.validateGraph(driver, graph, reporterGraphValidateName, ChartType.COLUMN, excelFileLocation, sheetName, "person", 11, 10, 15);
     	
     	Thread.sleep(WAIT_TIME);
 	    driver.findElement(By.xpath("(//button[@type='button'])[13]")).click();
@@ -336,7 +336,7 @@ public class Es284TestCase1{
     	
     	Thread.sleep(WAIT_TIME);
     	WebElement graph = driver.findElement(By.cssSelector("svg"));
-    	EsiActivity.validateGraph(driver, graph, reporterGraphValidateName, ChartType.COLUMN, excelFileLocation, sheetName, " USD", 11, 10, 17);
+    	EsiActivity.validateGraph(driver, graph, reporterGraphValidateName, ChartType.COLUMN, excelFileLocation, sheetName, "USD", 11, 10, 17);
     	
     	Thread.sleep(WAIT_TIME);
 	    driver.findElement(By.xpath("(//button[@type='button'])[8]")).click();
@@ -367,7 +367,7 @@ public class Es284TestCase1{
     	
     	Thread.sleep(WAIT_TIME);
     	WebElement graph = driver.findElement(By.cssSelector("svg"));
-    	EsiActivity.validateGraph(driver, graph, reporterGraphValidateName, ChartType.COLUMN, excelFileLocation, sheetName, " USD/boe", 11, 10, 18);
+    	EsiActivity.validateGraph(driver, graph, reporterGraphValidateName, ChartType.COLUMN, excelFileLocation, sheetName, "USD/boe", 11, 10, 18);
     	
     	Thread.sleep(WAIT_TIME);
         driver.findElement(By.xpath("(//button[@type='button'])[11]")).click();
@@ -398,7 +398,7 @@ public class Es284TestCase1{
     	
     	Thread.sleep(WAIT_TIME);
     	WebElement graph = driver.findElement(By.cssSelector("svg"));
-    	EsiActivity.validateGraph(driver, graph, reporterGraphValidateName, ChartType.COLUMN, excelFileLocation, sheetName, " USD/boe", 11, 10, 19);
+    	EsiActivity.validateGraph(driver, graph, reporterGraphValidateName, ChartType.COLUMN, excelFileLocation, sheetName, "USD/boe", 11, 10, 19);
     	
     	Thread.sleep(WAIT_TIME);
 	    driver.findElement(By.xpath("(//button[@type='button'])[11]")).click();
@@ -430,7 +430,7 @@ public class Es284TestCase1{
     	
     	Thread.sleep(WAIT_TIME);
     	WebElement graph = driver.findElement(By.cssSelector("svg"));
-    	EsiActivity.validateGraph(driver, graph, reporterGraphValidateName, ChartType.COLUMN, excelFileLocation, sheetName, " bbl", 11, 10, 20);
+    	EsiActivity.validateGraph(driver, graph, reporterGraphValidateName, ChartType.COLUMN, excelFileLocation, sheetName, "bbl", 11, 10, 20);
     	
     	Thread.sleep(WAIT_TIME);
         driver.findElement(By.xpath("(//button[@type='button'])[11]")).click();
@@ -461,7 +461,7 @@ public class Es284TestCase1{
     	
     	Thread.sleep(WAIT_TIME);
     	WebElement graph = driver.findElement(By.cssSelector("svg"));
-    	EsiActivity.validateGraph(driver, graph, reporterGraphValidateName, ChartType.COLUMN, excelFileLocation, sheetName, " cfe", 11, 10, 21);
+    	EsiActivity.validateGraph(driver, graph, reporterGraphValidateName, ChartType.COLUMN, excelFileLocation, sheetName, "cfe", 11, 10, 21);
     	
     	Thread.sleep(WAIT_TIME);
         driver.findElement(By.xpath("(//button[@type='button'])[11]")).click();
@@ -492,7 +492,7 @@ public class Es284TestCase1{
     	
     	Thread.sleep(WAIT_TIME);
     	WebElement graph = driver.findElement(By.cssSelector("svg"));
-    	EsiActivity.validateGraph(driver, graph, reporterGraphValidateName, ChartType.COLUMN, excelFileLocation, sheetName, " person", 11, 10, 22);
+    	EsiActivity.validateGraph(driver, graph, reporterGraphValidateName, ChartType.COLUMN, excelFileLocation, sheetName, "person", 11, 10, 22);
     	
     	Thread.sleep(WAIT_TIME);
         driver.findElement(By.xpath("(//button[@type='button'])[13]")).click();
@@ -522,7 +522,7 @@ public class Es284TestCase1{
     	
     	Thread.sleep(WAIT_TIME);
     	WebElement graph = driver.findElement(By.cssSelector("svg"));
-    	EsiActivity.validateGraph(driver, graph, reporterGraphValidateName, ChartType.COLUMN, excelFileLocation, sheetName, " person", 11, 10, 23);
+    	EsiActivity.validateGraph(driver, graph, reporterGraphValidateName, ChartType.COLUMN, excelFileLocation, sheetName, "person", 11, 10, 23);
     	
     	Thread.sleep(WAIT_TIME);
         driver.findElement(By.xpath("(//button[@type='button'])[13]")).click();
@@ -554,7 +554,7 @@ public class Es284TestCase1{
     	
     	Thread.sleep(WAIT_TIME);
     	WebElement graph = driver.findElement(By.cssSelector("svg"));
-    	EsiActivity.validateGraph(driver, graph, reporterGraphValidateName, ChartType.COLUMN, excelFileLocation, sheetName, "", 11, 10, 24);
+    	EsiActivity.validateGraph(driver, graph, reporterGraphValidateName, ChartType.COLUMN, excelFileLocation, sheetName, null, 11, 10, 24);
     	
     	Thread.sleep(WAIT_TIME);
 	    driver.findElement(By.xpath("(//button[@type='button'])[12]")).click();
@@ -583,7 +583,7 @@ public class Es284TestCase1{
     	
     	Thread.sleep(WAIT_TIME);
     	WebElement graph = driver.findElement(By.cssSelector("svg"));
-    	EsiActivity.validateGraph(driver, graph, reporterGraphValidateName, ChartType.COLUMN, excelFileLocation, sheetName, " USD", 11, 10, 25);
+    	EsiActivity.validateGraph(driver, graph, reporterGraphValidateName, ChartType.COLUMN, excelFileLocation, sheetName, "USD", 11, 10, 25);
     	
     	Thread.sleep(WAIT_TIME);
 	    driver.findElement(By.xpath("(//button[@type='button'])[8]")).click();
@@ -613,7 +613,7 @@ public class Es284TestCase1{
     	
     	Thread.sleep(WAIT_TIME);
     	WebElement graph = driver.findElement(By.cssSelector("svg"));
-    	EsiActivity.validateGraph(driver, graph, reporterGraphValidateName, ChartType.COLUMN, excelFileLocation, sheetName, " USD/boe", 11, 10, 26);
+    	EsiActivity.validateGraph(driver, graph, reporterGraphValidateName, ChartType.COLUMN, excelFileLocation, sheetName, "USD/boe", 11, 10, 26);
     	
     	Thread.sleep(WAIT_TIME);
         driver.findElement(By.xpath("(//button[@type='button'])[11]")).click();
@@ -643,7 +643,7 @@ public class Es284TestCase1{
     	
     	Thread.sleep(WAIT_TIME);
     	WebElement graph = driver.findElement(By.cssSelector("svg"));
-    	EsiActivity.validateGraph(driver, graph, reporterGraphValidateName, ChartType.COLUMN, excelFileLocation, sheetName, " USD/boe", 11, 10, 27);
+    	EsiActivity.validateGraph(driver, graph, reporterGraphValidateName, ChartType.COLUMN, excelFileLocation, sheetName, "USD/boe", 11, 10, 27);
     	
     	Thread.sleep(WAIT_TIME);
         driver.findElement(By.xpath("(//button[@type='button'])[11]")).click();
@@ -674,7 +674,7 @@ public class Es284TestCase1{
     	
     	Thread.sleep(WAIT_TIME);
     	WebElement graph = driver.findElement(By.cssSelector("svg"));
-    	EsiActivity.validateGraph(driver, graph, reporterGraphValidateName, ChartType.COLUMN, excelFileLocation, sheetName, " USD", 11, 10, 42);
+    	EsiActivity.validateGraph(driver, graph, reporterGraphValidateName, ChartType.COLUMN, excelFileLocation, sheetName, "USD", 11, 10, 42);
     	//GraphValidator.validateGraph(chart, new File("res\\importFiles\\ES-284\\ES-284 - Step 4 - Aggregations - Test to Automate.xlsx").getCanonicalPath(), "Case 1", 11, 10, 42, " USD", WAIT_TIME);
     	
     	Thread.sleep(WAIT_TIME);
@@ -706,7 +706,7 @@ public class Es284TestCase1{
     	
     	Thread.sleep(WAIT_TIME);
     	WebElement graph = driver.findElement(By.cssSelector("svg"));
-    	EsiActivity.validateGraph(driver, graph, reporterGraphValidateName, ChartType.COLUMN, excelFileLocation, sheetName, " USD", 11, 10, 44);
+    	EsiActivity.validateGraph(driver, graph, reporterGraphValidateName, ChartType.COLUMN, excelFileLocation, sheetName, "USD", 11, 10, 44);
     	
     	Thread.sleep(WAIT_TIME);
         driver.findElement(By.xpath("(//button[@type='button'])[27]")).click();
@@ -737,7 +737,7 @@ public class Es284TestCase1{
     	
     	Thread.sleep(WAIT_TIME);
     	WebElement graph = driver.findElement(By.cssSelector("svg"));
-    	EsiActivity.validateGraph(driver, graph, reporterGraphValidateName, ChartType.COLUMN, excelFileLocation, sheetName, " USD", 11, 10, 45);
+    	EsiActivity.validateGraph(driver, graph, reporterGraphValidateName, ChartType.COLUMN, excelFileLocation, sheetName, "USD", 11, 10, 45);
     	
     	Thread.sleep(WAIT_TIME);
         driver.findElement(By.xpath("(//button[@type='button'])[27]")).click();
@@ -768,7 +768,7 @@ public class Es284TestCase1{
     	
     	Thread.sleep(WAIT_TIME);
     	WebElement graph = driver.findElement(By.cssSelector("svg"));
-    	EsiActivity.validateGraph(driver, graph, reporterGraphValidateName, ChartType.COLUMN, excelFileLocation, sheetName, " USD", 11, 10, 47);
+    	EsiActivity.validateGraph(driver, graph, reporterGraphValidateName, ChartType.COLUMN, excelFileLocation, sheetName, "USD", 11, 10, 47);
     	
     	Thread.sleep(WAIT_TIME);
         driver.findElement(By.xpath("(//button[@type='button'])[27]")).click();
@@ -799,7 +799,7 @@ public class Es284TestCase1{
     	
     	Thread.sleep(WAIT_TIME);
     	WebElement graph = driver.findElement(By.cssSelector("svg"));
-    	EsiActivity.validateGraph(driver, graph, reporterGraphValidateName, ChartType.COLUMN, excelFileLocation, sheetName, " USD", 11, 10, 56);
+    	EsiActivity.validateGraph(driver, graph, reporterGraphValidateName, ChartType.COLUMN, excelFileLocation, sheetName, "USD", 11, 10, 56);
     	
     	Thread.sleep(WAIT_TIME);
         driver.findElement(By.xpath("(//button[@type='button'])[26]")).click();
@@ -831,7 +831,7 @@ public class Es284TestCase1{
     	
     	Thread.sleep(WAIT_TIME);
     	WebElement graph = driver.findElement(By.cssSelector("svg"));
-    	EsiActivity.validateGraph(driver, graph, reporterGraphValidateName, ChartType.COLUMN, excelFileLocation, sheetName, " USD", 11, 10, 57);
+    	EsiActivity.validateGraph(driver, graph, reporterGraphValidateName, ChartType.COLUMN, excelFileLocation, sheetName, "USD", 11, 10, 57);
     	
     	Thread.sleep(WAIT_TIME);
         driver.findElement(By.xpath("(//button[@type='button'])[26]")).click();
@@ -863,7 +863,7 @@ public class Es284TestCase1{
     	
     	Thread.sleep(WAIT_TIME);
     	WebElement graph = driver.findElement(By.cssSelector("svg"));
-    	EsiActivity.validateGraph(driver, graph, reporterGraphValidateName, ChartType.COLUMN, excelFileLocation, sheetName, " USD", 11, 10, 58);
+    	EsiActivity.validateGraph(driver, graph, reporterGraphValidateName, ChartType.COLUMN, excelFileLocation, sheetName, "USD", 11, 10, 58);
     	
     	Thread.sleep(WAIT_TIME);
         driver.findElement(By.xpath("(//button[@type='button'])[26]")).click();
@@ -892,7 +892,7 @@ public class Es284TestCase1{
     	
     	Thread.sleep(WAIT_TIME);
     	WebElement graph = driver.findElement(By.cssSelector("svg"));
-    	EsiActivity.validateGraph(driver, graph, reporterGraphValidateName, ChartType.COLUMN, excelFileLocation, sheetName, " USD", 11, 10, 59);
+    	EsiActivity.validateGraph(driver, graph, reporterGraphValidateName, ChartType.COLUMN, excelFileLocation, sheetName, "USD", 11, 10, 59);
     	
     	Thread.sleep(WAIT_TIME);
         driver.findElement(By.xpath("(//button[@type='button'])[26]")).click();
@@ -928,7 +928,7 @@ public class Es284TestCase1{
     	
     	Thread.sleep(WAIT_TIME);
     	WebElement graph = driver.findElement(By.cssSelector("svg"));
-    	EsiActivity.validateGraph(driver, graph, reporterGraphValidateName, ChartType.COLUMN, excelFileLocation, sheetName, " USD", 11, 10, 42);
+    	EsiActivity.validateGraph(driver, graph, reporterGraphValidateName, ChartType.COLUMN, excelFileLocation, sheetName, "USD", 11, 10, 42);
     	
     	EsiActivity.deleteDashboardGraph(driver, graphName);
     	
@@ -963,7 +963,7 @@ public class Es284TestCase1{
     	
     	Thread.sleep(WAIT_TIME);
     	WebElement graph = driver.findElement(By.cssSelector("svg"));
-    	EsiActivity.validateGraph(driver, graph, reporterGraphValidateName, ChartType.COLUMN, excelFileLocation, sheetName, " USD", 11, 10, 44);
+    	EsiActivity.validateGraph(driver, graph, reporterGraphValidateName, ChartType.COLUMN, excelFileLocation, sheetName, "USD", 11, 10, 44);
     	
     	EsiActivity.deleteDashboardGraph(driver, graphName);
     	
@@ -998,7 +998,7 @@ public class Es284TestCase1{
     	
     	Thread.sleep(WAIT_TIME);
     	WebElement graph = driver.findElement(By.cssSelector("svg"));
-    	EsiActivity.validateGraph(driver, graph, reporterGraphValidateName, ChartType.COLUMN, excelFileLocation, sheetName, " USD", 11, 10, 45);
+    	EsiActivity.validateGraph(driver, graph, reporterGraphValidateName, ChartType.COLUMN, excelFileLocation, sheetName, "USD", 11, 10, 45);
     	
     	EsiActivity.deleteDashboardGraph(driver, graphName);
     	
@@ -1033,7 +1033,7 @@ public class Es284TestCase1{
     	
     	Thread.sleep(WAIT_TIME);
     	WebElement graph = driver.findElement(By.cssSelector("svg"));
-    	EsiActivity.validateGraph(driver, graph, reporterGraphValidateName, ChartType.COLUMN, excelFileLocation, sheetName, " USD", 11, 10, 47);
+    	EsiActivity.validateGraph(driver, graph, reporterGraphValidateName, ChartType.COLUMN, excelFileLocation, sheetName, "USD", 11, 10, 47);
     	
     	EsiActivity.deleteDashboardGraph(driver, graphName);
     	
@@ -1068,7 +1068,7 @@ public class Es284TestCase1{
     	
     	Thread.sleep(WAIT_TIME);
     	WebElement graph = driver.findElement(By.cssSelector("svg"));
-    	EsiActivity.validateGraph(driver, graph, reporterGraphValidateName, ChartType.BAR, excelFileLocation, sheetName, " USD", 11, 10, 56);
+    	EsiActivity.validateGraph(driver, graph, reporterGraphValidateName, ChartType.BAR, excelFileLocation, sheetName, "USD", 11, 10, 56);
     	
     	EsiActivity.deleteDashboardGraph(driver, graphName);
     	
@@ -1103,7 +1103,7 @@ public class Es284TestCase1{
     	
     	Thread.sleep(WAIT_TIME);
     	WebElement graph = driver.findElement(By.cssSelector("svg"));
-    	EsiActivity.validateGraph(driver, graph, reporterGraphValidateName, ChartType.BAR, excelFileLocation, sheetName, " USD", 11, 10, 57);
+    	EsiActivity.validateGraph(driver, graph, reporterGraphValidateName, ChartType.BAR, excelFileLocation, sheetName, "USD", 11, 10, 57);
     	
     	EsiActivity.deleteDashboardGraph(driver, graphName);
     	
@@ -1138,7 +1138,7 @@ public class Es284TestCase1{
     	
     	Thread.sleep(WAIT_TIME);
     	WebElement graph = driver.findElement(By.cssSelector("svg"));
-    	EsiActivity.validateGraph(driver, graph, reporterGraphValidateName, ChartType.BAR, excelFileLocation, sheetName, " USD", 11, 10, 58);
+    	EsiActivity.validateGraph(driver, graph, reporterGraphValidateName, ChartType.BAR, excelFileLocation, sheetName, "USD", 11, 10, 58);
     	
     	EsiActivity.deleteDashboardGraph(driver, graphName);
     	
@@ -1173,7 +1173,7 @@ public class Es284TestCase1{
     	
     	Thread.sleep(WAIT_TIME);
     	WebElement graph = driver.findElement(By.cssSelector("svg"));
-    	EsiActivity.validateGraph(driver, graph, reporterGraphValidateName, ChartType.BAR, excelFileLocation, sheetName, " USD", 11, 10, 59);
+    	EsiActivity.validateGraph(driver, graph, reporterGraphValidateName, ChartType.BAR, excelFileLocation, sheetName, "USD", 11, 10, 59);
     	
     	EsiActivity.deleteDashboardGraph(driver, graphName);
     	

@@ -738,8 +738,8 @@ public class EsiActivity
 	{
 		String jQuerySelector = "arguments[0]";
 		
-		((JavascriptExecutor) driver).executeScript("var foo = _.clone($(" + jQuerySelector + "));", dashboardItem);
-		((JavascriptExecutor) driver).executeScript("$($(foo).children()[0]).remove();");
+		//((JavascriptExecutor) driver).executeScript("var foo = _.clone($(" + jQuerySelector + "));", dashboardItem);
+		//((JavascriptExecutor) driver).executeScript("$($(foo).children()[0]).remove();");
 		//get the text
 		
 		return dashboardItem.findElement(By.cssSelector("h5.ng-binding")).getText();
@@ -748,15 +748,26 @@ public class EsiActivity
 	
 	public static WebElement getDashboardGraph(WebDriver driver, ArrayList<WebElement> dashboardItems, String graphName)
 	{
+		System.out.println("inside getDashboardGraph");
+		System.out.println("getDashboardGraph.graphName: " + graphName);
 		for(int i = 0; i < dashboardItems.size(); i++)
 		{
+			System.out.println("getDashboardGraphItemName: " + getDashboardItemName(driver, dashboardItems.get(i)) + ";");
 			if(getDashboardItemName(driver, dashboardItems.get(i)).equals(graphName))
+			{
 				System.out.println("Graph found, returning graph");
-				return dashboardItems.get(i).findElement(By.cssSelector("svg"));
+				return dashboardItems.get(i);
+			}
 						
 		}
 		
 		return null;
+		
+	}
+	
+	public static void maximizeDashboardGraph(WebElement graph)
+	{
+		
 		
 	}
 	
