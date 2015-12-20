@@ -15,23 +15,27 @@ import java.util.concurrent.TimeUnit;
 import metricValidator.MetricValidator;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.testng.Reporter;
 
+import seleniumTools.WebDriverTools;
 import seleniumTools.highcharts.BarChart;
 import seleniumTools.highcharts.ColumnChart;
 import seleniumTools.highcharts.LineChart;
 
 /**
+ * Class used for executing common tasks in esi.activity. Ex: go to Workspace, creating a new workspace, 
+ * validating graphs, etc.
+ * 
  * @author mubari
  *
  */
 public class EsiActivity
 {
 	//-----------------------------VARIABLES----------------------------------//
-	public static int WAIT_TIME;
+	public static int WAIT_TIME = 1000;
 	//----------------------------CONSTRUCTOR---------------------------------//
 	//------------------------------GETTERS-----------------------------------//
 	//------------------------------SETTERS-----------------------------------//
@@ -57,8 +61,27 @@ public class EsiActivity
 	 */
 	public static void goToDashboard(WebDriver driver) throws InterruptedException
     {
-    	Thread.sleep(WAIT_TIME);
-        driver.findElement(By.linkText("Dashboard")).click();
+    	try 
+    	{
+			Thread.sleep(WAIT_TIME);
+			driver.findElement(By.linkText("Dashboard")).click();
+			Reporter.log("<font face='verdana' size='4' color='green'>Go to Dashboard</font><br>");
+		} 
+    	
+    	catch (NoSuchElementException e) 
+    	{
+    		Reporter.log("<details><summary><font face='verdana' size='4' color='red'>Go to Dashboard</font></summary>");
+			Reporter.log("Unable to find Dashboard link.<br>");
+			String screenShotPath = "res\\screenshots\\TestNG_report\\" + System.getProperty("testNG_screenshotDir");
+			String screenshotName = "screenshot";
+			WebDriverTools.takeScreenshot(driver, screenShotPath, screenshotName);
+			String webImageLink = "..\\..\\..\\" + screenShotPath + "\\" + screenshotName + "_" + (WebDriverTools.getScreenShotNumber() - 1) + ".jpg";
+			Reporter.log("<a target='_blank' href='" + webImageLink + "'><img src='" + webImageLink + "' style='width:25%; height:25%'></a> <br>");
+			Reporter.log("<br>");
+			
+			throw new NoSuchElementException("</details>Cannot find Dashboard link");
+			//Reporter.log("</details>");
+		}
     	
     }//END METOD goToDashboard(WebDriver)
     
@@ -217,8 +240,6 @@ public class EsiActivity
 	 */
 	public static void importMasterDate(WebDriver driver, String masterDataFileLocation) throws InterruptedException, IOException
     {
-    	//Thread.sleep(WAIT_TIME);
-        //driver.findElement(By.linkText("Master Data")).click();
     	goToMasterData(driver);
         Thread.sleep(WAIT_TIME);
         driver.findElement(By.cssSelector("input[type=\"file\"]")).clear();
@@ -230,48 +251,35 @@ public class EsiActivity
         Thread.sleep(WAIT_TIME);
         driver.findElement(By.xpath("//button[@type='button']")).click();
     	
-    }
+    }//END METHOD importMasterData(WebDriver, String)
     
 	/**
 	 * Deletes the workspace based on the provided name. <br>
-	 * <b>NOTE: </b>at the moment it will delete the first workspace it encounters. 
-	 * Implementing code to delete workspace based on the name provided rather than 
-	 * deleting the first workspace available will come in later.<br> 
 	 * It will fail if the workspace element cannot be found.
-	 * 
-	 * 
-	 * Doesn't check if theres any workspaces. Assumes there's at least one workspace.
+	 * Doesn't check if there's any workspaces. Assumes there's at least one workspace.
 	 * @param driver Web browser being used at the moment
 	 * @param workspaceName Name of the workspace to be deleted
 	 * @throws InterruptedException For using Thread.sleep(long). A better solution needs to made
 	 */
 	public static void deleteWorkspace(WebDriver driver, String workspaceName) throws InterruptedException
     {
-    	//Thread.sleep(WAIT_TIME);
-        //driver.findElement(By.linkText("Workspaces")).click();
     	goToWorkspaces(driver);
-//        Thread.sleep(WAIT_TIME);
-//        driver.findElement(By.xpath("//div[@id='page-wrapper']/div[2]/div[2]/div/div/div/div/div/ibox-content/div/table/tbody/tr/td[4]/div[2]/a[5]/i")).click();
-//        Thread.sleep(WAIT_TIME);
-//        driver.findElement(By.xpath("//button[@type='button']")).click();
     	
+    	//get all the workspaces available.
     	ArrayList<WebElement> workspaceItems = getWorkspacesItems(driver);
+    	
+    	//iterate through them and delete the workspace that is desired.
     	for(int i = 0; i < workspaceItems.size(); i++)
-    	{
-    		
-    		//*[@id="page-wrapper"]/div[2]/div[2]/div/div/div/div/div/ibox-content/div/table/tbody/tr[1]/td[4]/div[2]/a[5]
-    		
-    		System.out.println("[" + i + "]");
+    	{	
     		if(getWorkspaceItemName(driver, workspaceItems.get(i)).equals(workspaceName))
     		{
-    			System.out.println("\t[" + i + "]");
     			workspaceItems.get(i).findElements(By.cssSelector("a.btn.btn-white.btn-sm.core-perm-allow")).get(2).click();
     			Thread.sleep(WAIT_TIME);
     	        driver.findElement(By.xpath("//button[@type='button']")).click();
     			
-    		}
+    		}//END if(getWorkspaceItemName(driver, workspaceItems.get(i)).equals(workspaceName))
     		
-    	}
+    	}//END for(int i = 0; i < workspaceItems.size(); i++)
     	
     }//END METHOD deleteWorkspace(WebDriver, String)
 
