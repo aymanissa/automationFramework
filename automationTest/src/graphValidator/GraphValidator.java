@@ -416,6 +416,13 @@ public class GraphValidator
 				
 				
 				
+				Thread.sleep(wait_time);
+				String screenshotName = "screenshot";
+				WebDriverTools.takeScreenshot(driver, screenShotPath, screenshotName);
+				String webImageLink = "..\\..\\..\\" + screenShotPath + "\\" + screenshotName + "_" + (WebDriverTools.getScreenShotNumber() - 1) + ".jpg";
+				//screenShotPath + "\\" + screenshotName + "_" + screenShotNumber++ + ".jpg
+				((StringBuilder) validateStatus[1]).append("<a target='_blank' href='" + webImageLink + "'><img src='" + webImageLink + "' style='width:25%; height:25%'></a> <br>");
+				
 				((StringBuilder) validateStatus[1]).append("</blockquote>");
 				validateStatus[0] = false;
 				Reporter.getCurrentTestResult().setStatus(ITestResult.FAILURE);
