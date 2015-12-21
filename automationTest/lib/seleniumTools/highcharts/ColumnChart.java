@@ -32,8 +32,8 @@ public class ColumnChart extends HighCharts
         hoverOverColumnOrBarChartSeriesAtXAxisPosition(2, xAxisLabel);
     }
     
-    public void hoverOverColumn(WebElement column) {
-    	//System.out.println("Inside ColumnChart.hoverOverColumn(WebElement)");
+    public void hoverOver(WebElement column) {
+    	//System.out.println("Inside ColumnChart.hoverOver(WebElement)");
     	super.hoverOver(column);
     	//System.out.println("Exiting ColumnChart.hoverOverColumn(WebElement)");
     	
