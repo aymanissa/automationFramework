@@ -42,12 +42,17 @@ public class Simple
 		Thread.sleep(WAIT_TIME);
 		driver.get("http://3es0240:8080/esi.activity/app/#/workspaces");
 		Thread.sleep(WAIT_TIME + 1000);
-		driver.findElement(By.xpath("(//a[contains(text(),'WorkSpaceTestr')])[2]")).click();
+		//driver.findElement(By.xpath("(//a[contains(text(),'WorkSpaceTestr')])[2]")).click();
+		driver.findElement(By.xpath("(//a[contains(text(),'test')])[2]")).click();
 		Thread.sleep(WAIT_TIME);
-		EsiActivity.goToCalculations(driver);
-		Thread.sleep(WAIT_TIME);
-		
-		
+		//EsiActivity.goToCalculations(driver);
+		EsiActivity.goToDashboard(driver);
+		//Thread.sleep(WAIT_TIME);
+		//EsiActivity.deleteWorkspace(driver, "test");
+		//dashboardItems = EsiActivity.getDashboardItems(driver);
+		WebElement dashboardMetric = EsiActivity.getDashboardMetric(driver, "Revenue Oil High");
+		String metricValue = dashboardMetric.findElement(By.cssSelector("h2.no-margins.ng-scope")).getText();
+		System.out.println("metricValue: " + metricValue + ".");
 		
 		Thread.sleep(5000);
 		driver.quit();

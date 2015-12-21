@@ -12,6 +12,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
+import org.testng.AssertJUnit;
 import org.testng.Reporter;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeSuite;
@@ -98,10 +99,14 @@ public class GetDashboardGraphTest
 		EsiActivity.setWaitTime(WAIT_TIME);
     	EsiActivity.loadEsiActivity(driver, baseUrl);
     	Thread.sleep(WAIT_TIME + 2000);
-		driver.findElement(By.xpath("(//a[contains(text(),'WorkSpaceTestr')])[2]")).click();
+		//driver.findElement(By.xpath("(//a[contains(text(),'WorkSpaceTestr')])[2]")).click();
+    	driver.findElement(By.xpath("(//a[contains(text(),'test')])[2]")).click();
 		Thread.sleep(WAIT_TIME);
-    	this.validateGraphDashboard_Revenue_Oil_High_Column();
-		this.validateGraphDashboard_VariableOpCost_Oil_Electricity_Column();
+    	//this.validateGraphDashboard_Revenue_Oil_High_Column();
+		//this.validateGraphDashboard_VariableOpCost_Oil_Electricity_Column();
+		EsiActivity.goToDashboard(driver);
+		this.validateGraphDashboard_Revenue_Oil_High_Column();
+		//this.validateMetricDashboard_Revenue_Oil_High();
 		
 		//end: web browser commands to be executed.
 		
@@ -113,6 +118,53 @@ public class GetDashboardGraphTest
 	}//END TEST METHOD test(BrowserType, String)
 	
 	//------------------------------METHODS-----------------------------------//
+	
+	private void validateMetricDashboard_Revenue_Oil_High() throws InterruptedException, IOException
+    {
+    	//go to dashboard
+    	//add new metric
+    	//apply filters
+    	//validate metric
+    	
+    	EsiActivity.goToDashboard(driver);
+    	
+    	String metricName = "Revenue Oil High";
+    	String excelFileLocation = "res\\importFiles\\ES-284\\ES-284 - Step 4 - Aggregations - Test to Automate.xlsx"; 
+    	String sheetName = "Case 1";
+    	String reporterMetricValidateName = "Dashboard > Chart > Variable OpCost > Gas > Maintenance > Column";
+    	filters = new ArrayList<Object []> ();
+    	/*
+    	filters.add(new Object[] {ElementTypes.XPATH, "(//button[@type='button'])[13]"});
+    	filters.add(new Object[] {ElementTypes.XPATH, "(//button[@type='button'])[19]"});
+    	filters.add(new Object[] {ElementTypes.XPATH, "(//a[contains(text(),'Filter')])[2]"});
+    	filters.add(new Object[] {ElementTypes.XPATH, "(//button[@type='button'])[25]"});
+    	filters.add(new Object[] {ElementTypes.XPATH, "(//button[@type='button'])[27]"});
+    	filters.add(new Object[] {ElementTypes.XPATH, "(//button[@type='submit'])[2]"});
+    	filters.add(new Object[] {ElementTypes.LINKTEXT, "Settings"});
+    	filters.add(new Object[] {ElementTypes.INPUTTEXT, "name", metricName});
+    	filters.add(new Object[] {ElementTypes.CSS, "button.btn.btn-success"});
+    	
+    	EsiActivity.createDashboardMetric(driver, metricName, filters);
+    	*/
+    	WebElement dashboardMetric = EsiActivity.getDashboardMetric(driver, metricName);
+    	EsiActivity.validateMetric(driver, reporterMetricValidateName, metricName, excelFileLocation, sheetName, "USD", 42, 8);
+    	System.out.println("Validation successfull-------------");
+    	/*
+    	try {
+            AssertJUnit.assertEquals("14,214,800.00", driver.findElement(By.cssSelector("h2.no-margins.ng-scope > span.ng-binding")).getText());
+        } catch (Error e) {
+            verificationErrors.append(e.toString());
+        }
+        try {
+            AssertJUnit.assertEquals("USD", driver.findElement(By.xpath("//div[@id='page-wrapper']/div[2]/div[2]/div/div/div/div/div/div[2]/div/div/ibox-content/div/ul/li/span/a/h2/span[3]")).getText());
+        } catch (Error e) {
+            verificationErrors.append(e.toString());
+        }
+        */
+        //EsiActivity.deleteDashboardMetric(driver, metricName);
+    	
+    }//END METHOD validateMetricDashboard_Revenue_Oil_High()
+	
 	
 	private void validateGraphDashboard_Revenue_Oil_High_Column() throws InterruptedException, IOException
     {    	
@@ -128,7 +180,7 @@ public class GetDashboardGraphTest
     	String sheetName = "Case 1";
     	String reporterGraphValidateName = "Dashboard > Chart > Revenue > Oil > High > Column";
     	filters = new ArrayList<Object []> ();
-    	WebElement dashboardItem = EsiActivity.getDashboardGraph(driver, EsiActivity.getDashboardItems(driver), "Revenue Oil High");
+    	WebElement dashboardItem = EsiActivity.getDashboardGraph(driver, "Revenue Oil High");
     	
     	Thread.sleep(WAIT_TIME);
     	EsiActivity.maximizeDashboardGraph(dashboardItem);
@@ -155,7 +207,7 @@ public class GetDashboardGraphTest
     	String sheetName = "Case 1";
     	String reporterGraphValidateName = "Dashboard > Chart > Variable OpCost > Oil > Electricity > Column";
     	filters = new ArrayList<Object []> ();
-    	WebElement dashboardItem = EsiActivity.getDashboardGraph(driver, EsiActivity.getDashboardItems(driver), graphName);
+    	WebElement dashboardItem = EsiActivity.getDashboardGraph(driver, graphName);
     	
     	
     	Thread.sleep(WAIT_TIME);
