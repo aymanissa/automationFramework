@@ -320,8 +320,11 @@ public class EsiActivity
 	 */
 	public static void deleteDashboardGraph(WebDriver driver, String graphName) throws InterruptedException
 	{
+		
+		WebElement dashboardGraph = getDashboardGraph(driver, graphName);
+		
 		Thread.sleep(WAIT_TIME);
-        driver.findElement(By.cssSelector("i.fa.fa-times")).click();
+        dashboardGraph.findElement(By.cssSelector("i.fa.fa-times")).click();
         Thread.sleep(WAIT_TIME);
         driver.findElement(By.xpath("//button[@type='button']")).click();
 		
@@ -337,8 +340,10 @@ public class EsiActivity
 	 */
 	public static void deleteDashboardMetric(WebDriver driver, String metricName) throws InterruptedException
 	{
+		WebElement dashboardMetric = getDashboardMetric(driver, metricName);
+		
 		Thread.sleep(WAIT_TIME);
-        driver.findElement(By.cssSelector("i.fa.fa-times")).click();
+        dashboardMetric.findElement(By.cssSelector("i.fa.fa-times")).click();
         Thread.sleep(WAIT_TIME);
         driver.findElement(By.xpath("//button[@type='button']")).click();
 		
@@ -508,20 +513,42 @@ public class EsiActivity
 									  String sheetName, 
 									  String units, 
 									  int row, 
-									  int column) throws IOException
+									  int column) throws IOException, InterruptedException
 	{
 		//find the metric
 		//validate metric
+		StringBuilder reporterLog = new StringBuilder();
+		boolean status = false;
+		Object[] validateStatus = {status, reporterLog};
 		
-		Reporter.log("<details>" +
-						"<summary>" +
-							"<font face='verdana' size='4'>Graph: " + reporterMetricValidateName + "</font>" +
-						"</summary>");
-		MetricValidator.validateMetric(driver, null, "", excelFileLocation, sheetName, metricName, row, column, units, WAIT_TIME);
+		WebElement dashboardMetric = getDashboardMetric(driver, metricName);
 		
+		try
+		{
+			MetricValidator.validateMetric(driver, dashboardMetric, excelFileLocation, sheetName, validateStatus, metricName, row, column, units, WAIT_TIME);
+			
+			if((boolean)validateStatus[0] == true)
+			{
+				Reporter.log("<details><summary><font face='verdana' size='4' color='green'>Graph: " + reporterMetricValidateName + "</font></summary>");
+				Reporter.log(validateStatus[1].toString());
+				
+			}
+			
+			else
+			{
+				Reporter.log("<details><summary><font face='verdana' size='4' color='red'>Graph: " + reporterMetricValidateName + "</font></summary>");
+				Reporter.log(validateStatus[1].toString());
+				
+			}
+		}
 		
+		catch (AssertionError e)
+		{
+			Reporter.log("<details><summary><font face='verdana' size='4' color='red'>Graph: " + reporterMetricValidateName + "</font></summary>");
+			Reporter.log(validateStatus[1].toString());
+			throw new AssertionError(e);
+		}
 		
-		MetricValidator.validateMetric(driver, null, "", excelFileLocation, sheetName, metricName, row, column, units, WAIT_TIME);
 		Reporter.log("</details>");
 		Reporter.log("<hr><br>");
 		
@@ -674,6 +701,12 @@ public class EsiActivity
         		
         		case INPUTTEXT:
         		{
+        			System.out.println("INPUTTEXT");
+        			Thread.sleep(WAIT_TIME);
+        			driver.findElement(By.name((String) filters.get(i)[1])).clear();
+        			Thread.sleep(WAIT_TIME);
+        			driver.findElement(By.name((String) filters.get(i)[1])).sendKeys((String)filters.get(i)[2]);
+        			
         			
         			break;
         		}
@@ -758,8 +791,9 @@ public class EsiActivity
 	}
 	
 	
-	public static ArrayList<WebElement> getDashboardItems(WebDriver driver)
+	public static ArrayList<WebElement> getDashboardItems(WebDriver driver) throws InterruptedException
 	{
+		goToDashboard(driver);
 		ArrayList<WebElement> dashboardItems = new ArrayList<WebElement>();
 		
 		//dashboardItems = (ArrayList<WebElement>) driver.findElements(By.cssSelector("g.highcharts-series.highcharts-tracker > rect"));
@@ -771,7 +805,7 @@ public class EsiActivity
 	
 	public static String getDashboardItemName(WebDriver driver, WebElement dashboardItem)
 	{
-		String jQuerySelector = "arguments[0]";
+		//String jQuerySelector = "arguments[0]";
 		
 		//((JavascriptExecutor) driver).executeScript("var foo = _.clone($(" + jQuerySelector + "));", dashboardItem);
 		//((JavascriptExecutor) driver).executeScript("$($(foo).children()[0]).remove();");
@@ -781,17 +815,16 @@ public class EsiActivity
 		
 	}
 	
-	public static WebElement getDashboardGraph(WebDriver driver, ArrayList<WebElement> dashboardItems, String graphName)
+	public static WebElement getDashboardGraph(WebDriver driver, String graphName) throws InterruptedException
 	{
-		System.out.println("inside getDashboardGraph");
-		System.out.println("getDashboardGraph.graphName: " + graphName);
+		ArrayList<WebElement> dashboardItems = getDashboardItems(driver);
+		
 		for(int i = 0; i < dashboardItems.size(); i++)
 		{
-			System.out.println("getDashboardGraphItemName: " + getDashboardItemName(driver, dashboardItems.get(i)) + ";");
 			if(getDashboardItemName(driver, dashboardItems.get(i)).equals(graphName))
 			{
-				System.out.println("Graph found, returning graph");
 				return dashboardItems.get(i);
+				
 			}
 						
 		}
@@ -813,16 +846,6 @@ public class EsiActivity
 		Thread.sleep(WAIT_TIME);
 		graph.findElement(By.cssSelector("i.fa.fa-columns")).click();
 		Thread.sleep(WAIT_TIME);
-		
-	}
-	
-	public static void deleteDashboardGraph(WebElement graph) throws InterruptedException
-	{
-		Thread.sleep(WAIT_TIME);
-        graph.findElement(By.cssSelector("i.fa.fa-times")).click();
-        Thread.sleep(WAIT_TIME);
-        graph.findElement(By.xpath("//button[@type='button']")).click();
-        Thread.sleep(WAIT_TIME);
 		
 	}
 	
@@ -898,27 +921,23 @@ public class EsiActivity
 		 
 	 }
 	 
-	 public static ArrayList<WebElement> getDashboardMetric(WebDriver driver)
+	 public static WebElement getDashboardMetric(WebDriver driver, String metricName) throws InterruptedException
 	 {
+		 ArrayList<WebElement> dashboardItems = getDashboardItems(driver);
 		 ArrayList<WebElement> dashboardMetricItems = new ArrayList<WebElement>();
-		 /*
-		 System.out.println("inside getDashboardGraph");
-			System.out.println("getDashboardGraph.graphName: " + graphName);
-			for(int i = 0; i < dashboardItems.size(); i++)
+		 
+		 for(int i = 0; i < dashboardItems.size(); i++)
+		 {
+			 if(getDashboardItemName(driver, dashboardItems.get(i)).equals(metricName))
 			{
-				System.out.println("getDashboardGraphItemName: " + getDashboardItemName(driver, dashboardItems.get(i)) + ";");
-				if(getDashboardItemName(driver, dashboardItems.get(i)).equals(graphName))
-				{
-					System.out.println("Graph found, returning graph");
-					return dashboardItems.get(i);
-				}
-							
+				 System.out.println("Metric found!!!");
+				return dashboardItems.get(i);
+				
 			}
-			
-		 */
+			 
+		 }
 		 
-		 
-		 return dashboardMetricItems;
+		 return null;
 		 
 	 }
 	
