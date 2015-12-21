@@ -57,18 +57,13 @@ public class Es284TestCase1{
     
     @BeforeSuite
     public void beforeSuite()
-    {
-    	System.out.println("exitOnFail: " + System.getProperty("exitOnFail"));
-    	
+    {	
     	if(System.getProperty("exitOnFail") != null && System.getProperty("exitOnFail").toLowerCase().equals("true"))
     	{
     		GraphValidator.exitOnFail = true;
     		MetricValidator.exitOnFail = true;
     		
     	}
-    	
-    	System.out.println("GraphValidator.exitOnFail: " + GraphValidator.exitOnFail);
-    	System.out.println("MetricValidator.exitOnFail: " + MetricValidator.exitOnFail);
     	
     }//END METHOD beforeSuite()
     
@@ -1518,8 +1513,6 @@ public class Es284TestCase1{
     
   @AfterMethod
 public void tearDown() throws Exception {
-	  System.out.println("-------------------------------------------------");
-	  Reporter.log("---------------------------------------------------");
     driver.quit();
     String verificationErrorString = verificationErrors.toString();
     if (!"".equals(verificationErrorString)) {
