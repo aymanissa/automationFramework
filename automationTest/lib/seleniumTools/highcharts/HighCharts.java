@@ -280,7 +280,7 @@ public class HighCharts
     public void hoverOver(WebElement column)
     {
     	//System.out.println("=============================================");
-    	//System.out.println("Inside HighCharts.hoverOverColumn(WebElement)");
+    	//System.out.println("\tInside HighCharts.hoverOver(WebElement)");
     	
     	//System.out.println("Executing javascript.callEmbeddedHtmlUtils(driver, \"triggerEven\", column, \"mouseOver\")");
     	//javascript.callEmbeddedHtmlUtils(driver, "triggerEvent", column, "mouseOver");
