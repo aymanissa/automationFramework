@@ -49,11 +49,7 @@ public class ExcelUtils
 	
 	public static Date getCellDate(int rowNum, int colNum)throws NullPointerException
 	{
-		//System.out.print("kjknk " + colNum + "\n");
 		cell = excelWSheet.getRow(rowNum).getCell(colNum);
-		//System.out.println("colNum: " + colNum + " " + cell.getReference() + " ");
-		//System.out.println(" " + cell.getReference());
-		//System.out.println("null? : " + cell.getDateCellValue() == null ? "null" : "not null");
 		return cell.getDateCellValue();
 		
 	}
@@ -61,7 +57,6 @@ public class ExcelUtils
 	public static XSSFCell getCell(int rowNum, int colNum)throws NullPointerException
 	{
 		cell = excelWSheet.getRow(rowNum).getCell(colNum);
-		//System.out.println("cell == null? : " + (cell == null ? "cell is null" : "cell is not null") + " cell: " + cell.getReference());
 		return cell;
 		
 	}
@@ -73,7 +68,7 @@ public class ExcelUtils
 		FileInputStream excelfile = new FileInputStream(path);
 		excelWBook = new XSSFWorkbook(excelfile);
 		excelWSheet = excelWBook.getSheet(sheetName);
-		//System.out.println("Excel file set");
+
 	}
 	
 	//------------------------------METHODS-----------------------------------//

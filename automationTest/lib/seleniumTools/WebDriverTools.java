@@ -2,10 +2,7 @@ package seleniumTools;
 
 import java.io.File;
 import java.io.IOException;
-import java.net.URL;
 import java.util.concurrent.TimeUnit;
-
-import junit.framework.Test;
 
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.OutputType;
@@ -17,8 +14,6 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxProfile;
 import org.openqa.selenium.firefox.internal.ProfilesIni;
 import org.openqa.selenium.ie.InternetExplorerDriver;
-import org.openqa.selenium.remote.DesiredCapabilities;
-
 import enumTypes.BrowserType;
 
 
@@ -65,7 +60,6 @@ public class WebDriverTools
 	 */
 	private WebDriver getWebDriver(BrowserType browserType) throws IOException
 	{
-		//System.out.println("System.get(user.dir): " + System.getProperty("user.dir"));
 		switch (browserType)
 		{
 			case FIREFOX: 
@@ -108,7 +102,6 @@ public class WebDriverTools
 				//plugin does not exist
 				else
 				{
-					System.out.println("Current Dir: " + System.getProperty("user.dir"));
 					throw new RuntimeException("Firefox plugin not found");
 					
 				}//END ELSE FOR if(new File(pluginDir).exists())
@@ -139,7 +132,6 @@ public class WebDriverTools
 				//if IE driver not, throw RuntimeException
 				else
 				{
-					System.out.println("Current Dir: " + System.getProperty("user.dir"));
 					throw new RuntimeException("IE driver not found");
 					
 				}//END ELSE FOR if(new File(driverDir).exists())
@@ -171,7 +163,6 @@ public class WebDriverTools
 				
 				else
 				{
-					System.out.println("Current Dir: " + System.getProperty("user.dir"));
 					throw new RuntimeException("Chrome driver not found");
 					
 				}//END ELSE FOR if(new File(driverDir).exists())
@@ -206,7 +197,7 @@ public class WebDriverTools
 		try
 		{
 			File scrFile = driver.getScreenshotAs(OutputType.FILE);
-			System.out.println("PNG browser snapshot file location: " + file.toURI().toString());
+			//System.out.println("PNG browser snapshot file location: " + file.toURI().toString());
 			
 			FileUtils.deleteQuietly(file);
 			FileUtils.moveFile(scrFile, file);
