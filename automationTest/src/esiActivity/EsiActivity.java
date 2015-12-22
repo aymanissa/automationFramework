@@ -321,12 +321,29 @@ public class EsiActivity
 	public static void deleteDashboardGraph(WebDriver driver, String graphName) throws InterruptedException
 	{
 		
-		WebElement dashboardGraph = getDashboardGraph(driver, graphName);
+		try
+		{
+			WebElement dashboardGraph = getDashboardGraph(driver, graphName);
+			
+			Thread.sleep(WAIT_TIME);
+			dashboardGraph.findElement(By.cssSelector("i.fa.fa-times")).click();
+			Thread.sleep(WAIT_TIME);
+			driver.findElement(By.xpath("//button[@type='button']")).click();
+			
+		}
 		
-		Thread.sleep(WAIT_TIME);
-        dashboardGraph.findElement(By.cssSelector("i.fa.fa-times")).click();
-        Thread.sleep(WAIT_TIME);
-        driver.findElement(By.xpath("//button[@type='button']")).click();
+		catch (NoSuchElementException e)
+		{
+			Reporter.log("<details><summary><font face='verdana' size='4' color='red'>Deleting dashboard graph</font></summary>");
+			Reporter.log("Unable to delete dashboard graph.");
+			String screenShotPath = "res\\screenshots\\TestNG_report\\" + System.getProperty("testNG_screenshotDir");
+			String screenshotName = "screenshot";
+			WebDriverTools.takeScreenshot(driver, screenShotPath, screenshotName);
+			String webImageLink = "..\\..\\..\\" + screenShotPath + "\\" + screenshotName + "_" + (WebDriverTools.getScreenShotNumber() - 1) + ".jpg";
+			Reporter.log("<a target='_blank' href='" + webImageLink + "'><img src='" + webImageLink + "' style='width:25%; height:25%'></a> <br>");
+			Reporter.log("<br>");
+			Reporter.log("</details>");
+		}
 		
 	}//END METHOD deleteDashboardGraph(WebDriver, String)
 
@@ -340,12 +357,29 @@ public class EsiActivity
 	 */
 	public static void deleteDashboardMetric(WebDriver driver, String metricName) throws InterruptedException
 	{
-		WebElement dashboardMetric = getDashboardMetric(driver, metricName);
+		try
+		{
+			WebElement dashboardMetric = getDashboardMetric(driver, metricName);
+			
+			Thread.sleep(WAIT_TIME);
+			dashboardMetric.findElement(By.cssSelector("i.fa.fa-times")).click();
+			Thread.sleep(WAIT_TIME);
+			driver.findElement(By.xpath("//button[@type='button']")).click();
+		}
 		
-		Thread.sleep(WAIT_TIME);
-        dashboardMetric.findElement(By.cssSelector("i.fa.fa-times")).click();
-        Thread.sleep(WAIT_TIME);
-        driver.findElement(By.xpath("//button[@type='button']")).click();
+		catch (NoSuchElementException e)
+		{
+			Reporter.log("<details><summary><font face='verdana' size='4' color='red'>Deleting dashboard metric</font></summary>");
+			Reporter.log("Unable to delete dashboard metric.");
+			String screenShotPath = "res\\screenshots\\TestNG_report\\" + System.getProperty("testNG_screenshotDir");
+			String screenshotName = "screenshot";
+			WebDriverTools.takeScreenshot(driver, screenShotPath, screenshotName);
+			String webImageLink = "..\\..\\..\\" + screenShotPath + "\\" + screenshotName + "_" + (WebDriverTools.getScreenShotNumber() - 1) + ".jpg";
+			Reporter.log("<a target='_blank' href='" + webImageLink + "'><img src='" + webImageLink + "' style='width:25%; height:25%'></a> <br>");
+			Reporter.log("<br>");
+			Reporter.log("</details>");
+			
+		}
 		
 	}//END METHOD deleteDashboardMetric(WebDriver, String)
 
@@ -865,7 +899,7 @@ public class EsiActivity
 	
 	public static String getWorkspaceItemName(WebDriver driver, WebElement workspaceItem)
 	{
-		String jQuerySelector = "arguments[0]";
+		//String jQuerySelector = "arguments[0]";
 		
 		//((JavascriptExecutor) driver).executeScript("var foo = _.clone($(" + jQuerySelector + "));", dashboardItem);
 		//((JavascriptExecutor) driver).executeScript("$($(foo).children()[0]).remove();");
@@ -924,7 +958,6 @@ public class EsiActivity
 	 public static WebElement getDashboardMetric(WebDriver driver, String metricName) throws InterruptedException
 	 {
 		 ArrayList<WebElement> dashboardItems = getDashboardItems(driver);
-		 ArrayList<WebElement> dashboardMetricItems = new ArrayList<WebElement>();
 		 
 		 for(int i = 0; i < dashboardItems.size(); i++)
 		 {
