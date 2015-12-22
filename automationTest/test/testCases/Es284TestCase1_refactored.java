@@ -16,9 +16,12 @@ import esiActivity.EsiActivity;
 import graphValidator.GraphValidator;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.Date;
+
 import org.junit.runners.Parameterized.Parameters;
 
 import seleniumTools.WebDriverTools;
@@ -72,11 +75,15 @@ public class Es284TestCase1_refactored{
 						"</summary>");
     	Reporter.log("<blockquote>");
     	
+    	Date currentDate = new Date();
+    	SimpleDateFormat dateFormatter = new SimpleDateFormat("dd-MM-yyyy_HH:mm:ss");
+    	String workspaceName = this.getClass().getSimpleName().toString() + "_" + dateFormatter.format(currentDate);
+    	
     	driver = webi.instantiateBrowser(browserType);
     	//driverWait = new WebDriverWait(driver, 10);
     	EsiActivity.setWaitTime(WAIT_TIME);
     	EsiActivity.loadEsiActivity(driver, baseUrl);
-    	EsiActivity.createWorkspace(driver, "WorkSpaceTest", "res\\importFiles\\ES-284\\case1\\ES-284 - Step 4 - Aggregations - Inventory - Case 1.xlsx");
+    	EsiActivity.createWorkspace(driver, workspaceName, "res\\importFiles\\ES-284\\case1\\ES-284 - Step 4 - Aggregations - Inventory - Case 1.xlsx");
     	EsiActivity.importMasterDate(driver, "res\\importFiles\\ES-284\\ES-284 - Step 4 - Aggregations - MasterData.xlsx");
     	
     	//validating opportunities. Well 1 Production and Well 2 Production
