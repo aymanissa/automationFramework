@@ -410,7 +410,7 @@ public class GraphValidator
 				((StringBuilder) validateStatus[1]).append("<font face=" + reporterFontFace + " color='red'>Column/bar/point [" + i + "].date: " + date + " in graph does <b>NOT</b> match with: " + arrayList.get(i)[0] + "</font>" + reporterNewline);
 				if(i != columns.size() - 1)
 				{
-					((StringBuilder) validateStatus[1]).append("<font face=" + reporterFontFace + " >Skipping to next column/bar/point</font>");
+					((StringBuilder) validateStatus[1]).append("<font face=" + reporterFontFace + " >Skipping to next column/bar/point</font><br>");
 					
 				}//END if(i != columns.size() - 1)
 				
