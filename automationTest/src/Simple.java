@@ -7,7 +7,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import enumTypes.BrowserType;
-import enumTypes.ChartType;
 import esiActivity.EsiActivity;
 import seleniumTools.WebDriverTools;
 
@@ -27,6 +26,7 @@ public class Simple
 	 * @throws IOException 
 	 * @throws InterruptedException 
 	 */
+	@SuppressWarnings("unused")
 	public static void main(String[] args) throws IOException, InterruptedException
 	{
 		// TODO Auto-generated method stub

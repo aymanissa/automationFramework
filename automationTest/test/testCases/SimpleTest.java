@@ -11,7 +11,6 @@ import metricValidator.MetricValidator;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.AssertJUnit;
 import org.testng.Reporter;
@@ -100,7 +99,7 @@ public class SimpleTest
     	EsiActivity.setWaitTime(WAIT_TIME);
     	EsiActivity.loadEsiActivity(driver, baseUrl);
     	EsiActivity.createWorkspace(driver, "WorkSpaceTest", "res\\importFiles\\ES-284\\case1\\ES-284 - Step 4 - Aggregations - Inventory - Case 1.xlsx");
-    	EsiActivity.importMasterDate(driver, "res\\importFiles\\ES-284\\ES-284 - Step 4 - Aggregations - MasterData.xlsx");
+    	EsiActivity.importMasterData(driver, "res\\importFiles\\ES-284\\ES-284 - Step 4 - Aggregations - MasterData.xlsx");
     	
     	//validate an opportunity
     	this.validateGraphOpportunity_Well_1_Production_Production_Oil_Column();
@@ -156,6 +155,7 @@ public class SimpleTest
     	
     }//END METHOD validateGraphOpportunity_Well_1_Production_Production_Oil_Column()
 	
+	@SuppressWarnings("unused")
 	private void validateMeasure_Revenue_Oil_High_Column() throws InterruptedException, IOException
     {	
     	//go to calculations
@@ -188,6 +188,7 @@ public class SimpleTest
     	
     }//END METHOD validateMeasure_Revenue_Oil_High_Column()
 	
+	@SuppressWarnings("unused")
 	private void validateGraphDashboard_Revenue_Oil_High_Column() throws InterruptedException, IOException
     {    	
     	//go to dashboard
@@ -213,7 +214,7 @@ public class SimpleTest
     	filters.add(new Object []{ElementTypes.CSS, "button.btn.btn-success"});
     	filters.add(new Object []{ElementTypes.CSS, "i.fa.fa-plus-square-o"});
     	
-    	EsiActivity.loadDashboardGraph(driver, graphName, filters);
+    	EsiActivity.createDashboardGraph(driver, graphName, filters);
     	
     	Thread.sleep(WAIT_TIME);
     	WebElement graph = driver.findElement(By.cssSelector("svg"));
@@ -223,6 +224,7 @@ public class SimpleTest
     	
     }//END METHOD validateGraphDashboard_Revenue_Oil_High_Column()
 	
+	@SuppressWarnings("unused")
 	private void validateMetricDashboard_Revenue_Oil_High() throws InterruptedException
     {
     	//go to dashboard

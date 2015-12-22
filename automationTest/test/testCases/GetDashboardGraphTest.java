@@ -12,7 +12,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
-import org.testng.AssertJUnit;
 import org.testng.Reporter;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeSuite;
@@ -21,7 +20,6 @@ import org.testng.annotations.Test;
 
 import enumTypes.BrowserType;
 import enumTypes.ChartType;
-import enumTypes.ElementTypes;
 import esiActivity.EsiActivity;
 import graphValidator.GraphValidator;
 
@@ -38,6 +36,7 @@ public class GetDashboardGraphTest
 	private static WebDriverTools webi;			//used to instantiate and close browser
 	private static final String baseUrl = "http://3es0240:8080/esi.activity/app/#/workspaces";   //esiActivity URL
 	private static final int WAIT_TIME = 1000;  //time in milliseconds. Used for delaying web browser command executions
+	@SuppressWarnings("unused")
 	private ArrayList<Object []> filters;
 	
 	private StringBuffer verificationErrors = new StringBuffer();
@@ -119,6 +118,7 @@ public class GetDashboardGraphTest
 	
 	//------------------------------METHODS-----------------------------------//
 	
+	@SuppressWarnings("unused")
 	private void validateMetricDashboard_Revenue_Oil_High() throws InterruptedException, IOException
     {
     	//go to dashboard
@@ -166,6 +166,7 @@ public class GetDashboardGraphTest
     }//END METHOD validateMetricDashboard_Revenue_Oil_High()
 	
 	
+	@SuppressWarnings("unused")
 	private void validateGraphDashboard_Revenue_Oil_High_Column() throws InterruptedException, IOException
     {    	
     	//go to dashboard
@@ -193,6 +194,7 @@ public class GetDashboardGraphTest
     	
     }//END METHOD validateGraphDashboard_Revenue_Oil_High_Column()
 	
+	@SuppressWarnings("unused")
 	private void validateGraphDashboard_VariableOpCost_Oil_Electricity_Column() throws IOException, InterruptedException
     {    	
     	//go to dashboard
