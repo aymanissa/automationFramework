@@ -45,7 +45,7 @@ public class GraphValidator
 	private static boolean hasNext(int row, int col)
 	{
 		XSSFCell cell = ExcelUtils.getCell(row, col + 1);
-		//System.out.println("dateCell: " + cell.getReference());
+
 		//check the cell next to current cell (to the right)
 		if(cell == null || cell.getCellType() == Cell.CELL_TYPE_BLANK)
 		{
@@ -142,13 +142,6 @@ public class GraphValidator
 			hasNext = hasNext(dateRowStart, currentCol - 1);
 			
 		}//END while(hasNext)
-		
-		//System.out.println("getDateAndValue arrayList.size(): " + arrayList.size());
-		//for(int i = 0; i < arrayList.size(); i++)
-		//{
-		//	System.out.println("arrayList[" + i + "]: " + arrayList.get(i)[0] + " " + arrayList.get(i)[1]);
-		//	
-		//}
 		
 		return arrayList;
 		
@@ -330,9 +323,6 @@ public class GraphValidator
 		
 		List<WebElement> columns = chart.getXAxisLabelsWebElementList();
 		
-		System.out.println("columns.size()" + columns.size());
-		System.out.println("arrayList.size()" + arrayList.size());
-		
 		((StringBuilder) validateStatus[1]).append("<blockquote>");
 		validateStatus[0] = true;
 		
@@ -389,8 +379,6 @@ public class GraphValidator
 			String date = chart.getToolTipLine(1);
 			//String value = chart.getToolTipLine(2);
 			String value = chart.getToolTipLine(3);
-			
-			//System.out.println("graphUnits: " + graphUnits);
 			
 			//assert the tooltip date
 			((StringBuilder) validateStatus[1]).append("<blockquote>");

@@ -27,6 +27,7 @@ import seleniumTools.WebDriverTools;
  * @author 
  *
  */
+@SuppressWarnings("unused")
 public class TestCaseTemplate
 {
 	//-----------------------------VARIABLES----------------------------------//
