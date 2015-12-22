@@ -2,8 +2,6 @@ package testCases;
 
 import metricValidator.MetricValidator;
 
-import org.testng.annotations.Factory;
-import static org.testng.ConversionUtils.wrapDataProvider;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.DataProvider;
@@ -18,41 +16,24 @@ import enumTypes.ElementTypes;
 import esiActivity.EsiActivity;
 import graphValidator.GraphValidator;
 
-import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Date;
-import java.util.concurrent.TimeUnit;
-import org.junit.*;
 import org.junit.runners.Parameterized.Parameters;
 
 import seleniumTools.WebDriverTools;
-import seleniumTools.highcharts.BarChart;
-import seleniumTools.highcharts.ColumnChart;
-import seleniumTools.highcharts.LineChart;
-
-import java.util.regex.Pattern;
-import java.util.concurrent.TimeUnit;
-import org.junit.*;
-import static org.hamcrest.CoreMatchers.*;
 import org.openqa.selenium.*;
-import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.Select;
-import org.openqa.selenium.support.ui.WebDriverWait;
-
-import com.thoughtworks.selenium.*;
 
 public class Es284TestCase1{
    
 	private WebDriver driver;
-	private WebDriverWait driverWait;
+	//private WebDriverWait driverWait;
     private WebDriverTools webi;
     private String baseUrl = "http://3es0240:8080/esi.activity/app/#/workspaces";
-    private boolean acceptNextAlert = true;
+    //private boolean acceptNextAlert = true;
     private StringBuffer verificationErrors = new StringBuffer();
     public static int WAIT_TIME = 1000;
     private ArrayList <Object[]> filters;
@@ -100,7 +81,7 @@ public class Es284TestCase1{
     	System.out.println("WorkspaceName: " + workspaceName);
     	
     	driver = webi.instantiateBrowser(browserType);
-    	driverWait = new WebDriverWait(driver, 10);
+    	//driverWait = new WebDriverWait(driver, 10);
     	EsiActivity.setWaitTime(WAIT_TIME);
     	EsiActivity.loadEsiActivity(driver, baseUrl);
     	EsiActivity.createWorkspace(driver, workspaceName, "res\\importFiles\\ES-284\\case1\\ES-284 - Step 4 - Aggregations - Inventory - Case 1.xlsx");
@@ -910,7 +891,7 @@ public class Es284TestCase1{
     	
     	EsiActivity.goToDashboard(driver);
     	
-    	String graphName = "Revenue Oil High";
+    	String graphName = "Chart: Revenue Oil High";
     	String excelFileLocation = "res\\importFiles\\ES-284\\ES-284 - Step 4 - Aggregations - Test to Automate.xlsx"; 
     	String sheetName = "Case 1";
     	String reporterGraphValidateName = "Dashboard > Chart > Revenue > Oil > High > Column";
@@ -923,6 +904,8 @@ public class Es284TestCase1{
     	filters.add(new Object []{ElementTypes.XPATH, "(//button[@type='button'])[34]"});
     	filters.add(new Object []{ElementTypes.LINKTEXT, "Settings"});
     	filters.add(new Object []{ElementTypes.XPATH, "(//input[@type='checkbox'])[4]"});
+    	filters.add(new Object []{ElementTypes.INPUTTEXT, "name", graphName});
+    	filters.add(new Object []{ElementTypes.INPUTTEXT, "description", ""});
     	filters.add(new Object []{ElementTypes.CSS, "button.btn.btn-success"});
     	filters.add(new Object []{ElementTypes.CSS, "i.fa.fa-plus-square-o"});
     	
@@ -945,7 +928,7 @@ public class Es284TestCase1{
     	
     	EsiActivity.goToDashboard(driver);
     	
-    	String graphName = "Revenue Oil Low";
+    	String graphName = "Chart: Revenue Oil Low";
     	String excelFileLocation = "res\\importFiles\\ES-284\\ES-284 - Step 4 - Aggregations - Test to Automate.xlsx"; 
     	String sheetName = "Case 1";
     	String reporterGraphValidateName = "Dashboard > Chart > Revenue > Oil > Low > Column";
@@ -958,6 +941,8 @@ public class Es284TestCase1{
     	filters.add(new Object[] {ElementTypes.XPATH, "(//button[@type='button'])[35]"});
     	filters.add(new Object[] {ElementTypes.LINKTEXT, "Settings"});
     	filters.add(new Object[] {ElementTypes.XPATH, "(//input[@type='checkbox'])[4]"});
+    	filters.add(new Object []{ElementTypes.INPUTTEXT, "name", graphName});
+    	filters.add(new Object []{ElementTypes.INPUTTEXT, "description", ""});
     	filters.add(new Object[] {ElementTypes.CSS, "button.btn.btn-success"});
     	filters.add(new Object[] {ElementTypes.CSS, "i.fa.fa-plus-square-o"});
     	
@@ -980,7 +965,7 @@ public class Es284TestCase1{
     	
     	EsiActivity.goToDashboard(driver);
     	
-    	String graphName = "Revenue Gas High";
+    	String graphName = "Chart: Revenue Gas High";
     	String excelFileLocation = "res\\importFiles\\ES-284\\ES-284 - Step 4 - Aggregations - Test to Automate.xlsx"; 
     	String sheetName = "Case 1";
     	String reporterGraphValidateName = "Dashboard > Chart > Revenue > Gas > High > Column";
@@ -993,6 +978,8 @@ public class Es284TestCase1{
     	filters.add(new Object[] {ElementTypes.XPATH, "(//button[@type='button'])[34]"});
     	filters.add(new Object[] {ElementTypes.LINKTEXT, "Settings"});
     	filters.add(new Object[] {ElementTypes.XPATH, "(//input[@type='checkbox'])[4]"});
+    	filters.add(new Object []{ElementTypes.INPUTTEXT, "name", graphName});
+    	filters.add(new Object []{ElementTypes.INPUTTEXT, "description", ""});
     	filters.add(new Object[] {ElementTypes.CSS, "button.btn.btn-success"});
     	filters.add(new Object[] {ElementTypes.CSS, "i.fa.fa-plus-square-o"});
     	
@@ -1015,7 +1002,7 @@ public class Es284TestCase1{
     	
     	EsiActivity.goToDashboard(driver);
     	
-    	String graphName = "Revenue Gas Low";
+    	String graphName = "Chart: Revenue Gas Low";
     	String excelFileLocation = "res\\importFiles\\ES-284\\ES-284 - Step 4 - Aggregations - Test to Automate.xlsx"; 
     	String sheetName = "Case 1";
     	String reporterGraphValidateName = "Dashboard > Chart > Revenue > Gas > Low > Column";
@@ -1028,6 +1015,8 @@ public class Es284TestCase1{
     	filters.add(new Object[] {ElementTypes.XPATH, "(//button[@type='button'])[35]"});
     	filters.add(new Object[] {ElementTypes.LINKTEXT, "Settings"});
     	filters.add(new Object[] {ElementTypes.XPATH, "(//input[@type='checkbox'])[4]"});
+    	filters.add(new Object []{ElementTypes.INPUTTEXT, "name", graphName});
+    	filters.add(new Object []{ElementTypes.INPUTTEXT, "description", ""});
     	filters.add(new Object[] {ElementTypes.CSS, "button.btn.btn-success"});
     	filters.add(new Object[] {ElementTypes.CSS, "i.fa.fa-plus-square-o"});
     	
@@ -1050,7 +1039,7 @@ public class Es284TestCase1{
     	
     	EsiActivity.goToDashboard(driver);
     	
-    	String graphName = "Variable OpCost Oil Electricity";
+    	String graphName = "Chart: Variable OpCost Oil Electricity";
     	String excelFileLocation = "res\\importFiles\\ES-284\\ES-284 - Step 4 - Aggregations - Test to Automate.xlsx"; 
     	String sheetName = "Case 1";
     	String reporterGraphValidateName = "Dashboard > Chart > Variable OpCost > Oil > Electricity > Column";
@@ -1063,6 +1052,8 @@ public class Es284TestCase1{
     	filters.add(new Object[] {ElementTypes.XPATH, "(//button[@type='button'])[25]"});
     	filters.add(new Object[] {ElementTypes.LINKTEXT, "Settings"});
     	filters.add(new Object[] {ElementTypes.XPATH, "(//input[@type='checkbox'])[4]"});
+    	filters.add(new Object []{ElementTypes.INPUTTEXT, "name", graphName});
+    	filters.add(new Object []{ElementTypes.INPUTTEXT, "description", ""});
     	filters.add(new Object[] {ElementTypes.CSS, "button.btn.btn-success"});
     	filters.add(new Object[] {ElementTypes.CSS, "i.fa.fa-plus-square-o"});
     	
@@ -1085,7 +1076,7 @@ public class Es284TestCase1{
     	
     	EsiActivity.goToDashboard(driver);
     	
-    	String graphName = "Variable OpCost Oil Maintenance";
+    	String graphName = "Chart: Variable OpCost Oil Maintenance";
     	String excelFileLocation = "res\\importFiles\\ES-284\\ES-284 - Step 4 - Aggregations - Test to Automate.xlsx"; 
     	String sheetName = "Case 1";
     	String reporterGraphValidateName = "Dashboard > Chart > Variable OpCost > Oil > Maintenance > Column";
@@ -1098,6 +1089,8 @@ public class Es284TestCase1{
     	filters.add(new Object[] {ElementTypes.XPATH, "(//button[@type='button'])[26]"});
     	filters.add(new Object[] {ElementTypes.LINKTEXT, "Settings"});
     	filters.add(new Object[] {ElementTypes.XPATH, "(//input[@type='checkbox'])[4]"});
+    	filters.add(new Object []{ElementTypes.INPUTTEXT, "name", graphName});
+    	filters.add(new Object []{ElementTypes.INPUTTEXT, "description", ""});
     	filters.add(new Object[] {ElementTypes.CSS, "button.btn.btn-success"});
     	filters.add(new Object[] {ElementTypes.CSS, "i.fa.fa-plus-square-o"});
     	
@@ -1120,7 +1113,7 @@ public class Es284TestCase1{
     	
     	EsiActivity.goToDashboard(driver);
     	
-    	String graphName = "Variable OpCost Oil Maintenance";
+    	String graphName = "Chart: Variable OpCost Gas Electricity";
     	String excelFileLocation = "res\\importFiles\\ES-284\\ES-284 - Step 4 - Aggregations - Test to Automate.xlsx"; 
     	String sheetName = "Case 1";
     	String reporterGraphValidateName = "Dashboard > Chart > Variable OpCost > Gas > Electricity > Column";
@@ -1133,6 +1126,8 @@ public class Es284TestCase1{
     	filters.add(new Object[] {ElementTypes.XPATH, "(//button[@type='button'])[25]"});
     	filters.add(new Object[] {ElementTypes.LINKTEXT, "Settings"});
     	filters.add(new Object[] {ElementTypes.XPATH, "(//input[@type='checkbox'])[4]"});
+    	filters.add(new Object []{ElementTypes.INPUTTEXT, "name", graphName});
+    	filters.add(new Object []{ElementTypes.INPUTTEXT, "description", ""});
     	filters.add(new Object[] {ElementTypes.CSS, "button.btn.btn-success"});
     	filters.add(new Object[] {ElementTypes.CSS, "i.fa.fa-plus-square-o"});
     	
@@ -1155,7 +1150,7 @@ public class Es284TestCase1{
     	
     	EsiActivity.goToDashboard(driver);
     	
-    	String graphName = "Variable OpCost Oil Maintenance";
+    	String graphName = "Chart: Variable OpCost Gas Maintenance";
     	String excelFileLocation = "res\\importFiles\\ES-284\\ES-284 - Step 4 - Aggregations - Test to Automate.xlsx"; 
     	String sheetName = "Case 1";
     	String reporterGraphValidateName = "Dashboard > Chart > Variable OpCost > Gas > Maintenance > Column";
@@ -1168,6 +1163,8 @@ public class Es284TestCase1{
     	filters.add(new Object[] {ElementTypes.XPATH, "(//button[@type='button'])[26]"});
     	filters.add(new Object[] {ElementTypes.LINKTEXT, "Settings"});
     	filters.add(new Object[] {ElementTypes.XPATH, "(//input[@type='checkbox'])[4]"});
+    	filters.add(new Object []{ElementTypes.INPUTTEXT, "name", graphName});
+    	filters.add(new Object []{ElementTypes.INPUTTEXT, "description", ""});
     	filters.add(new Object[] {ElementTypes.CSS, "button.btn.btn-success"});
     	filters.add(new Object[] {ElementTypes.CSS, "i.fa.fa-plus-square-o"});
     	
@@ -1190,7 +1187,7 @@ public class Es284TestCase1{
     	
     	EsiActivity.goToDashboard(driver);
     	
-    	String metricName = "Revenue Oil High";
+    	String metricName = "Metric: Revenue Oil High";
     	String excelFileLocation = "res\\importFiles\\ES-284\\ES-284 - Step 4 - Aggregations - Test to Automate.xlsx"; 
     	String sheetName = "Case 1";
     	String reporterGraphValidateName = "Dashboard > Metric > Revenue > Oil > High";
@@ -1232,7 +1229,7 @@ public class Es284TestCase1{
     	
     	EsiActivity.goToDashboard(driver);
     	
-    	String metricName = "Revenue Oil Low";
+    	String metricName = "Metric: Revenue Oil Low";
     	String excelFileLocation = "res\\importFiles\\ES-284\\ES-284 - Step 4 - Aggregations - Test to Automate.xlsx"; 
     	String sheetName = "Case 1";
     	String reporterGraphValidateName = "Dashboard > Metric > Revenue > Oil > Low";
@@ -1274,7 +1271,7 @@ public class Es284TestCase1{
     	
     	EsiActivity.goToDashboard(driver);
     	
-    	String metricName = "Revenue Gas High";
+    	String metricName = "Metric: Revenue Gas High";
     	String excelFileLocation = "res\\importFiles\\ES-284\\ES-284 - Step 4 - Aggregations - Test to Automate.xlsx"; 
     	String sheetName = "Case 1";
     	String reporterGraphValidateName = "Dashboard > Metric > Revenue > Gas > High";
@@ -1317,7 +1314,7 @@ public class Es284TestCase1{
     	
     	EsiActivity.goToDashboard(driver);
     	
-    	String metricName = "Revenue Gas Low";
+    	String metricName = "Metric: Revenue Gas Low";
     	String excelFileLocation = "res\\importFiles\\ES-284\\ES-284 - Step 4 - Aggregations - Test to Automate.xlsx"; 
     	String sheetName = "Case 1";
     	String reporterGraphValidateName = "Dashboard > Metric > Revenue > Gas > Low";
@@ -1359,7 +1356,7 @@ public class Es284TestCase1{
     	
     	EsiActivity.goToDashboard(driver);
     	
-    	String metricName = "Variable OpCost Oil Electricity";
+    	String metricName = "Metric: Variable OpCost Oil Electricity";
     	String excelFileLocation = "res\\importFiles\\ES-284\\ES-284 - Step 4 - Aggregations - Test to Automate.xlsx"; 
     	String sheetName = "Case 1";
     	String reporterGraphValidateName = "Dashboard > Metric > Variable OpCost > Oil > Electricity";
@@ -1401,7 +1398,7 @@ public class Es284TestCase1{
     	
     	EsiActivity.goToDashboard(driver);
     	
-    	String metricName = "Variable OpCost Oil Maintenance";
+    	String metricName = "Metric: Variable OpCost Oil Maintenance";
     	String excelFileLocation = "res\\importFiles\\ES-284\\ES-284 - Step 4 - Aggregations - Test to Automate.xlsx"; 
     	String sheetName = "Case 1";
     	String reporterGraphValidateName = "Dashboard > Metric > Variable OpCost > Oil > Maintenance";
@@ -1443,7 +1440,7 @@ public class Es284TestCase1{
     	
     	EsiActivity.goToDashboard(driver);
     	
-    	String metricName = "Variable OpCost Gas Electricity";
+    	String metricName = "Metric: Variable OpCost Gas Electricity";
     	String excelFileLocation = "res\\importFiles\\ES-284\\ES-284 - Step 4 - Aggregations - Test to Automate.xlsx"; 
     	String sheetName = "Case 1";
     	String reporterGraphValidateName = "Dashboard > Metric > Variable OpCost > Gas > Electricity";
@@ -1485,7 +1482,7 @@ public class Es284TestCase1{
     	
     	EsiActivity.goToDashboard(driver);
     	
-    	String metricName = "Variable OpCost Gas Maintenance";
+    	String metricName = "Metric: Variable OpCost Gas Maintenance";
     	String excelFileLocation = "res\\importFiles\\ES-284\\ES-284 - Step 4 - Aggregations - Test to Automate.xlsx"; 
     	String sheetName = "Case 1";
     	String reporterGraphValidateName = "Dashboard > Metric > Variable OpCost > Gas > Maintenance";
