@@ -4,7 +4,9 @@
 package templates; //change to testCases
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 import metricValidator.MetricValidator;
 
@@ -85,6 +87,10 @@ public class TestCaseTemplate
 							"<font face='verdana' size='5'>Testcase name: " + this.getClass().getSimpleName().toString() + " Browser: " + browserName + "</font>" +
 						"</summary>");
 		Reporter.log("<blockquote>");
+		
+		Date currentDate = new Date();
+    	SimpleDateFormat dateFormatter = new SimpleDateFormat("dd-MM-yyyy_HH:mm:ss");
+    	String workspaceName = this.getClass().getSimpleName().toString() + "_" + dateFormatter.format(currentDate);
 		
 		//begin: web browser commands to be executed.
 		driver = webi.instantiateBrowser(browserType);
