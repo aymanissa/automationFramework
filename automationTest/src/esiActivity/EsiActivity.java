@@ -57,7 +57,7 @@ public class EsiActivity
 	/**
 	 * Navigates the webpage to Dashboard
 	 * @param driver Web browser being used at the moment
-	 * @throws InterruptedException For using Thread.sleep(long). A better solution needs to made
+	 * @throws InterruptedException For using Thread.sleep(long). A better solution needs to be made
 	 */
 	public static void goToDashboard(WebDriver driver) throws InterruptedException
     {
@@ -65,7 +65,7 @@ public class EsiActivity
     	{
 			Thread.sleep(WAIT_TIME);
 			driver.findElement(By.linkText("Dashboard")).click();
-			Reporter.log("<font face='verdana' size='4' color='green'>Go to Dashboard</font><br>");
+			
 		} 
     	
     	catch (NoSuchElementException e) 
@@ -77,9 +77,9 @@ public class EsiActivity
 			WebDriverTools.takeScreenshot(driver, screenShotPath, screenshotName);
 			String webImageLink = "..\\..\\..\\" + screenShotPath + "\\" + screenshotName + "_" + (WebDriverTools.getScreenShotNumber() - 1) + ".jpg";
 			Reporter.log("<a target='_blank' href='" + webImageLink + "'><img src='" + webImageLink + "' style='width:25%; height:25%'></a> <br>");
+			Reporter.log("</details>");
 			Reporter.log("<br>");
-			
-			throw new NoSuchElementException("</details>Cannot find Dashboard link");
+			throw new NoSuchElementException("Cannot find Dashboard link");
 			//Reporter.log("</details>");
 		}
     	
@@ -88,60 +88,154 @@ public class EsiActivity
 	/**
 	 * Navigates the webpage to Opportunities
 	 * @param driver Web browser being used at the moment
-	 * @throws InterruptedException For using Thread.sleep(long). A better solution needs to made
+	 * @throws InterruptedException For using Thread.sleep(long). A better solution needs to be made
 	 */
 	public static void goToOpportunities(WebDriver driver) throws InterruptedException
     {
-    	Thread.sleep(WAIT_TIME);
-        driver.findElement(By.linkText("Opportunities")).click();
+    	try
+		{
+			Thread.sleep(WAIT_TIME);
+			driver.findElement(By.linkText("Opportunities")).click();
+		}
+    	
+		catch (NoSuchElementException e)
+		{
+			Reporter.log("<details><summary><font face='verdana' size='4' color='red'>Go to Opportunites</font></summary>");
+			Reporter.log("Unable to find Opportunities link.<br>");
+			String screenShotPath = "res\\screenshots\\TestNG_report\\" + System.getProperty("testNG_screenshotDir");
+			String screenshotName = "screenshot";
+			WebDriverTools.takeScreenshot(driver, screenShotPath, screenshotName);
+			String webImageLink = "..\\..\\..\\" + screenShotPath + "\\" + screenshotName + "_" + (WebDriverTools.getScreenShotNumber() - 1) + ".jpg";
+			Reporter.log("<a target='_blank' href='" + webImageLink + "'><img src='" + webImageLink + "' style='width:25%; height:25%'></a> <br>");
+			Reporter.log("</details>");
+			Reporter.log("<br>");
+			throw new NoSuchElementException("Cannot find Opportunites link");
+			//Reporter.log("</details>");
+		}
     	
     }//END METHOD goToOpportunities(WebDriver)
     
 	/**
 	 * Navigates the webpage to MasterData
 	 * @param driver Web browser being used at the moment
-	 * @throws InterruptedException For using Thread.sleep(long). A better solution needs to made
+	 * @throws InterruptedException For using Thread.sleep(long). A better solution needs to be made
 	 */
 	public static void goToMasterData(WebDriver driver) throws InterruptedException
     {
-    	Thread.sleep(WAIT_TIME);
-        driver.findElement(By.linkText("Master Data")).click();
+    	try
+		{
+			Thread.sleep(WAIT_TIME);
+			driver.findElement(By.linkText("Master Data")).click();
+		}
+		catch (NoSuchElementException e)
+		{
+			Reporter.log("<details><summary><font face='verdana' size='4' color='red'>Go to Master Data</font></summary>");
+			Reporter.log("Unable to find Master Data link.<br>");
+			String screenShotPath = "res\\screenshots\\TestNG_report\\" + System.getProperty("testNG_screenshotDir");
+			String screenshotName = "screenshot";
+			WebDriverTools.takeScreenshot(driver, screenShotPath, screenshotName);
+			String webImageLink = "..\\..\\..\\" + screenShotPath + "\\" + screenshotName + "_" + (WebDriverTools.getScreenShotNumber() - 1) + ".jpg";
+			Reporter.log("<a target='_blank' href='" + webImageLink + "'><img src='" + webImageLink + "' style='width:25%; height:25%'></a> <br>");
+			Reporter.log("</details>");
+			Reporter.log("<br>");
+			throw new NoSuchElementException("Cannot find Master Data link");
+			//Reporter.log("</details>");
+			
+		}
     	
     }//END METHOD goToMasterData(WebDriver)
     
 	/**
 	 * Navigates the webpage to Configuration
 	 * @param driver Web browser being used at the moment
-	 * @throws InterruptedException For using Thread.sleep(long). A better solution needs to made
+	 * @throws InterruptedException For using Thread.sleep(long). A better solution needs to be made
 	 */
 	public static void goToConfiguration(WebDriver driver) throws InterruptedException
     {
-    	Thread.sleep(WAIT_TIME);
-        driver.findElement(By.linkText("Configuration")).click();
+    	try
+		{
+			Thread.sleep(WAIT_TIME);
+			driver.findElement(By.linkText("Configuration")).click();
+		}
+    	
+		catch (NoSuchElementException e)
+		{
+			Reporter.log("<details><summary><font face='verdana' size='4' color='red'>Go to Configuration</font></summary>");
+			Reporter.log("Unable to find Configuration link.<br>");
+			String screenShotPath = "res\\screenshots\\TestNG_report\\" + System.getProperty("testNG_screenshotDir");
+			String screenshotName = "screenshot";
+			WebDriverTools.takeScreenshot(driver, screenShotPath, screenshotName);
+			String webImageLink = "..\\..\\..\\" + screenShotPath + "\\" + screenshotName + "_" + (WebDriverTools.getScreenShotNumber() - 1) + ".jpg";
+			Reporter.log("<a target='_blank' href='" + webImageLink + "'><img src='" + webImageLink + "' style='width:25%; height:25%'></a> <br>");
+			Reporter.log("</details>");
+			Reporter.log("<br>");
+			throw new NoSuchElementException("Cannot find Configuration link");
+			//Reporter.log("</details>");
+			
+
+		}
     	
     }//END METHOD goToConfiguration(WebDriver)
     
 	/**
 	 * Navigates the webpage to Calculations
 	 * @param driver Web browser being used at the moment
-	 * @throws InterruptedException For using Thread.sleep(long). A better solution needs to made
+	 * @throws InterruptedException For using Thread.sleep(long). A better solution needs to be made
 	 */
 	public static void goToCalculations(WebDriver driver) throws InterruptedException
     {
-    	Thread.sleep(WAIT_TIME);
-        driver.findElement(By.linkText("Calculations")).click();
+    	try
+		{
+			Thread.sleep(WAIT_TIME);
+			driver.findElement(By.linkText("Calculations")).click();
+		}
+    	
+		catch (NoSuchElementException e)
+		{
+			Reporter.log("<details><summary><font face='verdana' size='4' color='red'>Go to Calculations</font></summary>");
+			Reporter.log("Unable to find Calculations link.<br>");
+			String screenShotPath = "res\\screenshots\\TestNG_report\\" + System.getProperty("testNG_screenshotDir");
+			String screenshotName = "screenshot";
+			WebDriverTools.takeScreenshot(driver, screenShotPath, screenshotName);
+			String webImageLink = "..\\..\\..\\" + screenShotPath + "\\" + screenshotName + "_" + (WebDriverTools.getScreenShotNumber() - 1) + ".jpg";
+			Reporter.log("<a target='_blank' href='" + webImageLink + "'><img src='" + webImageLink + "' style='width:25%; height:25%'></a> <br>");
+			Reporter.log("</details>");
+			Reporter.log("<br>");
+			throw new NoSuchElementException("Cannot find Calculations link");
+			//Reporter.log("</details>");
+			
+		}
     	
     }//END METHOD goToCalculations(WebDriver)
     
 	/**
 	 * Navigates the webpage to Workspaces
 	 * @param driver Web browser being used at the moment
-	 * @throws InterruptedException For using Thread.sleep(long). A better solution needs to made
+	 * @throws InterruptedException For using Thread.sleep(long). A better solution needs to be made
 	 */
 	public static void goToWorkspaces(WebDriver driver) throws InterruptedException
     {
-    	Thread.sleep(WAIT_TIME);
-        driver.findElement(By.linkText("Workspaces")).click();
+    	try
+		{
+			Thread.sleep(WAIT_TIME);
+			driver.findElement(By.linkText("Workspaces")).click();
+		}
+    	
+		catch (NoSuchElementException e)
+		{
+			Reporter.log("<details><summary><font face='verdana' size='4' color='red'>Go to Workspaces</font></summary>");
+			Reporter.log("Unable to find Workspaces link.<br>");
+			String screenShotPath = "res\\screenshots\\TestNG_report\\" + System.getProperty("testNG_screenshotDir");
+			String screenshotName = "screenshot";
+			WebDriverTools.takeScreenshot(driver, screenShotPath, screenshotName);
+			String webImageLink = "..\\..\\..\\" + screenShotPath + "\\" + screenshotName + "_" + (WebDriverTools.getScreenShotNumber() - 1) + ".jpg";
+			Reporter.log("<a target='_blank' href='" + webImageLink + "'><img src='" + webImageLink + "' style='width:25%; height:25%'></a> <br>");
+			Reporter.log("</details>");
+			Reporter.log("<br>");
+			throw new NoSuchElementException("Cannot find Workspaces link");
+			//Reporter.log("</details>");
+			
+		}
     	
     }//END METHOD goToWorkspaces(WebDriver)
     
@@ -176,9 +270,9 @@ public class EsiActivity
 	 * check if excel file exists. 
 	 * @param driver Web browser being used at the moment
 	 * @param workspaceName Name of the new workspace
-	 * @param opportunityFileLocation File location for opportunities. Relative path to excel file.
+	 * @param opportunityFileLocation File location for opportunities. Relative path to excel file. Doesn't check if it exists.
 	 * @throws IOException For reading Excel file. Thrown if file doesn't exist
-	 * @throws InterruptedException For using Thread.sleep(long). A better solution needs to made
+	 * @throws InterruptedException For using Thread.sleep(long). A better solution needs to be made
 	 */
 	public static void createWorkspace(WebDriver driver, String workspaceName, String opportunityFileLocation) throws IOException, InterruptedException
     {
@@ -210,7 +304,7 @@ public class EsiActivity
 	 * @param driver Web browser being used at the moment
 	 * @param measureName Name of the new measure
 	 * @param measureCalcualtion Calculation for the measure
-	 * @throws InterruptedException For using Thread.sleep(long). A better solution needs to made
+	 * @throws InterruptedException For using Thread.sleep(long). A better solution needs to be made
 	 */
 	public static void createMeasure(WebDriver driver, String measureName, String measureCalcualtion) throws InterruptedException
 	{
@@ -234,17 +328,16 @@ public class EsiActivity
 	 * Imports master data from excel file. Doesn't check if the file exists. It will
 	 * fail if excel file location is not valid.
 	 * @param driver Web browser being used at the moment
-	 * @param masterDataFileLocation Excel file location for master data. Relative path to the excel file.
-	 * @throws InterruptedException For using Thread.sleep(long). A better solution needs to made
+	 * @param masterDataFileLocation Excel file location for master data. Relative path to the excel file. Doesn't check if the file exists.
+	 * @throws InterruptedException For using Thread.sleep(long). A better solution needs to be made
 	 * @throws IOException For excel file. Thrown if file doesn't exist
 	 */
-	public static void importMasterDate(WebDriver driver, String masterDataFileLocation) throws InterruptedException, IOException
+	public static void importMasterData(WebDriver driver, String masterDataFileLocation) throws InterruptedException, IOException
     {
     	goToMasterData(driver);
         Thread.sleep(WAIT_TIME);
         driver.findElement(By.cssSelector("input[type=\"file\"]")).clear();
         Thread.sleep(WAIT_TIME);
-        //driver.findElement(By.cssSelector("input[type=\"file\"]")).sendKeys("C:\\Users\\mubari\\eclipse\\automationTest\\res\\importFiles\\ES-284\\ES-284 - Step 4 - Aggregations - MasterData.xlsx");
         driver.findElement(By.cssSelector("input[type=\"file\"]")).sendKeys(new File(masterDataFileLocation).getCanonicalPath());
         Thread.sleep(WAIT_TIME);
         driver.findElement(By.xpath("//body[@id='ext-gen1018']/div[4]/div/div/div/div[2]/div/div[3]/div/div/div/div/div/div[2]/div/div/span[3]")).click();
@@ -259,7 +352,7 @@ public class EsiActivity
 	 * Doesn't check if there's any workspaces. Assumes there's at least one workspace.
 	 * @param driver Web browser being used at the moment
 	 * @param workspaceName Name of the workspace to be deleted
-	 * @throws InterruptedException For using Thread.sleep(long). A better solution needs to made
+	 * @throws InterruptedException For using Thread.sleep(long). A better solution needs to be made
 	 */
 	public static void deleteWorkspace(WebDriver driver, String workspaceName) throws InterruptedException
     {
@@ -285,20 +378,16 @@ public class EsiActivity
 
 	/**
 	 * Deletes the measure based on the provided name. <br>
-	 * <b>NOTE: </b> deletes the first measure available in the calculations page. 
-	 * Implementing code to delete measure based on the name provided rather than 
-	 * deleting the first measure available will come in later. <br>
-	 * It will fail if the measure element cannot be found
+	 * It will fail if the measure element cannot be found. <br>
+	 * Doesn't check if there's any measures. Assumes there's at least one measure
 	 * @param driver Web browser being used at the moment
 	 * @param measureName Name of the measure to be deleted
-	 * @throws InterruptedException For using Thread.sleep(long). A better solution needs to made
+	 * @throws InterruptedException For using Thread.sleep(long). A better solution needs to be made
 	 */
 	public static void deleteMeasure(WebDriver driver, String measureName) throws InterruptedException
 	{
 		WebElement measure = getMeasure(driver, measureName);
 		Thread.sleep(WAIT_TIME);
-//        measure.findElement(By.xpath("(//input[@type='checkbox'])[2]")).click();
-		System.out.println("//////////////checkbox");
 		measure.findElement(By.cssSelector("input")).click();
         Thread.sleep(WAIT_TIME);
         driver.findElement(By.xpath("//div[@id='page-wrapper']/div[2]/div[2]/div/div/div[2]/div/div/ibox-title/div[2]/a")).click();
@@ -309,18 +398,14 @@ public class EsiActivity
 	
 	/**
 	 * Deletes the dashboard graph based on the provided name. <br>
-	 * <b>NOTE: </b> Only able to delete dashboard graph <b>IF</b> there's only 
-	 * one dashboard graph displayed. It will get confused if there are more. 
-	 * Implementing code to delete the correct dashboard graph based on the name 
-	 * provided will come in later. <br>
-	 * It will fail if it cannot find a graph on the dashboard
+	 * It will fail if it cannot find a graph on the dashboard.
+	 * Assumes there's at least one dashboard graph.
 	 * @param driver Web browser being used at the moment
 	 * @param graphName Name of the graph to be deleted.
-	 * @throws InterruptedException For using Thread.sleep(long). A better solution needs to made
+	 * @throws InterruptedException For using Thread.sleep(long). A better solution needs to be made
 	 */
 	public static void deleteDashboardGraph(WebDriver driver, String graphName) throws InterruptedException
 	{
-		
 		try
 		{
 			WebElement dashboardGraph = getDashboardGraph(driver, graphName);
@@ -349,11 +434,13 @@ public class EsiActivity
 
 	/**
 	 * Deletes the dashboard metric based on the provided name. <br>
-	 * <b>NOTE: </b> this is not functional at the moment. Implementing code to 
-	 * delete the correct metric on the dashboard will come in later.
+	 * It will fail if it cannot find a graph on the dashboard.
+	 * Assumes there's at least one dashboard metric.
+	 * Searches dashboard metric by <b>name</b> only.
+	 * The dashboard graph and metric <b>MUST</b> have unique names.
 	 * @param driver Web browser being used at the moment
 	 * @param metricName Name of the metric to be deleted
-	 * @throws InterruptedException For using Thread.sleep(long). A better solution needs to made
+	 * @throws InterruptedException For using Thread.sleep(long). A better solution needs to be made
 	 */
 	public static void deleteDashboardMetric(WebDriver driver, String metricName) throws InterruptedException
 	{
@@ -386,22 +473,23 @@ public class EsiActivity
 	/**
 	 * Method used to validate the graph. This method will call 
 	 * {@link GraphValidator#validateGraph(seleniumTools.highcharts.HighCharts, String, String, int, int, int, String, long) 
-	 * GraphValidator.validateGraph(HighCharts, String, String, int, int, int, String, long)} 
+	 * GraphValidator.validateGraph} 
 	 * to validate the graph. <br> 
 	 * <b>NOTE: </b> validating line graphs is not implemented. Implementing code 
-	 * to validate line graph will come in later.
+	 * to validate line graph will come in later. 
+	 * The infrastructure is setup once validating a Line graph is working.<br>
 	 * @param driver Web browser being used at the moment
 	 * @param chart WebElement that contains chart denoted as svg html tag
-	 * @param reporterGraphValidateName Used as the a name for the 
-	 * @param chartType
-	 * @param excelFileLocation
-	 * @param sheetName
-	 * @param units
-	 * @param dateRow
-	 * @param dateCol
-	 * @param valueRow
+	 * @param reporterGraphValidateName Used as the a name for the <code>summary</code> tag used by <code>details</code> HTML tag.
+	 * @param chartType The chart type being used for the validation.
+	 * @param excelFileLocation Relative path location of the excel file that contains the answer key when validating the graph
+	 * @param sheetName The name of the sheet being used in the excel file
+	 * @param units The unit being used for the validation. null if there's no unit
+	 * @param dateRow The index value of where the date row will be in the excel file
+	 * @param dateCol The index value of where the date column will be in the excel file
+	 * @param valueRow The index value of where the value row will be in the excel file
 	 * @throws IOException
-	 * @throws InterruptedException
+	 * @throws InterruptedException For using Thread.sleep(long). A better solution needs to be made.
 	 */
 	public static void validateGraph(WebDriver driver,
 							   		 WebElement chart, 
@@ -422,8 +510,6 @@ public class EsiActivity
 				boolean status = false;
 				Object[] validateStatus = {status, reporterLog};
 				BarChart barChart = new BarChart(driver, chart);
-				//Reporter.log("<details><summary><font face='verdana' size='4'>Graph: " + reporterGraphValidateName + "</font></summary>");
-				//Reporter.log("<summary>" + reporterGraphValidateName + "</summary>");
 				try
 				{
 					GraphValidator.validateGraph(driver, barChart, new File(excelFileLocation).getCanonicalPath(), sheetName, validateStatus, dateRow, dateCol, valueRow, units, WAIT_TIME);
@@ -483,7 +569,6 @@ public class EsiActivity
 				}
 				catch (AssertionError e)
 				{
-					System.out.println("----------------");
 					Reporter.log("<details><summary><font face='verdana' size='4' color='red'>Graph: " + reporterGraphValidateName + "</font></summary>");
 					Reporter.log(validateStatus[1].toString());
 					throw new AssertionError(e);
@@ -538,8 +623,24 @@ public class EsiActivity
 		
 		}//END SWITCH(chartType)
 	
-	}//END METHOD validateGraph(WebDriver, WebElement, ChartType, String, String, String, int, int, int)
+	}//END METHOD validateGraph(WebDriver, WebElement, String, ChartType, String, String, String, int, int, int)
 	
+	/**
+	 * Method used to validate the metric. The method will call 
+	 * {@link MetricValidator#validateMetric(WebDriver, WebElement, String, String, Object[], String, int, int, String, long) MetricValidator.validateMetric} 
+	 * to validate the metric <br>
+	 * 
+	 * @param driver Web browser being used at the moment
+	 * @param reporterMetricValidateName Used as the a name for the <code>summary</code> tag used by <code>detals</code> HTML tag.
+	 * @param metricName The name of metric name on the dashboard. The name must be unique on the dashboard. Graphs and metrics.
+	 * @param excelFileLocation Relative path location of the excel file that contains the answer key when validating the graph.
+	 * @param sheetName The name of the sheet being used in the excel file
+	 * @param units The unit being used for the validation. null if there's no unit
+	 * @param row The index value of where the answer key for the metric being validated will be.
+	 * @param column The index value of where the answer key for the metric being validate will be.
+	 * @throws IOException Thrown if file doesn't exists.
+	 * @throws InterruptedException For using Thread.sleep(long). A better solution needs to be made.
+	 */
 	public static void validateMetric(WebDriver driver, 
 									  String reporterMetricValidateName, 
 									  String metricName, 
@@ -586,8 +687,50 @@ public class EsiActivity
 		Reporter.log("</details>");
 		Reporter.log("<hr><br>");
 		
-	}
+	}//END METHOD validateMetric(WebDriver, String, String, String, String, String, int, int)
 	
+	/**
+	 * Method used to open an opportunity and apply any filters to load a graph.
+	 * @param driver Web browser being used at the moment
+	 * @param opportunityName Name of the opportunity to open
+	 * @param filters Filters to apply when loading a graph. An example the structure of ArrayList<Object[]> <br>
+	 * <table>
+	 * 		<tr>
+	 * 			<th>Index[0]: enumTypes.ElementTypes</th>
+	 * 			<th>Index[1]: command</th>
+	 * 		</tr>
+	 * 		<tr>
+	 * 			<td>LINKTEXT</td>
+	 * 			<td>bbl</td>
+	 * 		</tr>
+	 * 		<tr>
+	 * 			<td>XPATH</td>
+	 * 			<td>(//button[@type='button'])[3]</td>
+	 * 		</tr>
+	 * 		<tr>
+	 * 			<td>CSS</td>
+	 * 			<td>button.btn.btn-success</td>
+	 * 		</tr>
+	 * </table>
+	 * <hr>
+	 * This is how it will look when creating ArrayList< Object [] >
+	 * <table>
+	 * 		<tr>
+	 * 			<td>ArrayList < Object [] > filters;</td>
+	 * 		</tr>
+	 * 		<tr>
+	 * 			<td>filters.add(new Object[] {ElementTypes.LINKTEXT, "bbl"});</td>
+	 * 		</tr>
+	 * 		<tr>
+	 * 			<td>filters.add(new Object[] {ElementTypes.XPATH, "(//button[@type='button'])[3]"});</td>
+	 * 		</tr>
+	 * 		<tr>
+	 * 			<td>filters.add(new Object[] {ElementTypes.CSS, "button.btn.btn-success]"});</td>
+	 * 		</tr>
+	 * </table>
+	 * 
+	 * @throws InterruptedException For using Thread.sleep(long). A better solution needs to be made
+	 */
 	public static void loadOpportunityGraph(WebDriver driver, String opportunityName, ArrayList<Object[]> filters) throws InterruptedException
 	{
 		goToOpportunities(driver);
@@ -599,7 +742,6 @@ public class EsiActivity
         	{
         		case LINKTEXT:
         		{
-        			System.out.println("LINKTEXT");
         			Thread.sleep(WAIT_TIME);
         	        driver.findElement(By.linkText((String) filters.get(i)[1])).click();
         			
@@ -609,7 +751,6 @@ public class EsiActivity
         		
         		case XPATH: 
         		{
-        			System.out.println("XPATH");
         			Thread.sleep(WAIT_TIME);
         	        driver.findElement(By.xpath((String) filters.get(i)[1])).click();
         			
@@ -619,7 +760,6 @@ public class EsiActivity
         		
         		case CSS:
         		{
-        			System.out.println("CSS");
         			Thread.sleep(WAIT_TIME);
         			driver.findElement(By.cssSelector((String) filters.get(i)[1])).click();
         			break;
@@ -628,7 +768,7 @@ public class EsiActivity
         		
         		default:
         		{
-        			System.out.println("Invalid element type");
+        			//System.out.println("Invalid element type");
         			break;
         			
         		}//END CASE default
@@ -639,6 +779,49 @@ public class EsiActivity
 		
 	}//END METHOD loadOpportunityGraph
 	
+	/**
+	 * Method used to open a measure and apply any filters to load a graph
+	 * @param driver Web browser being used at the moment
+	 * @param measureName Name of the measure to open
+	 * @param filters Filters to apply when loading a graph. An example the structure of ArrayList<Object[]> <br>
+	 * <table>
+	 * 		<tr>
+	 * 			<th>Index[0]: enumTypes.ElementTypes</th>
+	 * 			<th>Index[1]: command</th>
+	 * 		</tr>
+	 * 		<tr>
+	 * 			<td>LINKTEXT</td>
+	 * 			<td>bbl</td>
+	 * 		</tr>
+	 * 		<tr>
+	 * 			<td>XPATH</td>
+	 * 			<td>(//button[@type='button'])[3]</td>
+	 * 		</tr>
+	 * 		<tr>
+	 * 			<td>CSS</td>
+	 * 			<td>button.btn.btn-success</td>
+	 * 		</tr>
+	 * </table>
+	 * <hr>
+	 * This is how it will look when creating ArrayList< Object [] >
+	 * <table>
+	 * 		<tr>
+	 * 			<td>ArrayList < Object [] > filters;</td>
+	 * 		</tr>
+	 * 		<tr>
+	 * 			<td>filters.add(new Object[] {ElementTypes.LINKTEXT, "bbl"});</td>
+	 * 		</tr>
+	 * 		<tr>
+	 * 			<td>filters.add(new Object[] {ElementTypes.XPATH, "(//button[@type='button'])[3]"});</td>
+	 * 		</tr>
+	 * 		<tr>
+	 * 			<td>filters.add(new Object[] {ElementTypes.CSS, "button.btn.btn-success]"});</td>
+	 * 		</tr>
+	 * </table>
+	 * 
+	 * 
+	 * @throws InterruptedException For using Thread.sleep(long). A better solution needs to be made.
+	 */
 	public static void loadMeasureGraph(WebDriver driver, String measureName, ArrayList<Object[]> filters) throws InterruptedException
 	{
 		goToCalculations(driver);
@@ -653,7 +836,6 @@ public class EsiActivity
         	{
         		case LINKTEXT:
         		{
-        			System.out.println("LINKTEXT");
         			Thread.sleep(WAIT_TIME);
         	        driver.findElement(By.linkText((String) filters.get(i)[1])).click();
         			
@@ -663,7 +845,6 @@ public class EsiActivity
         		
         		case XPATH: 
         		{
-        			System.out.println("XPATH");
         			Thread.sleep(WAIT_TIME);
         	        driver.findElement(By.xpath((String) filters.get(i)[1])).click();
         			
@@ -673,7 +854,6 @@ public class EsiActivity
         		
         		case CSS:
         		{
-        			System.out.println("CSS");
         			Thread.sleep(WAIT_TIME);
         			driver.findElement(By.cssSelector((String) filters.get(i)[1])).click();
         			break;
@@ -682,7 +862,7 @@ public class EsiActivity
         		
         		default:
         		{
-        			System.out.println("Invalid element type");
+        			//System.out.println("Invalid element type");
         			break;
         			
         		}//END CASE default
@@ -693,7 +873,64 @@ public class EsiActivity
 		
 	}//END METHOD loadMeasureGraph(WebDriver, String, ArrayList<Object[]>)
 	
-	public static void loadDashboardGraph(WebDriver driver, String graphName, ArrayList<Object[]> filters) throws InterruptedException
+	/**
+	 * Method used to create a dashboard graph and apply any filters to load the graph
+	 * @param driver Web browser being used at the moment
+	 * @param graphName Name of the dashboard graph to open.
+	 * @param filters Filters to apply when loading a graph. An example the structure of ArrayList<Object[]> <br>
+	 * <table>
+	 * 		<tr>
+	 * 			<th>Index[0]: enumTypes.ElementTypes</th>
+	 * 			<th>Index[1]: command</th>
+	 * 		</tr>
+	 * 		<tr>
+	 * 			<td>LINKTEXT</td>
+	 * 			<td>bbl</td>
+	 * 		</tr>
+	 * 		<tr>
+	 * 			<td>XPATH</td>
+	 * 			<td>(//button[@type='button'])[3]</td>
+	 * 		</tr>
+	 * 		<tr>
+	 * 			<td>CSS</td>
+	 * 			<td>button.btn.btn-success</td>
+	 * 		</tr>
+	 * 		<tr>
+	 * 			<td>INPUTTEXT</td>
+	 * 			<td>name</td>
+	 * 			<td>graph name</td>
+	 * 		</tr>
+	 * </table><br>
+	 * If the filter uses INPUTTEXT (text box), use the following format when adding an element to ArrayList< Object[] > <br>
+	 * enumTypes.ElementTypes.INPUTTEXT must have the size Object[] of 3. <br>
+	 * The first element is the enumTypes.ElementTypes .<br>
+	 * The second is the name of the text box. It's searched by <code>name</code>.<br>
+	 * The third is what the text box will contain. If the text field needs to be empty, then pass in empty string.<br>
+	 * 
+	 * <hr>
+	 * This is how it will look when creating ArrayList< Object [] >
+	 * <table>
+	 * 		<tr>
+	 * 			<td>ArrayList < Object [] > filters;</td>
+	 * 		</tr>
+	 * 		<tr>
+	 * 			<td>filters.add(new Object[] {ElementTypes.LINKTEXT, "bbl"});</td>
+	 * 		</tr>
+	 * 		<tr>
+	 * 			<td>filters.add(new Object[] {ElementTypes.XPATH, "(//button[@type='button'])[3]"});</td>
+	 * 		</tr>
+	 * 		<tr>
+	 * 			<td>filters.add(new Object[] {ElementTypes.CSS, "button.btn.btn-success]"});</td>
+	 * 		</tr>
+	 * 		<tr>
+	 * 			<td>filters.add(new Object[] {ElementTypes.INPUTTEXT, "name", "graph name"});</td>
+	 * 		</tr>
+	 * </table>
+	 * 
+	 * 
+	 * @throws InterruptedException For using Thread.sleep(long). A better solution needs to be made.
+	 */
+	public static void createDashboardGraph(WebDriver driver, String graphName, ArrayList<Object[]> filters) throws InterruptedException
 	{
 		goToDashboard(driver);
 		
@@ -706,7 +943,6 @@ public class EsiActivity
         	{
         		case LINKTEXT:
         		{
-        			System.out.println("LINKTEXT");
         			Thread.sleep(WAIT_TIME);
         	        driver.findElement(By.linkText((String) filters.get(i)[1])).click();
         			
@@ -716,7 +952,6 @@ public class EsiActivity
         		
         		case XPATH: 
         		{
-        			System.out.println("XPATH");
         			Thread.sleep(WAIT_TIME);
         	        driver.findElement(By.xpath((String) filters.get(i)[1])).click();
         			
@@ -726,7 +961,6 @@ public class EsiActivity
         		
         		case CSS:
         		{
-        			System.out.println("CSS");
         			Thread.sleep(WAIT_TIME);
         			driver.findElement(By.cssSelector((String) filters.get(i)[1])).click();
         			break;
@@ -735,7 +969,6 @@ public class EsiActivity
         		
         		case INPUTTEXT:
         		{
-        			System.out.println("INPUTTEXT");
         			Thread.sleep(WAIT_TIME);
         			driver.findElement(By.name((String) filters.get(i)[1])).clear();
         			Thread.sleep(WAIT_TIME);
@@ -747,7 +980,7 @@ public class EsiActivity
         		
         		default:
         		{
-        			System.out.println("Invalid element type");
+        			//System.out.println("Invalid element type");
         			break;
         			
         		}//END CASE default
@@ -756,9 +989,65 @@ public class EsiActivity
         	
         }//END for(int i = 0; i < filters.size(); i++)
 		
-		
-	}
+	}//END METHOD createDashboardGraph(WebDriver, String, ArrayList<Object[]>)
 	
+	/**
+	 * Method used to create a dashboard metric and apply any filters to create the metric
+	 * @param driver Web browser being used at the moment
+	 * @param metricName Name of the dashboard metric to create
+	 * @param filters Filters to apply when loading a graph. An example the structure of ArrayList<Object[]> <br>
+	 * <table>
+	 * 		<tr>
+	 * 			<th>Index[0]: enumTypes.ElementTypes</th>
+	 * 			<th>Index[1]: command</th>
+	 * 		</tr>
+	 * 		<tr>
+	 * 			<td>LINKTEXT</td>
+	 * 			<td>bbl</td>
+	 * 		</tr>
+	 * 		<tr>
+	 * 			<td>XPATH</td>
+	 * 			<td>(//button[@type='button'])[3]</td>
+	 * 		</tr>
+	 * 		<tr>
+	 * 			<td>CSS</td>
+	 * 			<td>button.btn.btn-success</td>
+	 * 		</tr>
+	 * 		<tr>
+	 * 			<td>INPUTTEXT</td>
+	 * 			<td>name</td>
+	 * 			<td>graph name</td>
+	 * 		</tr>
+	 * </table><br>
+	 * If the filter uses INPUTTEXT (text box), use the following format when adding an element to ArrayList< Object[] > <br>
+	 * enumTypes.ElementTypes.INPUTTEXT must have the size Object[] of 3. <br>
+	 * The first element is the enumTypes.ElementTypes .<br>
+	 * The second is the name of the text box. It's searched by <code>name</code>.<br>
+	 * The third is what the text box will contain. If the text field needs to be empty, then pass in empty string.<br>
+	 * 
+	 * <hr>
+	 * This is how it will look when creating ArrayList< Object [] >
+	 * <table>
+	 * 		<tr>
+	 * 			<td>ArrayList < Object [] > filters;</td>
+	 * 		</tr>
+	 * 		<tr>
+	 * 			<td>filters.add(new Object[] {ElementTypes.LINKTEXT, "bbl"});</td>
+	 * 		</tr>
+	 * 		<tr>
+	 * 			<td>filters.add(new Object[] {ElementTypes.XPATH, "(//button[@type='button'])[3]"});</td>
+	 * 		</tr>
+	 * 		<tr>
+	 * 			<td>filters.add(new Object[] {ElementTypes.CSS, "button.btn.btn-success]"});</td>
+	 * 		</tr>
+	 * 		<tr>
+	 * 			<td>filters.add(new Object[] {ElementTypes.INPUTTEXT, "name", "metric name"});</td>
+	 * 		</tr>
+	 * </table>
+	 * 
+	 * 
+	 * @throws InterruptedException For using Thread.sleep(long). A better solution needs to be made.
+	 */
 	public static void createDashboardMetric(WebDriver driver, String metricName, ArrayList<Object[]> filters) throws InterruptedException
 	{
 		goToDashboard(driver);
@@ -772,7 +1061,6 @@ public class EsiActivity
         	{
         		case LINKTEXT:
         		{
-        			System.out.println("LINKTEXT");
         			Thread.sleep(WAIT_TIME);
         	        driver.findElement(By.linkText((String) filters.get(i)[1])).click();
         			
@@ -782,7 +1070,6 @@ public class EsiActivity
         		
         		case XPATH: 
         		{
-        			System.out.println("XPATH");
         			Thread.sleep(WAIT_TIME);
         	        driver.findElement(By.xpath((String) filters.get(i)[1])).click();
         			
@@ -792,7 +1079,6 @@ public class EsiActivity
         		
         		case CSS:
         		{
-        			System.out.println("CSS");
         			Thread.sleep(WAIT_TIME);
         			driver.findElement(By.cssSelector((String) filters.get(i)[1])).click();
         			break;
@@ -801,7 +1087,6 @@ public class EsiActivity
         		
         		case INPUTTEXT:
         		{
-        			System.out.println("INPUTTEXT");
         			Thread.sleep(WAIT_TIME);
         			driver.findElement(By.name("name")).clear();
         			Thread.sleep(WAIT_TIME);
@@ -813,7 +1098,7 @@ public class EsiActivity
         		
         		default:
         		{
-        			System.out.println("Invalid element type");
+        			//System.out.println("Invalid element type");
         			break;
         			
         		}//END CASE default
@@ -822,9 +1107,14 @@ public class EsiActivity
         	
         }//END for(int i = 0; i < filters.size(); i++)
 		
-	}
+	}//END METHOD createDashboardMetric(WebDriver, String, ArrayList<Object[]>)
 	
-	
+	/**
+	 * Method used to get all the items on the dashboard. It will get graphs and metrics
+	 * @param driver Web browser being used at the moment
+	 * @return A list of all the dashboard items displayed. null if there's no dashboard items.
+	 * @throws InterruptedException For using Thread.sleep(long). A better solution needs to be made.
+	 */
 	public static ArrayList<WebElement> getDashboardItems(WebDriver driver) throws InterruptedException
 	{
 		goToDashboard(driver);
@@ -835,37 +1125,48 @@ public class EsiActivity
 		
 		return dashboardItems;
 		
-	}
+	}//END METHOD getDashboardItems(WebDriver)
 	
-	public static String getDashboardItemName(WebDriver driver, WebElement dashboardItem)
+	/**
+	 * Method used to get the name of the dashboard item. Applies for graph and metrics.
+	 * @param dashboardItem The dashboard item
+	 * @return The name of the dashboard item.
+	 */
+	public static String getDashboardItemName(WebElement dashboardItem)
 	{
-		//String jQuerySelector = "arguments[0]";
-		
-		//((JavascriptExecutor) driver).executeScript("var foo = _.clone($(" + jQuerySelector + "));", dashboardItem);
-		//((JavascriptExecutor) driver).executeScript("$($(foo).children()[0]).remove();");
 		//get the text
 		
 		return dashboardItem.findElement(By.cssSelector("h5.ng-binding")).getText();
 		
-	}
+	}//END METHOD getDashboardItemName(WebElement)
 	
+	/**
+	 * Method the dashboard graph based on the name provided. Searches by the name 
+	 * of dashboard items.<br>
+	 * <b>NOTE: </b> It searches by the name of dashboard item (graph and metric). 
+	 * This means if a graph has the same name as metric, this method will return the first one it encounters.<br>
+	 * @param driver Web browser being used at the moment
+	 * @param graphName The graph item being searched.
+	 * @return The dashboard graph. null if it cannot find the dashboard graph
+	 * @throws InterruptedException For using Thread.sleep(long). A better solution needs to be made.
+	 */
 	public static WebElement getDashboardGraph(WebDriver driver, String graphName) throws InterruptedException
 	{
 		ArrayList<WebElement> dashboardItems = getDashboardItems(driver);
 		
 		for(int i = 0; i < dashboardItems.size(); i++)
 		{
-			if(getDashboardItemName(driver, dashboardItems.get(i)).equals(graphName))
+			if(getDashboardItemName(dashboardItems.get(i)).equals(graphName))
 			{
 				return dashboardItems.get(i);
 				
-			}
+			}//END if(getDashboardItemName(dashboardItems.get(i)).equals(graphName))
 						
-		}
+		}//END for(int i = 0; i < dashboardItems.size(); i++)
 		
 		return null;
 		
-	}
+	}//END METHOD getDashboardGraph(WebDriver, String)
 	
 	public static void maximizeDashboardGraph(WebElement graph) throws InterruptedException
 	{
@@ -915,10 +1216,8 @@ public class EsiActivity
 		ArrayList<WebElement> measureItems = new ArrayList<WebElement> ();
 		WebElement measures = null;
 		measures = driver.findElements(By.cssSelector("div.ui-view-row.ng-scope")).get(1);
-		System.out.println("class: " + measures.getAttribute("class"));
 		
 		measures = measures.findElement(By.cssSelector("div.col-sm-12.table.ng-scope"));
-		System.out.println("class: " + measures.getAttribute("class"));
 		
 		measureItems = (ArrayList<WebElement>) measures.findElements(By.xpath("div"));
 		measureItems.remove(0);
@@ -927,8 +1226,8 @@ public class EsiActivity
 		
 	}
 	
-	 public static String getMeasureName(WebElement measure)
-	 {
+	public static String getMeasureName(WebElement measure)
+	{
 		 String measureName = "";
 		 
 		 measureName = measure.findElement(By.cssSelector("span.ng-binding.ng-scope")).getText();
@@ -936,42 +1235,42 @@ public class EsiActivity
 		 
 		 return measureName;
 		 
-	 }
+	}
 	 
-	 public static WebElement getMeasure(WebDriver driver, String measureName) throws InterruptedException
-	 {
-		 ArrayList<WebElement> measureItems = getMeasureItems(driver);
+	public static WebElement getMeasure(WebDriver driver, String measureName) throws InterruptedException
+	{
+		ArrayList<WebElement> measureItems = getMeasureItems(driver);
 		 
-		 for(int i = 0; i < measureItems.size(); i++)
-		 {
-			 if(getMeasureName(measureItems.get(i)).equals(measureName))
-			 {
-				 return measureItems.get(i);
+		for(int i = 0; i < measureItems.size(); i++)
+		{
+			if(getMeasureName(measureItems.get(i)).equals(measureName))
+			{
+				return measureItems.get(i);
 				 
-			 }
+			}
 			 
-		 }
+		}
+		
 		return null;
 		 
-	 }
+	}
 	 
-	 public static WebElement getDashboardMetric(WebDriver driver, String metricName) throws InterruptedException
-	 {
-		 ArrayList<WebElement> dashboardItems = getDashboardItems(driver);
+	public static WebElement getDashboardMetric(WebDriver driver, String metricName) throws InterruptedException
+	{
+		ArrayList<WebElement> dashboardItems = getDashboardItems(driver);
 		 
-		 for(int i = 0; i < dashboardItems.size(); i++)
-		 {
-			 if(getDashboardItemName(driver, dashboardItems.get(i)).equals(metricName))
+		for(int i = 0; i < dashboardItems.size(); i++)
+		{
+			if(getDashboardItemName(dashboardItems.get(i)).equals(metricName))
 			{
-				 System.out.println("Metric found!!!");
 				return dashboardItems.get(i);
 				
 			}
 			 
-		 }
+		}
 		 
-		 return null;
+		return null;
 		 
-	 }
+	}
 	
 }//END CLASS EsiActivity
