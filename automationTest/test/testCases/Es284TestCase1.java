@@ -297,7 +297,7 @@ public class Es284TestCase1{
     	String opportunityName = "Well 1 Production";
     	String excelFileLocation = "res\\importFiles\\ES-284\\ES-284 - Step 4 - Aggregations - Test to Automate.xlsx"; 
     	String sheetName = "Case 1";
-    	String reporterGraphValidateName = "Opportunities > Well 1 Production > Resources > Crew > Supervisors > Column";
+    	String reporterGraphValidateName = "Opportunities > Well 1 Production > Equipment > Shovel > Large Equipment > Column";
     	filters = new ArrayList<Object []> ();
     	
     	filters.add(new Object[] {ElementTypes.XPATH, "(//button[@type='button'])[4]"});
@@ -309,7 +309,7 @@ public class Es284TestCase1{
     	
     	Thread.sleep(WAIT_TIME);
     	WebElement graph = driver.findElement(By.cssSelector("svg"));
-    	EsiActivity.validateGraph(driver, graph, reporterGraphValidateName, ChartType.COLUMN, excelFileLocation, sheetName, "person", 11, 10, 15);
+    	EsiActivity.validateGraph(driver, graph, reporterGraphValidateName, ChartType.COLUMN, excelFileLocation, sheetName, null, 11, 10, 16);
     	
     	Thread.sleep(WAIT_TIME);
 	    driver.findElement(By.xpath("(//button[@type='button'])[13]")).click();
@@ -789,7 +789,7 @@ public class Es284TestCase1{
     	String measureName = "Variable OpCost";
     	String excelFileLocation = "res\\importFiles\\ES-284\\ES-284 - Step 4 - Aggregations - Test to Automate.xlsx"; 
     	String sheetName = "Case 1";
-    	String reporterGraphValidateName = "Calculations > Variable OpCost > Gas > Low > Column";
+    	String reporterGraphValidateName = "Calculations > Variable OpCost > Oil > Electricity > Column";
     	filters = new ArrayList<Object []> ();
     	
     	filters.add(new Object[] {ElementTypes.XPATH, "(//button[@type='button'])[20]"});
@@ -821,7 +821,7 @@ public class Es284TestCase1{
     	String measureName = "Variable OpCost";
     	String excelFileLocation = "res\\importFiles\\ES-284\\ES-284 - Step 4 - Aggregations - Test to Automate.xlsx"; 
     	String sheetName = "Case 1";
-    	String reporterGraphValidateName = "Calculations > Variable OpCost > Gas > Low > Column";
+    	String reporterGraphValidateName = "Calculations > Variable OpCost > Oil > Maintenance > Column";
     	filters = new ArrayList<Object []> ();
     	
     	filters.add(new Object[] {ElementTypes.XPATH, "(//button[@type='button'])[20]"});
@@ -882,7 +882,7 @@ public class Es284TestCase1{
     	String measureName = "Variable OpCost";
     	String excelFileLocation = "res\\importFiles\\ES-284\\ES-284 - Step 4 - Aggregations - Test to Automate.xlsx"; 
     	String sheetName = "Case 1";
-    	String reporterGraphValidateName = "Calculations > Variable OpCost > Gas > Electricity > Column";
+    	String reporterGraphValidateName = "Calculations > Variable OpCost > Gas > Maintenance > Column";
     	filters = new ArrayList<Object []> ();
     	
     	filters.add(new Object[] {ElementTypes.XPATH, "(//button[@type='button'])[19]"});
@@ -1193,7 +1193,7 @@ public class Es284TestCase1{
     	String metricName = "Revenue Oil High";
     	String excelFileLocation = "res\\importFiles\\ES-284\\ES-284 - Step 4 - Aggregations - Test to Automate.xlsx"; 
     	String sheetName = "Case 1";
-    	String reporterGraphValidateName = "Dashboard > Chart > Variable OpCost > Gas > Maintenance > Column";
+    	String reporterGraphValidateName = "Dashboard > Metric > Revenue > Oil > High";
     	filters = new ArrayList<Object []> ();
     	
     	filters.add(new Object[] {ElementTypes.XPATH, "(//button[@type='button'])[13]"});
@@ -1235,7 +1235,7 @@ public class Es284TestCase1{
     	String metricName = "Revenue Oil Low";
     	String excelFileLocation = "res\\importFiles\\ES-284\\ES-284 - Step 4 - Aggregations - Test to Automate.xlsx"; 
     	String sheetName = "Case 1";
-    	String reporterGraphValidateName = "Dashboard > Chart > Variable OpCost > Gas > Maintenance > Column";
+    	String reporterGraphValidateName = "Dashboard > Metric > Revenue > Oil > Low";
     	filters = new ArrayList<Object []> ();
     	
     	filters.add(new Object[] {ElementTypes.XPATH, "(//button[@type='button'])[13]"});
@@ -1277,7 +1277,7 @@ public class Es284TestCase1{
     	String metricName = "Revenue Gas High";
     	String excelFileLocation = "res\\importFiles\\ES-284\\ES-284 - Step 4 - Aggregations - Test to Automate.xlsx"; 
     	String sheetName = "Case 1";
-    	String reporterGraphValidateName = "Dashboard > Chart > Variable OpCost > Gas > Maintenance > Column";
+    	String reporterGraphValidateName = "Dashboard > Metric > Revenue > Gas > High";
     	filters = new ArrayList<Object []> ();
     	
     	filters.add(new Object[] {ElementTypes.XPATH, "(//button[@type='button'])[13]"});
@@ -1320,7 +1320,7 @@ public class Es284TestCase1{
     	String metricName = "Revenue Gas Low";
     	String excelFileLocation = "res\\importFiles\\ES-284\\ES-284 - Step 4 - Aggregations - Test to Automate.xlsx"; 
     	String sheetName = "Case 1";
-    	String reporterGraphValidateName = "Dashboard > Chart > Variable OpCost > Gas > Maintenance > Column";
+    	String reporterGraphValidateName = "Dashboard > Metric > Revenue > Gas > Low";
     	filters = new ArrayList<Object []> ();
     	
     	filters.add(new Object[] {ElementTypes.XPATH, "(//button[@type='button'])[13]"});
@@ -1362,7 +1362,7 @@ public class Es284TestCase1{
     	String metricName = "Variable OpCost Oil Electricity";
     	String excelFileLocation = "res\\importFiles\\ES-284\\ES-284 - Step 4 - Aggregations - Test to Automate.xlsx"; 
     	String sheetName = "Case 1";
-    	String reporterGraphValidateName = "Dashboard > Chart > Variable OpCost > Gas > Maintenance > Column";
+    	String reporterGraphValidateName = "Dashboard > Metric > Variable OpCost > Oil > Electricity";
     	filters = new ArrayList<Object []> ();
     	
     	filters.add(new Object[] {ElementTypes.XPATH, "(//button[@type='button'])[15]"});
@@ -1404,7 +1404,7 @@ public class Es284TestCase1{
     	String metricName = "Variable OpCost Oil Maintenance";
     	String excelFileLocation = "res\\importFiles\\ES-284\\ES-284 - Step 4 - Aggregations - Test to Automate.xlsx"; 
     	String sheetName = "Case 1";
-    	String reporterGraphValidateName = "Dashboard > Chart > Variable OpCost > Gas > Maintenance > Column";
+    	String reporterGraphValidateName = "Dashboard > Metric > Variable OpCost > Oil > Maintenance";
     	filters = new ArrayList<Object []> ();
     	
     	filters.add(new Object[] {ElementTypes.XPATH, "(//button[@type='button'])[15]"});
@@ -1446,7 +1446,7 @@ public class Es284TestCase1{
     	String metricName = "Variable OpCost Gas Electricity";
     	String excelFileLocation = "res\\importFiles\\ES-284\\ES-284 - Step 4 - Aggregations - Test to Automate.xlsx"; 
     	String sheetName = "Case 1";
-    	String reporterGraphValidateName = "Dashboard > Chart > Variable OpCost > Gas > Maintenance > Column";
+    	String reporterGraphValidateName = "Dashboard > Metric > Variable OpCost > Gas > Electricity";
     	filters = new ArrayList<Object []> ();
     	
     	filters.add(new Object[] {ElementTypes.XPATH, "(//button[@type='button'])[15]"});
@@ -1488,7 +1488,7 @@ public class Es284TestCase1{
     	String metricName = "Variable OpCost Gas Maintenance";
     	String excelFileLocation = "res\\importFiles\\ES-284\\ES-284 - Step 4 - Aggregations - Test to Automate.xlsx"; 
     	String sheetName = "Case 1";
-    	String reporterGraphValidateName = "Dashboard > Chart > Variable OpCost > Gas > Maintenance > Column";
+    	String reporterGraphValidateName = "Dashboard > Metric > Variable OpCost > Gas > Maintenance";
     	filters = new ArrayList<Object []> ();
     	
     	filters.add(new Object[] {ElementTypes.XPATH, "(//button[@type='button'])[15]"});
