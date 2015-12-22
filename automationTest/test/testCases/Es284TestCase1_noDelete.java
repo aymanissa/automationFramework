@@ -84,7 +84,7 @@ public class Es284TestCase1_noDelete{
     	EsiActivity.setWaitTime(WAIT_TIME);
     	EsiActivity.loadEsiActivity(driver, baseUrl);
     	EsiActivity.createWorkspace(driver, workspaceName, "res\\importFiles\\ES-284\\case1\\ES-284 - Step 4 - Aggregations - Inventory - Case 1.xlsx");
-    	EsiActivity.importMasterDate(driver, "res\\importFiles\\ES-284\\ES-284 - Step 4 - Aggregations - MasterData.xlsx");
+    	EsiActivity.importMasterData(driver, "res\\importFiles\\ES-284\\ES-284 - Step 4 - Aggregations - MasterData.xlsx");
     	
     	//validating opportunities. Well 1 Production and Well 2 Production
     	this.validateGraphOpportunity_Well_1_Production_Production_Oil_Column();
@@ -906,7 +906,7 @@ public class Es284TestCase1_noDelete{
     	filters.add(new Object []{ElementTypes.INPUTTEXT, "description", ""});
     	filters.add(new Object []{ElementTypes.CSS, "button.btn.btn-success"});
     	
-    	EsiActivity.loadDashboardGraph(driver, graphName, filters);
+    	EsiActivity.createDashboardGraph(driver, graphName, filters);
     	
     	Thread.sleep(WAIT_TIME);
     	WebElement graph = EsiActivity.getDashboardGraph(driver, graphName);
@@ -944,7 +944,7 @@ public class Es284TestCase1_noDelete{
     	filters.add(new Object[] {ElementTypes.INPUTTEXT, "description", ""});
     	filters.add(new Object[] {ElementTypes.CSS, "button.btn.btn-success"});
     	
-    	EsiActivity.loadDashboardGraph(driver, graphName, filters);
+    	EsiActivity.createDashboardGraph(driver, graphName, filters);
     	
     	Thread.sleep(WAIT_TIME);
     	WebElement graph = EsiActivity.getDashboardGraph(driver, graphName);
@@ -982,7 +982,7 @@ public class Es284TestCase1_noDelete{
     	filters.add(new Object[] {ElementTypes.INPUTTEXT, "description", ""});
     	filters.add(new Object[] {ElementTypes.CSS, "button.btn.btn-success"});
     	
-    	EsiActivity.loadDashboardGraph(driver, graphName, filters);
+    	EsiActivity.createDashboardGraph(driver, graphName, filters);
     	
     	Thread.sleep(WAIT_TIME);
     	WebElement graph = EsiActivity.getDashboardGraph(driver, graphName);
@@ -1020,7 +1020,7 @@ public class Es284TestCase1_noDelete{
     	filters.add(new Object []{ElementTypes.INPUTTEXT, "description", ""});
     	filters.add(new Object[] {ElementTypes.CSS, "button.btn.btn-success"});
     	
-    	EsiActivity.loadDashboardGraph(driver, graphName, filters);
+    	EsiActivity.createDashboardGraph(driver, graphName, filters);
     	
     	Thread.sleep(WAIT_TIME);
     	WebElement graph = EsiActivity.getDashboardGraph(driver, graphName);
@@ -1058,7 +1058,7 @@ public class Es284TestCase1_noDelete{
     	filters.add(new Object []{ElementTypes.INPUTTEXT, "description", ""});
     	filters.add(new Object[] {ElementTypes.CSS, "button.btn.btn-success"});
     	
-    	EsiActivity.loadDashboardGraph(driver, graphName, filters);
+    	EsiActivity.createDashboardGraph(driver, graphName, filters);
     	
     	Thread.sleep(WAIT_TIME);
     	WebElement graph = EsiActivity.getDashboardGraph(driver, graphName);
@@ -1096,7 +1096,7 @@ public class Es284TestCase1_noDelete{
     	filters.add(new Object []{ElementTypes.INPUTTEXT, "description", ""});
     	filters.add(new Object[] {ElementTypes.CSS, "button.btn.btn-success"});
     	
-    	EsiActivity.loadDashboardGraph(driver, graphName, filters);
+    	EsiActivity.createDashboardGraph(driver, graphName, filters);
     	
     	Thread.sleep(WAIT_TIME);
     	WebElement graph = EsiActivity.getDashboardGraph(driver, graphName);
@@ -1134,7 +1134,7 @@ public class Es284TestCase1_noDelete{
     	filters.add(new Object []{ElementTypes.INPUTTEXT, "description", ""});
     	filters.add(new Object[] {ElementTypes.CSS, "button.btn.btn-success"});
     	
-    	EsiActivity.loadDashboardGraph(driver, graphName, filters);
+    	EsiActivity.createDashboardGraph(driver, graphName, filters);
     	
     	Thread.sleep(WAIT_TIME);
     	WebElement graph = EsiActivity.getDashboardGraph(driver, graphName);
@@ -1172,7 +1172,7 @@ public class Es284TestCase1_noDelete{
     	filters.add(new Object []{ElementTypes.INPUTTEXT, "description", ""});
     	filters.add(new Object[] {ElementTypes.CSS, "button.btn.btn-success"});
     	
-    	EsiActivity.loadDashboardGraph(driver, graphName, filters);
+    	EsiActivity.createDashboardGraph(driver, graphName, filters);
     	
     	Thread.sleep(WAIT_TIME);
     	WebElement graph = EsiActivity.getDashboardGraph(driver, graphName);
