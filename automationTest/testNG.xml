@@ -3,7 +3,9 @@
 <suite name="Suite" parallel="none">
   <test name="Test">
     <classes>
+      <class name="testCases.Es284TestCase1_noDelete"/>
       <class name="testCases.Es284TestCase1"/>
+      <class name="testCases.Es284TestCase2"/>
     </classes>
   </test> <!-- Test -->
 </suite> <!-- Suite -->
