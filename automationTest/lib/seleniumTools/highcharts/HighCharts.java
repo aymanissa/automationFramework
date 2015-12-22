@@ -93,19 +93,9 @@ public class HighCharts
      * @return WebElement that contains the x Axis
      */
     protected WebElement getXAxisLabels() {
-    	/*
-    	System.out.println("Entering HighCharts.getXAxisLabels");
-    	System.out.println("Is axisLabels.get(0) null? " + axisLabels.get(0) == null ? true : false);
-    		System.out.println("\taxisLabels.size(): " + axisLabels.size());
-    		System.out.println("\taxisLabels.toString(): " + axisLabels.toString());
-    	System.out.println("Is xAxisBars.get(0) null? " + xAxis.get(0) == null ? true : false);
-    		System.out.println("\txAxisBars.size(): " + xAxis.size());
-    		System.out.println("\txAxisBars.toString(): " + xAxis.toString());
-    	System.out.println("Exiting HighCharts.getXAxisLabels");
-    	System.out.println("------------------------------");
-    	*/
         //return axisLabels.get(0);
     	return xAxis.get(0);
+    	
     }//END METHOD getXAxisLabels()
 
     /**
@@ -115,11 +105,10 @@ public class HighCharts
     public List<String> getXAxisLabelsText() {
         List<String> labels = new ArrayList<String>();
         List<WebElement> xAxisLabels = getXAxisLabels().findElements(By.cssSelector("g.highcharts-series.highcharts-tracker > rect"));
-        //System.out.println("xAxisLabels.size(): " + xAxisLabels.size());
+
         for (WebElement xAxisLabel : xAxisLabels) {
         	labels.add(xAxisLabel.getText());
-        	//System.out.println("xAxisLabel.get" + xAxisLabel.toString());
-        	//System.out.println("xAxisLabel.getTagName()" + xAxisLabel.getTagName());
+
         }
         return labels;
     }//END METHOD getXAxisLabelsText()
@@ -279,21 +268,13 @@ public class HighCharts
      */
     public void hoverOver(WebElement column)
     {
-    	//System.out.println("=============================================");
-    	//System.out.println("\tInside HighCharts.hoverOver(WebElement)");
-    	
-    	//System.out.println("Executing javascript.callEmbeddedHtmlUtils(driver, \"triggerEven\", column, \"mouseOver\")");
     	//javascript.callEmbeddedHtmlUtils(driver, "triggerEvent", column, "mouseOver");
-    	
-    	//System.out.println("Executing performAction.moveToElement(column).perform");
     	performAction.moveToElement(column).perform();
-    	
-    	//System.out.println("Exiting HighCharts.hoverOverColumn(WebElement)");
-    	//System.out.println("=============================================");
     	
     }
 
-    private static ExpectedCondition<Boolean> attributeIsEqualTo(final WebElement element, final String attribute, final String attributeValue) {
+    @SuppressWarnings("unused")
+	private static ExpectedCondition<Boolean> attributeIsEqualTo(final WebElement element, final String attribute, final String attributeValue) {
         return new ExpectedCondition<Boolean>() {
             @Override
             public Boolean apply(WebDriver driver) {

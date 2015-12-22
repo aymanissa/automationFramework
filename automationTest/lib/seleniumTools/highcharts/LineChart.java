@@ -32,9 +32,7 @@ public class LineChart extends HighCharts
     }
     
     public void hoverOver(WebElement column) {
-    	System.out.println("Inside LineChart.hoverOverColumn(WebElement)");
     	super.hoverOver(column);
-    	//System.out.println("Exiting ColumnChart.hoverOverColumn(WebElement)");
     	
     }
     

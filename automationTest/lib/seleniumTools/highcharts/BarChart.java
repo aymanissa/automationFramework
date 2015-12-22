@@ -5,7 +5,7 @@ package seleniumTools.highcharts;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.Color;
+//import org.openqa.selenium.support.Color;
 
 /**
  * @author mubari
@@ -33,9 +33,7 @@ public class BarChart extends HighCharts
     }
     
     public void hoverOver(WebElement column) {
-    	System.out.println("Inside BarChart.hoverOver(WebElement)");
     	super.hoverOver(column);
-    	//System.out.println("Exiting ColumnChart.hoverOverColumn(WebElement)");
     	
     }
     
