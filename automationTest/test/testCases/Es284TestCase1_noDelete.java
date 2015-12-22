@@ -27,7 +27,7 @@ import org.junit.runners.Parameterized.Parameters;
 import seleniumTools.WebDriverTools;
 import org.openqa.selenium.*;
 
-public class Es284TestCase1_refactored{
+public class Es284TestCase1_noDelete{
    
 	private WebDriver driver;
 	//private WebDriverWait driverWait;
