@@ -71,7 +71,7 @@ public class HighCharts
     
     /**
      * Gets the content in the tool-tip
-     * @param lineNo
+     * @param lineNo element value of the tool-tip. Starting at 1
      * @return String: containing tool-tip content
      * @throws NoSuchElementException - If tool-tip is not found
      */
@@ -101,7 +101,7 @@ public class HighCharts
 
     /**
      * Gets the text contained within the X axis label
-     * @return
+     * @return .
      */
     public List<String> getXAxisLabelsText() {
         List<String> labels = new ArrayList<String>();
@@ -117,7 +117,7 @@ public class HighCharts
     
     /**
      * Return a list of X axis labels as WebElements
-     * @return
+     * @return .
      */
     public List<WebElement> getXAxisLabelsWebElementList(){
     	return getXAxisLabels().findElements(By.cssSelector("g.highcharts-series.highcharts-tracker > rect"));
@@ -126,7 +126,7 @@ public class HighCharts
     
     /**
      * Gets the X axis label in an array
-     * @return
+     * @return .
      */
     public String[] getXAxisLabelsAsArray() {
         List<String> xAxisLabels = getXAxisLabelsText();
@@ -144,7 +144,7 @@ public class HighCharts
 
     /**
      * Gets the Y axis label as a string
-     * @return
+     * @return .
      */
     public List<String> getYAxisLabelsText() {
         List<String> labels = new ArrayList<String>();
@@ -157,7 +157,7 @@ public class HighCharts
 
     /**
      * Gets the Y axis label in an array
-     * @return
+     * @return .
      */
     public String[] getYAxisLabelsAsArray() {
         List<String> yAxisLabels = getYAxisLabelsText();
@@ -242,8 +242,8 @@ public class HighCharts
     
     /**
      * Hover over a column or bar chart 
-     * @param series
-     * @param xAxisLabel
+     * @param series .
+     * @param xAxisLabel .
      */
     protected void hoverOverColumnOrBarChartSeriesAtXAxisPosition(int series, String xAxisLabel) {
         int barNumber = getXAxisLabelsText().indexOf(xAxisLabel);
@@ -264,11 +264,11 @@ public class HighCharts
      * The caller will have to get the WebElement that points to the column in the chart.<br><br> 
      * 
      * NOTE: this method must <b>NOT</b> be called directly. It should called from it's subclass. This is made public so it can be used for 
-     * polymorphism, specifically used in {@link graphValidator.GraphValidator#validateColumnGraph(HighCharts, String, String, int, int, int, String, long)} 
+     * polymorphism, specifically used in {@link graphValidator.GraphValidator#validateGraph(WebDriver, HighCharts, String, String, Object[], int, int, int, String, long)} 
      * to reduce repeating code.
      * 
-     * @see seleniumTools.charts.HighCharts#getXAxisLabelsWebElementList()
-     * @param graphElement
+     * @see seleniumTools.highcharts.HighCharts#getXAxisLabelsWebElementList()
+     * @param graphElement .
      */
     public void hoverOver(WebElement graphElement)
     {

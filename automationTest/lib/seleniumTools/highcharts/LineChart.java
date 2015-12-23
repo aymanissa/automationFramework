@@ -31,6 +31,7 @@ public class LineChart extends HighCharts
 	
 	/**
      * @see seleniumTools.highcharts.HighCharts#hoverOverColumnOrBarChartSeriesAtXAxisPosition(int, String)
+     * @param xAxisLabel .
      */
 	public void hoverOverPrimarySeriesAtXAxisLabel(String xAxisLabel) {
         hoverOverColumnOrBarChartSeriesAtXAxisPosition(2, xAxisLabel);
@@ -38,6 +39,7 @@ public class LineChart extends HighCharts
 	
 	/**
      * @see seleniumTools.highcharts.HighCharts#hoverOverColumnOrBarChartSeriesAtXAxisPosition(int, String)
+     * @param xAxisLabel .
      */
     public void hoverOverSecondarySeriesAtXAxisLabel(String xAxisLabel) {
         hoverOverColumnOrBarChartSeriesAtXAxisPosition(1, xAxisLabel);

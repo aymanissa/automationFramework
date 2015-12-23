@@ -40,7 +40,8 @@ public class WebDriverTools
 	/**
 	 * Method used to configure and load browser driver. Makes sure the browser opens maximized.
 	 * @param browserType - The browser to be used. It can be Chrome, Firefox or IE. Must use BrowserType enum
-	 * @throws IOException 
+	 * @throws IOException Thrown if it cannot find the browser drivers
+	 * @return The browser driver instantiated.
 	 */
 	public WebDriver instantiateBrowser(BrowserType browserType) throws IOException
 	{
@@ -59,7 +60,8 @@ public class WebDriverTools
 	 * Method used to get WebDriver depending on which web browser is going to be used. 
 	 * @param browserType -  The browser to be used. It can be Chrome, Firefox or IE. Must use BrowserType enum
 	 * @return WebDriver with the proper configuration of the browser.
-	 * @throws IOException 
+	 * @throws IOException Thrown if it cannot find the browser drivers
+	 * @return The browser driver instantiated.
 	 */
 	private WebDriver getWebDriver(BrowserType browserType) throws IOException
 	{
@@ -186,6 +188,7 @@ public class WebDriverTools
 	/**
 	 * Method used to create a screenshot. 
 	 * @param driver - The WebDriver being used
+	 * @param screenShotPath The location where the screenshot will be.
 	 * @param screenshotName - The name of the file. No file extention
 	 */
 	public static void takeScreenshot(WebDriver driver, String screenShotPath, String screenshotName)

@@ -79,7 +79,7 @@ public class GraphValidator
 	 * @param dateRowStart - The starting <b>index</b> of where the date row will be
 	 * @param dateColStart - The starting <b>index</b> of where the date column will be
 	 * @param valueRowStart - The starting <b>index</b> of where the value row will be
-	 * @return - An arrayList<String[]>. Formatted in: String[0] is the date. String[1] is the value for each element in the arrayList 
+	 * @return - An arrayList, formatted in: String[0] is the date. String[1] is the value for each element in the arrayList 
 	 * 
 	 */
 	private static ArrayList<String[]> getDateAndValue(int dateRowStart, int dateColStart, int valueRowStart)
@@ -169,13 +169,13 @@ public class GraphValidator
 	 * 				<td>Non empty cell</td>
 	 * 			</tr>
 	 * 	   </table>
-	 * This method must be executed after the method {@link #getDateAndValue(int, int, int) getRow(int, int, int)}<br></br>
+	 * This method must be executed after the method {@link #getDateAndValue(int, int, int) getRow(int, int, int)}<br><br>
 	 * 
 	 * <b>NOTE: </b> currently it will truncate if arrayList.get(i)[1] contains 0.00 or null. This was made because esi.activity also truncated them.<br>
 	 * Except esi.activity would retain the cell with 0.00 if there in between non 0.00 cells. <br>
 	 * This method will remove all 0.00 or nulls. A better solution needs to be made in order to handle cells with 0.00 in between non 0.00 cells
-	 * @param arrayList
-	 * @return
+	 * @param arrayList Contains the information of the extracted information
+	 * @return Truncated ArrayList that has removed all the values that are null or 0.00
 	 */
 	private static ArrayList<String [] > truncateColumns(ArrayList<String [] > arrayList)
 	{
@@ -283,9 +283,11 @@ public class GraphValidator
 	 * check {@link graphValidator.GraphValidator#truncateColumns(ArrayList) truncateColumns} <br>
 	 * A solution needs to be made in order to handle cells with 0.00 value in between non 0.00 cells.
 	 * 
+	 * @param driver Web browser being used at the moment
 	 * @param chart The chart that contains the graph. The graph can be ColumnChart, BarChart or LineChart. (Note: this list can grow as new Graph types are defined)
 	 * @param excelFile The location of the excel file. Note: Should use File.getCanonicalFile() to avoid relative path errors. 
 	 * @param sheetName Excel sheet name to be focused on
+	 * @param validateStatus used for containing validation status and reporter output. [0] is boolean, [1] is StringBuilder
 	 * @param dateRow The row where the start date will be
 	 * @param dateCol The column where the start date will be
 	 * @param valueRow The row where the start value will be.

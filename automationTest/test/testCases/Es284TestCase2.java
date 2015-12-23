@@ -29,7 +29,7 @@ import graphValidator.GraphValidator;
 import seleniumTools.WebDriverTools;
 
 /**
- * @author 
+ * @author mubari
  *
  */
 public class Es284TestCase2

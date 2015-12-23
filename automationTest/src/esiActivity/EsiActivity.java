@@ -472,7 +472,7 @@ public class EsiActivity
 
 	/**
 	 * Method used to validate the graph. This method will call 
-	 * {@link GraphValidator#validateGraph(seleniumTools.highcharts.HighCharts, String, String, int, int, int, String, long) 
+	 * {@link graphValidator.GraphValidator#validateGraph(WebDriver, seleniumTools.highcharts.HighCharts, String, String, Object[], int, int, int, String, long)
 	 * GraphValidator.validateGraph} 
 	 * to validate the graph. <br> 
 	 * <b>NOTE: </b> validating line graphs is not implemented. Implementing code 
@@ -488,7 +488,7 @@ public class EsiActivity
 	 * @param dateRow The index value of where the date row will be in the excel file
 	 * @param dateCol The index value of where the date column will be in the excel file
 	 * @param valueRow The index value of where the value row will be in the excel file
-	 * @throws IOException
+	 * @throws IOException Thrown if file doesn't exists.
 	 * @throws InterruptedException For using Thread.sleep(long). A better solution needs to be made.
 	 */
 	public static void validateGraph(WebDriver driver,
@@ -693,7 +693,7 @@ public class EsiActivity
 	 * Method used to open an opportunity and apply any filters to load a graph.
 	 * @param driver Web browser being used at the moment
 	 * @param opportunityName Name of the opportunity to open
-	 * @param filters Filters to apply when loading a graph. An example the structure of ArrayList<Object[]> <br>
+	 * @param filters Filters to apply when loading a graph. An example the structure of ArrayList< Object[] > <br>
 	 * <table border='1'>
 	 * 		<tr>
 	 * 			<th>Index[0]: enumTypes.ElementTypes</th>
@@ -783,7 +783,7 @@ public class EsiActivity
 	 * Method used to open a measure and apply any filters to load a graph
 	 * @param driver Web browser being used at the moment
 	 * @param measureName Name of the measure to open
-	 * @param filters Filters to apply when loading a graph. An example the structure of ArrayList<Object[]> <br>
+	 * @param filters Filters to apply when loading a graph. An example the structure of ArrayList< Object[] > <br>
 	 * <table border='1'>
 	 * 		<tr>
 	 * 			<th>Index[0]: enumTypes.ElementTypes</th>
@@ -877,7 +877,7 @@ public class EsiActivity
 	 * Method used to create a dashboard graph and apply any filters to load the graph
 	 * @param driver Web browser being used at the moment
 	 * @param graphName Name of the dashboard graph to open.
-	 * @param filters Filters to apply when loading a graph. An example the structure of ArrayList<Object[]> <br>
+	 * @param filters Filters to apply when loading a graph. An example the structure of ArrayList< Object[] > <br>
 	 * <table border='1'>
 	 * 		<tr>
 	 * 			<th>Index[0]: enumTypes.ElementTypes</th>
@@ -995,7 +995,7 @@ public class EsiActivity
 	 * Method used to create a dashboard metric and apply any filters to create the metric
 	 * @param driver Web browser being used at the moment
 	 * @param metricName Name of the dashboard metric to create
-	 * @param filters Filters to apply when loading a graph. An example the structure of ArrayList<Object[]> <br>
+	 * @param filters Filters to apply when loading a graph. An example the structure of ArrayList< Object[] > <br>
 	 * <table border='1'>
 	 * 		<tr>
 	 * 			<th>Index[0]: enumTypes.ElementTypes</th>
@@ -1343,7 +1343,7 @@ public class EsiActivity
 	 * Method used to get the Dashboard metric. It search by the <b>name</b> of the metric. This means all 
 	 * dashboard graphs and metric <b>must</b> have unique names. <br>
 	 * <b>NOTE: </b> a better solution needs to be made for finding metrics in the dashboard. The 
-	 * difference between dashboard graph and dashboard metric is the metric does <b>NOT></b> have <code>svg</code> 
+	 * difference between dashboard graph and dashboard metric is the metric does <b>NOT</b> have <code>svg</code> 
 	 * HTML tag and dashboard metric has a div tag that uses a different css class compared to dashboard graph.
 	 * @param driver Web browser being used at the moment.
 	 * @param metricName The metric to get.
