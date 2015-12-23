@@ -42,14 +42,23 @@ public class TestCaseTemplate
 	
 	//----------------------------CONSTRUCTOR---------------------------------//
 	
+	/**
+	 * Used as a data provider. This allows the test case to run in different browsers.
+	 * @return Object[][] contains browser type and it's name.
+	 */
 	@DataProvider
-	public Object[][] browserDrivers() throws IOException
+	public Object[][] browserDrivers()
 	{
 		webi = new WebDriverTools();
 		return new Object[][] {{BrowserType.CHROME, "Chrome"}, {BrowserType.FIREFOX, "Firefox"}, {BrowserType.IE, "IE"}};
 		
 	}//END METHOD browserDrivers()
 	
+	/**
+	 * Used for checking if the test should end if the assertion fails. The flag is set when running the test cases using Apache ANT. <br>
+	 * Check ANT file readme.docx<br>
+	 * If the argument was not defined, the test case will <b>NOT</b> end if the assertion fails.
+	 */
 	@BeforeSuite
     public void beforeSuite()
     {	
@@ -62,6 +71,10 @@ public class TestCaseTemplate
     	
     }//END METHOD beforeSuite()
 	
+	/**
+	 * Used for cleaning up the test case.
+	 * @throws Exception if any exception was thrown
+	 */
 	@AfterMethod
 	public void tearDown() throws Exception 
 	{

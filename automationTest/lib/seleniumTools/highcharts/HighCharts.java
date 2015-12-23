@@ -25,7 +25,7 @@ import com.thoughtworks.selenium.webdriven.JavascriptLibrary;
 
 /**
  * Class used to interact with HighCharts graphs. This includes Bar, line and column.
- * This a modified version of {@link powder_monkey.graphs.HighCharts HighCharts}
+ * This a modified version of <a target='_blank' href='https://github.com/Ardesco/Powder-Monkey/blob/master/src/main/java/com/lazerycode/selenium/graphs/HighCharts.java'>link</a>
  * @author mubari
  */
 public class HighCharts
@@ -64,6 +64,7 @@ public class HighCharts
         int waitTimeoutInSeconds = 15;
         wait = new WebDriverWait(driver, waitTimeoutInSeconds, 100);
         performAction = new Actions(driver);
+        
     }//END CONSTRUCTOR(WebDriver, WebElement)
     
     //------------------------------GETTERS-----------------------------------//
@@ -111,6 +112,7 @@ public class HighCharts
 
         }
         return labels;
+        
     }//END METHOD getXAxisLabelsText()
     
     /**
@@ -163,12 +165,13 @@ public class HighCharts
     }//END METHOD getYAxisLabelsAsArray
 
 	//------------------------------SETTERS-----------------------------------//
-    
+    /*
     public void setChart(WebElement chart)
     {
     	this.chart = chart;
     	
     }//END METHOD setChart(WebElement)
+    */
 	
 	//------------------------------METHODS-----------------------------------//
     
@@ -214,7 +217,7 @@ public class HighCharts
     	
         return legendDisplayed;
         
-    }//END METHOD isLegendDisplayed
+    }//END METHOD isLegendDisplayed()
 
     /**
      * Checks if tool-tip is displayed
@@ -235,7 +238,7 @@ public class HighCharts
     	
     	return toolTipDisplayed;
     	
-    }//END METHOD isTooltipDisplayed
+    }//END METHOD isTooltipDisplayed()
     
     /**
      * Hover over a column or bar chart 
@@ -250,7 +253,8 @@ public class HighCharts
         javascript.callEmbeddedSelenium(driver, "triggerEvent", pointToHoverOver, "mouseover");
         //For browsers supporting native events
         performAction.moveToElement(pointToHoverOver).perform();
-    }
+        
+    }//END METHOD hoverOverColumnOrBarChartSeriesAtXAxisPosition(int, String)
     
     /**
      * Method used to hover over a column based on the WebElement. The WebElement must contain a <b><mark><code>rect</code></mark></b> tagname. 
@@ -264,14 +268,14 @@ public class HighCharts
      * to reduce repeating code.
      * 
      * @see seleniumTools.charts.HighCharts#getXAxisLabelsWebElementList()
-     * @param column
+     * @param graphElement
      */
-    public void hoverOver(WebElement column)
+    public void hoverOver(WebElement graphElement)
     {
     	//javascript.callEmbeddedHtmlUtils(driver, "triggerEvent", column, "mouseOver");
-    	performAction.moveToElement(column).perform();
+    	performAction.moveToElement(graphElement).perform();
     	
-    }
+    }//END METHOD hoverOver(WebElement)
 
     @SuppressWarnings("unused")
 	private static ExpectedCondition<Boolean> attributeIsEqualTo(final WebElement element, final String attribute, final String attributeValue) {

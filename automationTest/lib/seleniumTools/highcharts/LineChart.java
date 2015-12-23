@@ -5,8 +5,13 @@ package seleniumTools.highcharts;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+//import org.openqa.selenium.support.Color;
 
 /**
+ * Class used to hover a point in the Line graph. <br>
+ * <b>NOTE: </b>at the moment, hovering over a point in the Line graph doesn't work.
+ * check <a target='_blank' href='https://github.com/Ardesco/Powder-Monkey/blob/master/src/main/java/com/lazerycode/selenium/graphs/LineChart.java'>link</a>
+ * for some help.
  * @author mubari
  *
  */
@@ -14,27 +19,38 @@ public class LineChart extends HighCharts
 {
 
 	/**
-	 * @param driver
-	 * @param chart
+	 * Constructor used to initialize the object.
+	 * @param driver Web browser being used at the moment
+	 * @param chart The WebElement that contains the graph
 	 */
 	public LineChart(WebDriver driver, WebElement chart)
 	{
 		super(driver, chart);
-		// TODO Auto-generated constructor stub
-	}
+		
+	}//END CONSTRUCTOR (WebDriver, WebElement)
 	
+	/**
+     * @see seleniumTools.highcharts.HighCharts#hoverOverColumnOrBarChartSeriesAtXAxisPosition(int, String)
+     */
 	public void hoverOverPrimarySeriesAtXAxisLabel(String xAxisLabel) {
         hoverOverColumnOrBarChartSeriesAtXAxisPosition(2, xAxisLabel);
     }
-
+	
+	/**
+     * @see seleniumTools.highcharts.HighCharts#hoverOverColumnOrBarChartSeriesAtXAxisPosition(int, String)
+     */
     public void hoverOverSecondarySeriesAtXAxisLabel(String xAxisLabel) {
         hoverOverColumnOrBarChartSeriesAtXAxisPosition(1, xAxisLabel);
     }
-    
-    public void hoverOver(WebElement column) {
-    	super.hoverOver(column);
+	
+    /**
+     * Method used to hover over a point in the Line graph
+     * @param graphElement The point in the graph to hover over
+     */
+    public void hoverOver(WebElement graphElement) {
+    	super.hoverOver(graphElement);
     	
-    }
+    }//END METHOD hoverOver(WebElement)
     
     /*
     public Color getPrimarySeriesColourForXAxisLabel(String xAxisLabelValue) {
@@ -46,4 +62,4 @@ public class LineChart extends HighCharts
     }
     */
 	
-}
+}//END CLASS LineChart

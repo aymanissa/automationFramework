@@ -8,6 +8,7 @@ import org.openqa.selenium.WebElement;
 //import org.openqa.selenium.support.Color;
 
 /**
+ * Class used to hover over a bar in the bar graph.
  * @author mubari
  *
  */
@@ -15,27 +16,40 @@ public class BarChart extends HighCharts
 {
 
 	/**
-	 * @param driver
-	 * @param chart
+	 * Constructor used to initialize the object.
+	 * @param driver Web browser being used at the moment
+	 * @param chart The WebElement that contains the graph
 	 */
 	public BarChart(WebDriver driver, WebElement chart)
 	{
 		super(driver, chart);
-		// TODO Auto-generated constructor stub
-	}
+		
+	}//END CONSTRUCTOR BarChart(WebDriver, WebElement)
 	
+	/**
+     * @see seleniumTools.highcharts.HighCharts#hoverOverColumnOrBarChartSeriesAtXAxisPosition(int, String)
+     */
 	public void hoverOverPrimarySeriesAtXAxisLabel(String xAxisLabel) {
         hoverOverColumnOrBarChartSeriesAtXAxisPosition(2, xAxisLabel);
-    }
-
+        
+    }//END METHOD hoverOverPrimarySeriesAtXAxisLabel(String)
+	
+	/**
+     * @see seleniumTools.highcharts.HighCharts#hoverOverColumnOrBarChartSeriesAtXAxisPosition(int, String)
+     */
     public void hoverOverSecondarySeriesAtXAxisLabel(String xAxisLabel) {
         hoverOverColumnOrBarChartSeriesAtXAxisPosition(1, xAxisLabel);
-    }
+        
+    }//END METHOD hoverOverPrimarySeriesAtXAxisLabel(String)
     
-    public void hoverOver(WebElement column) {
-    	super.hoverOver(column);
+    /**
+     * Method used to hover over a bar in the graph
+     * @param graphElement The bar to hover over.
+     */
+    public void hoverOver(WebElement graphElement) {
+    	super.hoverOver(graphElement);
     	
-    }
+    }//END METHOD hoverOver(WebElement)
     
     /*
     public Color getPrimarySeriesColourForXAxisLabel(String xAxisLabelValue) {
@@ -47,4 +61,4 @@ public class BarChart extends HighCharts
     }
     */
 
-}
+}//END CLASS BarChart

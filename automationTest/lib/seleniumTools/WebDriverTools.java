@@ -27,12 +27,15 @@ public class WebDriverTools
 {	
 	private static int screenShotNumber = 1;
 	
-	
+	/**
+	 * Returns the number of screenshots taken.
+	 * @return number of screenshots taken
+	 */
 	public static int getScreenShotNumber()
 	{
 		return screenShotNumber;
 		
-	}
+	}//END METHOD getScreenShotNumber()
 	
 	/**
 	 * Method used to configure and load browser driver. Makes sure the browser opens maximized.
@@ -50,7 +53,7 @@ public class WebDriverTools
 		
 		return driver;
 		
-	}//END METHOD instantiateBrowser(browserType, url)
+	}//END METHOD instantiateBrowser(browserType)
 	
 	/**
 	 * Method used to get WebDriver depending on which web browser is going to be used. 
@@ -192,6 +195,12 @@ public class WebDriverTools
 		
 	}//END METHOD takeScreenshot(driver, screenshotName)
 	
+	/**
+	 * Used for taking a screenshot.
+	 * @param driver Web browser being used at the moment
+	 * @param screenshotName Name of the screenshot
+	 * @param file Object contains the location of where the screenshot is going to be placed.
+	 */
 	private static void screenshotBrowser(TakesScreenshot driver, String screenshotName, File file)
 	{
 		try
