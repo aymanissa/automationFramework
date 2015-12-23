@@ -50,8 +50,8 @@ public class Es284TestCase2
 	public Object[][] browserDrivers() throws IOException
 	{
 		webi = new WebDriverTools();
-		return new Object[][] {{BrowserType.CHROME, "Chrome"}};
-		//return new Object[][] {{BrowserType.CHROME, "Chrome"}, {BrowserType.FIREFOX, "Firefox"}, {BrowserType.IE, "IE"}};
+		//return new Object[][] {{BrowserType.CHROME, "Chrome"}};
+		return new Object[][] {{BrowserType.CHROME, "Chrome"}, {BrowserType.FIREFOX, "Firefox"}, {BrowserType.IE, "IE"}};
 		
 	}//END METHOD browserDrivers()
 	
