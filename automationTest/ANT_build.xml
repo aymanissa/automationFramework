@@ -176,7 +176,12 @@
 
 	<target name="javadocs" depends="init">
 		<!-- Create JavaDocs -->
-		<javadoc sourcepathref="JavaDoc src" destdir="${doc}/JavaDocs" classpathref="classpath">
+		<javadoc sourcepathref="JavaDoc src" 
+				 destdir="${doc}/JavaDocs" 
+				 classpathref="classpath" 
+				 access="private"
+				 author="true"
+				 windowtitle="Automation Framework">
 			<link href="http://seleniumhq.github.io/selenium/docs/api/java/index.html" packagelistURL="http://seleniumhq.github.io/selenium/docs/api/java"/>
 		</javadoc>
 	</target>
