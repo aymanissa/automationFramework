@@ -19,6 +19,7 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import enumTypes.BrowserType;
+import esiActivity.EsiActivity;
 import graphValidator.GraphValidator;
 
 import seleniumTools.WebDriverTools;
@@ -108,6 +109,7 @@ public class TestCaseTemplate
 		
 		//begin: web browser commands to be executed.
 		driver = webi.instantiateBrowser(browserType);
+		EsiActivity.setWaitTime(WAIT_TIME);
 		
 		
 		//end: web browser commands to be executed.
