@@ -627,7 +627,7 @@ public class EsiActivity
 	
 	/**
 	 * Method used to validate the metric. The method will call 
-	 * {@link MetricValidator#validateMetric(WebDriver, WebElement, String, String, Object[], String, int, int, String, long) MetricValidator.validateMetric} 
+	 * {@link MetricValidator#validateMetric(WebDriver, WebElement, String, String, Object[], int, int, String, long) MetricValidator.validateMetric} 
 	 * to validate the metric <br>
 	 * 
 	 * @param driver Web browser being used at the moment
@@ -660,18 +660,18 @@ public class EsiActivity
 		
 		try
 		{
-			MetricValidator.validateMetric(driver, dashboardMetric, excelFileLocation, sheetName, validateStatus, metricName, row, column, units, WAIT_TIME);
+			MetricValidator.validateMetric(driver, dashboardMetric, excelFileLocation, sheetName, validateStatus, row, column, units, WAIT_TIME);
 			
 			if((boolean)validateStatus[0] == true)
 			{
-				Reporter.log("<details><summary><font face='verdana' size='4' color='green'>Graph: " + reporterMetricValidateName + "</font></summary>");
+				Reporter.log("<details><summary><font face='verdana' size='4' color='green'>Metric: " + reporterMetricValidateName + "</font></summary>");
 				Reporter.log(validateStatus[1].toString());
 				
 			}
 			
 			else
 			{
-				Reporter.log("<details><summary><font face='verdana' size='4' color='red'>Graph: " + reporterMetricValidateName + "</font></summary>");
+				Reporter.log("<details><summary><font face='verdana' size='4' color='red'>Metric: " + reporterMetricValidateName + "</font></summary>");
 				Reporter.log(validateStatus[1].toString());
 				
 			}
@@ -679,7 +679,7 @@ public class EsiActivity
 		
 		catch (AssertionError e)
 		{
-			Reporter.log("<details><summary><font face='verdana' size='4' color='red'>Graph: " + reporterMetricValidateName + "</font></summary>");
+			Reporter.log("<details><summary><font face='verdana' size='4' color='red'>Metric: " + reporterMetricValidateName + "</font></summary>");
 			Reporter.log(validateStatus[1].toString());
 			throw new AssertionError(e);
 		}

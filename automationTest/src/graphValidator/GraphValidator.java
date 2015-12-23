@@ -24,6 +24,8 @@ import seleniumTools.WebDriverTools;
 import seleniumTools.highcharts.HighCharts;
 
 /**
+ * Class used to validate a graph in esi.activity
+ * 
  * @author mubari
  *
  */
@@ -32,6 +34,11 @@ public class GraphValidator
 	//-----------------------------VARIABLES----------------------------------//
 	private static XSSFCell dateCell;
 	private static XSSFCell valueCell;
+	/**
+	 * A flag to indicate whether or not to stop executing <b>if</b> an assertion fails. 
+	 * Default is false.
+	 * It is set in the test cases
+	 */
 	public static boolean exitOnFail = false;
 	
 	//------------------------------METHODS-----------------------------------//
@@ -51,7 +58,7 @@ public class GraphValidator
 		{
 			return false;
 			
-		}
+		}//END METHOD if(cell == null || cell.getCellType() == Cell.CELL_TYPE_BLANK)
 		
 		return true;
 		
@@ -59,18 +66,23 @@ public class GraphValidator
 	
 	/**
 	 * Method used to get the date and value corresponding to the date. It gets stored as String [].<br> 
-	 * Each String[] is stored in an arrayList. String[0] contains the date and String [0] contains the value for the date.<br> 
+	 * Each String[] is stored in an arrayList. String[0] contains the date and String [1] contains the value for the date.<br> 
 	 * The arrayList is created by reading the excel file 
 	 * (the excel file must be set using {@link excelUtils.ExcelUtils#setExcelFile(String, String) setExcelFile(String, String)} beforehand).<br> 
 	 * If there is no value for the date, String[1] is set to be null. If a value contains 0 or 0.0, String[1] will store it as 0.00. <br>
 	 * If there are 'n' number of dates and 'n + 1' values for those dates, this method will only get up to 'n'. It ignores anything that is extra.<br>
-	 * The cells in the excel that contain a date, it <b>must</b> be formatted as a date in excel. This method may throw exceptions otherwise.
+	 * The cells in the excel that contain a date, it <b>must</b> be formatted as a date in excel. This method may throw exceptions otherwise.<br><br>
+	 * 
+	 * <b>NOTE: </b> this method can be used to modify how the date can be represented. It can be represented daily, monthly, yearly, etc. <br>
+	 * At the moment it uses monthly. One way to get it to handle multiple periodicity, is to use an enum that contains DAILY, MONTHLY, YEARLY as a parameter.<br>
+	 * Based on the parameter, the date would formated accordingly. This can be used for validating different graphs that have different periodicity.<br>
 	 * @param dateRowStart - The starting <b>index</b> of where the date row will be
 	 * @param dateColStart - The starting <b>index</b> of where the date column will be
 	 * @param valueRowStart - The starting <b>index</b> of where the value row will be
 	 * @return - An arrayList<String[]>. Formatted in: String[0] is the date. String[1] is the value for each element in the arrayList 
+	 * 
 	 */
-	private static ArrayList<String[]> getDateAndValue(int dateRowStart, int dateColStart, int valueRowStart) throws IOException
+	private static ArrayList<String[]> getDateAndValue(int dateRowStart, int dateColStart, int valueRowStart)
 	{
 		//use a String [] to contain the date and the value corresponding to it.
 		//sets String[1] null if there is no value in the excel cell.
@@ -145,7 +157,7 @@ public class GraphValidator
 		
 		return arrayList;
 		
-	}//END METHOD getDateAndValue()
+	}//END METHOD getDateAndValue(int, int, int)
 	
 	/**
 	 * Method used to truncate leading and trailing empty cells. If there is an empty cell, arrayList.get(i)[1] will contain null. 
@@ -157,7 +169,11 @@ public class GraphValidator
 	 * 				<td>Non empty cell</td>
 	 * 			</tr>
 	 * 	   </table>
-	 * This method must be executed after the method {@link #getDateAndValue(int, int, int) getRow(int, int, int)}
+	 * This method must be executed after the method {@link #getDateAndValue(int, int, int) getRow(int, int, int)}<br></br>
+	 * 
+	 * <b>NOTE: </b> currently it will truncate if arrayList.get(i)[1] contains 0.00 or null. This was made because esi.activity also truncated them.<br>
+	 * Except esi.activity would retain the cell with 0.00 if there in between non 0.00 cells. <br>
+	 * This method will remove all 0.00 or nulls. A better solution needs to be made in order to handle cells with 0.00 in between non 0.00 cells
 	 * @param arrayList
 	 * @return
 	 */
@@ -250,9 +266,6 @@ public class GraphValidator
 		
 	}//END METHOD truncateRows(ArrayList<String []>)
 	
-	
-	
-	//public static void validateColumnGraph(ColumnChart chart, String excelFile, int colMin, int colMax) throws IOException, InterruptedException
 	/**
 	 * Method used to validate the graph provided. The values that are checked against must be stored in an excel file. <br>
 	 * It first checks if the number of columns/bars/points/etc are equal to number of values in the excel file. <br>
@@ -264,7 +277,11 @@ public class GraphValidator
 	 * it gets noted in the reporter (check Reporter output in TestNG reports). <br>
 	 * If the assertion fails, it gets noted in a red font, green if it passes the assertion. <br>
 	 * If any assertion fails, it won't show the test has failed, since the assertion fail is handled in this method. <br>
-	 * The only to tell is if there are any red fonts.
+	 * The only to tell is if there are any red fonts. <br><br>
+	 * 
+	 * <b>NOTE: </b> currently the validation works if there are no empty cells or cells with 0.00 in between non empty cells or non 0.00 values. <br>
+	 * check {@link graphValidator.GraphValidator#truncateColumns(ArrayList) truncateColumns} <br>
+	 * A solution needs to be made in order to handle cells with 0.00 value in between non 0.00 cells.
 	 * 
 	 * @param chart The chart that contains the graph. The graph can be ColumnChart, BarChart or LineChart. (Note: this list can grow as new Graph types are defined)
 	 * @param excelFile The location of the excel file. Note: Should use File.getCanonicalFile() to avoid relative path errors. 
@@ -369,6 +386,7 @@ public class GraphValidator
 			
 		}//END CATCH BLOCK
 		
+		//iterate through the columns/bars/points and validate them
 		for(int i = 0; i < columns.size(); i++)
 		{
 			Thread.sleep(wait_time);
@@ -487,6 +505,6 @@ public class GraphValidator
 		((StringBuilder) validateStatus[1]).append("</blockquote>");
 		
 		
-	}//END validateColumnGraph
+	}//END validateColumnGraph (WebDriver, HighCharts, String, String, Object [], int, int, int, String, long)
 	
 }//END CLASS GraphValidator

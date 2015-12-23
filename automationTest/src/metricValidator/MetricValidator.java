@@ -18,17 +18,31 @@ import seleniumTools.WebDriverTools;
 import excelUtils.ExcelUtils;
 
 /**
+ * Class used to validate a dashboard metric in esi.activity.
+ * 
  * @author mubari
  *
  */
 public class MetricValidator
 {
 	//-----------------------------VARIABLES----------------------------------//
+	/**
+	 * A flag to indicate whether or not to stop executing <b>if</b> an assertion fails. 
+	 * Default is false.
+	 * It is set in the test cases
+	 */
 	public static boolean exitOnFail = false;
 	
 	//----------------------------CONSTRUCTOR---------------------------------//
 	//------------------------------GETTERS-----------------------------------//
 	
+	/**
+	 * Method used to get the value that the contains the answer key for validating 
+	 * a dashboard metric. The cell must contain a number with two decimal digits.
+	 * @param row index value where the row of the answer key will be
+	 * @param column index value where the column of the answer key will be.
+	 * @return The value returned from the cell.
+	 */
 	private static String getMetricValue(int row, int column)
 	{
 		DecimalFormat valueFormatter = new DecimalFormat("#,##0.00");
@@ -48,27 +62,29 @@ public class MetricValidator
 	//------------------------------METHODS-----------------------------------//
 	
 	/**
-	 * @param driver
-	 * @param metric
-	 * @param value
-	 * @param excelFileLocation
-	 * @param sheetName
-	 * @param metricName
-	 * @param row
-	 * @param column
-	 * @param units
-	 * @param wait_time
-	 * @throws IOException
-	 * @throws InterruptedException 
+	 * Method used to validate metric provided. The value is checked against must 
+	 * be stored in an excel file.
+	 * 
+	 * @param driver Web browser being used at the moment
+	 * @param metric The dashboard metric to validate
+	 * @param excelFileLocation The locating of the excel file
+	 * @param sheetName Excel sheet name to be focused on
+	 * @param validateStatus Contains Object[] with two elements. [0] is flagging whether metric validation passed or failed.
+	 * [1] contains the Reporter.log content. Ex: validation successful. [1] must be an object of StringBuilder.
+	 * @param row The index value where the row of the answer key will be.
+	 * @param column The index value where the column the answer key will be.
+	 * @param units The unit being used (no space). null if there's no unit
+	 * @param wait_time How long will the metric checking will have to wait before proceeding. Time in milliseconds.
+	 * @throws IOException If the excel file was not found
+	 * @throws InterruptedException Used for Thread.sleep(long). Should be changed for a better alternative.
 	 */
 	public static void validateMetric(WebDriver driver,
 									  WebElement metric,
 									  String excelFileLocation,
 									  String sheetName,
 									  Object[] validateStatus,
-									  String metricName,
-									  int row, 
-									  int column,
+									  int row,
+									  int column, 
 									  String units,
 									  long wait_time) throws IOException, InterruptedException
 	{
