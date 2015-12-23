@@ -694,7 +694,7 @@ public class EsiActivity
 	 * @param driver Web browser being used at the moment
 	 * @param opportunityName Name of the opportunity to open
 	 * @param filters Filters to apply when loading a graph. An example the structure of ArrayList<Object[]> <br>
-	 * <table>
+	 * <table border='1'>
 	 * 		<tr>
 	 * 			<th>Index[0]: enumTypes.ElementTypes</th>
 	 * 			<th>Index[1]: command</th>
@@ -714,7 +714,7 @@ public class EsiActivity
 	 * </table>
 	 * <hr>
 	 * This is how it will look when creating ArrayList< Object [] >
-	 * <table>
+	 * <table border='1'>
 	 * 		<tr>
 	 * 			<td>ArrayList < Object [] > filters;</td>
 	 * 		</tr>
@@ -784,7 +784,7 @@ public class EsiActivity
 	 * @param driver Web browser being used at the moment
 	 * @param measureName Name of the measure to open
 	 * @param filters Filters to apply when loading a graph. An example the structure of ArrayList<Object[]> <br>
-	 * <table>
+	 * <table border='1'>
 	 * 		<tr>
 	 * 			<th>Index[0]: enumTypes.ElementTypes</th>
 	 * 			<th>Index[1]: command</th>
@@ -804,7 +804,7 @@ public class EsiActivity
 	 * </table>
 	 * <hr>
 	 * This is how it will look when creating ArrayList< Object [] >
-	 * <table>
+	 * <table border='1'>
 	 * 		<tr>
 	 * 			<td>ArrayList < Object [] > filters;</td>
 	 * 		</tr>
@@ -878,7 +878,7 @@ public class EsiActivity
 	 * @param driver Web browser being used at the moment
 	 * @param graphName Name of the dashboard graph to open.
 	 * @param filters Filters to apply when loading a graph. An example the structure of ArrayList<Object[]> <br>
-	 * <table>
+	 * <table border='1'>
 	 * 		<tr>
 	 * 			<th>Index[0]: enumTypes.ElementTypes</th>
 	 * 			<th>Index[1]: command</th>
@@ -909,7 +909,7 @@ public class EsiActivity
 	 * 
 	 * <hr>
 	 * This is how it will look when creating ArrayList< Object [] >
-	 * <table>
+	 * <table border='1'>
 	 * 		<tr>
 	 * 			<td>ArrayList < Object [] > filters;</td>
 	 * 		</tr>
@@ -996,7 +996,7 @@ public class EsiActivity
 	 * @param driver Web browser being used at the moment
 	 * @param metricName Name of the dashboard metric to create
 	 * @param filters Filters to apply when loading a graph. An example the structure of ArrayList<Object[]> <br>
-	 * <table>
+	 * <table border='1'>
 	 * 		<tr>
 	 * 			<th>Index[0]: enumTypes.ElementTypes</th>
 	 * 			<th>Index[1]: command</th>
@@ -1027,7 +1027,7 @@ public class EsiActivity
 	 * 
 	 * <hr>
 	 * This is how it will look when creating ArrayList< Object [] >
-	 * <table>
+	 * <table border='1'>
 	 * 		<tr>
 	 * 			<td>ArrayList < Object [] > filters;</td>
 	 * 		</tr>
@@ -1141,7 +1141,7 @@ public class EsiActivity
 	}//END METHOD getDashboardItemName(WebElement)
 	
 	/**
-	 * Method the dashboard graph based on the name provided. Searches by the name 
+	 * Method used to get the dashboard graph based on the name provided. Searches by the name 
 	 * of dashboard items.<br>
 	 * <b>NOTE: </b> It searches by the name of dashboard item (graph and metric). 
 	 * This means if a graph has the same name as metric, this method will return the first one it encounters.<br>
@@ -1168,22 +1168,77 @@ public class EsiActivity
 		
 	}//END METHOD getDashboardGraph(WebDriver, String)
 	
-	public static void maximizeDashboardGraph(WebElement graph) throws InterruptedException
+	/**
+	 * Method used to maximize the dashboard graph based on the WebElement provided which is the dashboard graph.
+	 * @param driver Web browser being used at the moment
+	 * @param graph Dashboard graph to maximize
+	 * @throws InterruptedException For using Thread.sleep(long). A better solution needs to be made.
+	 */
+	public static void maximizeDashboardGraph(WebDriver driver, WebElement graph) throws InterruptedException
 	{
-		Thread.sleep(WAIT_TIME);
-		graph.findElement(By.cssSelector("i.fa.fa-plus-square-o")).click();
-		Thread.sleep(WAIT_TIME);
+		try
+		{
+			Thread.sleep(WAIT_TIME);
+			graph.findElement(By.cssSelector("i.fa.fa-plus-square-o")).click();
+			Thread.sleep(WAIT_TIME);
+		}
 		
-	}
+		catch (NoSuchElementException e)
+		{
+			Reporter.log("<details><summary><font face='verdana' size='4' color='red'>Maximize dashboard graph</font></summary>");
+			Reporter.log("Unable to find Maximize Dashboard Graph link.<br>");
+			String screenShotPath = "res\\screenshots\\TestNG_report\\" + System.getProperty("testNG_screenshotDir");
+			String screenshotName = "screenshot";
+			WebDriverTools.takeScreenshot(driver, screenShotPath, screenshotName);
+			String webImageLink = "..\\..\\..\\" + screenShotPath + "\\" + screenshotName + "_" + (WebDriverTools.getScreenShotNumber() - 1) + ".jpg";
+			Reporter.log("<a target='_blank' href='" + webImageLink + "'><img src='" + webImageLink + "' style='width:25%; height:25%'></a> <br>");
+			Reporter.log("</details>");
+			Reporter.log("<br>");
+			throw new NoSuchElementException("Cannot find Maximize Dashboard Graph link");
+			//Reporter.log("</details>");
+		}
+		
+	}//END METHOD maximizeDashboardGraph(WebDriver, WebElement)
 	
-	public static void restoreDashboardGraph(WebElement graph) throws InterruptedException
+	/**
+	 * Method used to restore Dashboard graph to it's original size.
+	 * @param driver Web browser being used at the moment
+	 * @param graph Dashboard graph to restore
+	 * @throws InterruptedException For using Thread.sleep(long). A better solution needs to be made.
+	 */
+	public static void restoreDashboardGraph(WebDriver driver, WebElement graph) throws InterruptedException
 	{
-		Thread.sleep(WAIT_TIME);
-		graph.findElement(By.cssSelector("i.fa.fa-columns")).click();
-		Thread.sleep(WAIT_TIME);
+		try
+		{
+			Thread.sleep(WAIT_TIME);
+			graph.findElement(By.cssSelector("i.fa.fa-columns")).click();
+			Thread.sleep(WAIT_TIME);
+		}
 		
-	}
+		catch (NoSuchElementException e)
+		{
+			Reporter.log("<details><summary><font face='verdana' size='4' color='red'>Restore dashboard graph</font></summary>");
+			Reporter.log("Unable to find Restore Dashboard Graph link.<br>");
+			String screenShotPath = "res\\screenshots\\TestNG_report\\" + System.getProperty("testNG_screenshotDir");
+			String screenshotName = "screenshot";
+			WebDriverTools.takeScreenshot(driver, screenShotPath, screenshotName);
+			String webImageLink = "..\\..\\..\\" + screenShotPath + "\\" + screenshotName + "_" + (WebDriverTools.getScreenShotNumber() - 1) + ".jpg";
+			Reporter.log("<a target='_blank' href='" + webImageLink + "'><img src='" + webImageLink + "' style='width:25%; height:25%'></a> <br>");
+			Reporter.log("</details>");
+			Reporter.log("<br>");
+			throw new NoSuchElementException("Cannot find Restore Dashboard Graph link");
+			//Reporter.log("</details>");
+		}
+		
+	}//END METHOD restoreDashboardGraph(WebDriver, WebElement)
 	
+	/**
+	 * Method used to get all the workspaces created. Assumes there's at least one workspace created. Will 
+	 * fail if there are no workspaces.
+	 * @param driver Web browser being used at the moment.
+	 * @return A list of all the workspaces.
+	 * @throws InterruptedException For using Thread.sleep(long). A better solution needs to be made.
+	 */
 	public static ArrayList<WebElement> getWorkspacesItems(WebDriver driver) throws InterruptedException
 	{
 		goToWorkspaces(driver);
@@ -1196,8 +1251,14 @@ public class EsiActivity
 		
 		return workspaceItems;
 		
-	}
+	}//END METHOD getWorkspacesItems(WebDriver)
 	
+	/**
+	 * Method used to get the name of the workspace
+	 * @param driver Web browser being used at the moment.
+	 * @param workspaceItem Workspace to the name from
+	 * @return The name of the workspace.
+	 */
 	public static String getWorkspaceItemName(WebDriver driver, WebElement workspaceItem)
 	{
 		//String jQuerySelector = "arguments[0]";
@@ -1208,24 +1269,39 @@ public class EsiActivity
 		
 		return workspaceItem.findElement(By.cssSelector("a.ng-binding")).getText();
 		
-	}
+	}//END METHOD getWorkspaceItemName(WebDriver, WebElement)
 	
+	/**
+	 * Method used to get all the <b>measures</b> from the calculations of a workspace. Assumes 
+	 * there's at least one measure created. Will fail if they're no measures
+	 * @param driver Web browser being used at the moment
+	 * @return A list of all the measures
+	 * @throws InterruptedException For using Thread.sleep(long). A better solution needs to be made.
+	 */
 	public static ArrayList<WebElement> getMeasureItems(WebDriver driver) throws InterruptedException
 	{
 		goToCalculations(driver);
 		ArrayList<WebElement> measureItems = new ArrayList<WebElement> ();
 		WebElement measures = null;
+		//focusing to the measures section. 
+		//NOTE: metrics use the similar structure. Hence .get(1) . It's to focus on the measure section.
 		measures = driver.findElements(By.cssSelector("div.ui-view-row.ng-scope")).get(1);
-		
 		measures = measures.findElement(By.cssSelector("div.col-sm-12.table.ng-scope"));
 		
 		measureItems = (ArrayList<WebElement>) measures.findElements(By.xpath("div"));
+		
+		//for removing the header of all the measures. The row that can select all the measures.
 		measureItems.remove(0);
 		
 		return measureItems;
 		
-	}
+	}//END METHOD getMeasureItems(WebDriver)
 	
+	/**
+	 * Method used to get the name of the measure provided.
+	 * @param measure The measure to get the name from.
+	 * @return The name of the measure.
+	 */
 	public static String getMeasureName(WebElement measure)
 	{
 		 String measureName = "";
@@ -1235,8 +1311,16 @@ public class EsiActivity
 		 
 		 return measureName;
 		 
-	}
+	}//END METHOD getMeasureName(WebElement)
 	 
+	/**
+	 * Method used to get a measure based on the name provided. All measures <b>must</b> 
+	 * be unique in order to get the correct measure.
+	 * @param driver Web browser being used at the moment.
+	 * @param measureName The measure to get
+	 * @return The measure found. null if the measure was not found.
+	 * @throws InterruptedException For using Thread.sleep(long). A better solution needs to be made.
+	 */
 	public static WebElement getMeasure(WebDriver driver, String measureName) throws InterruptedException
 	{
 		ArrayList<WebElement> measureItems = getMeasureItems(driver);
@@ -1247,14 +1331,25 @@ public class EsiActivity
 			{
 				return measureItems.get(i);
 				 
-			}
+			}//END if(getMeasureName(measureItems.get(i)).equals(measureName))
 			 
-		}
+		}//END for(int i = 0; i < measureItems.size(); i++)
 		
 		return null;
 		 
-	}
+	}//END METHOD getMeasure(WebDriver, String)
 	 
+	/**
+	 * Method used to get the Dashboard metric. It search by the <b>name</b> of the metric. This means all 
+	 * dashboard graphs and metric <b>must</b> have unique names. <br>
+	 * <b>NOTE: </b> a better solution needs to be made for finding metrics in the dashboard. The 
+	 * difference between dashboard graph and dashboard metric is the metric does <b>NOT></b> have <code>svg</code> 
+	 * HTML tag and dashboard metric has a div tag that uses a different css class compared to dashboard graph.
+	 * @param driver Web browser being used at the moment.
+	 * @param metricName The metric to get.
+	 * @return The metric found. null if the measure was not found.
+	 * @throws InterruptedException For using Thread.sleep(long). A better solution needs to be made.
+	 */
 	public static WebElement getDashboardMetric(WebDriver driver, String metricName) throws InterruptedException
 	{
 		ArrayList<WebElement> dashboardItems = getDashboardItems(driver);
@@ -1265,12 +1360,12 @@ public class EsiActivity
 			{
 				return dashboardItems.get(i);
 				
-			}
+			}//END if(getDashboardItemName(dashboardItems.get(i)).equals(metricName))
 			 
-		}
+		}//END for(int i = 0; i < dashboardItems.size(); i++)
 		 
 		return null;
 		 
-	}
+	}//END getDashboardMetric(WebDriver, String)
 	
 }//END CLASS EsiActivity
