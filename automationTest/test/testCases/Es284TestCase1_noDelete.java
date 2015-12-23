@@ -910,9 +910,9 @@ public class Es284TestCase1_noDelete{
     	
     	Thread.sleep(WAIT_TIME);
     	WebElement graph = EsiActivity.getDashboardGraph(driver, graphName);
-    	EsiActivity.maximizeDashboardGraph(null, graph);
+    	EsiActivity.maximizeDashboardGraph(driver, graph);
     	EsiActivity.validateGraph(driver, graph, reporterGraphValidateName, ChartType.COLUMN, excelFileLocation, sheetName, "USD", 11, 10, 42);
-    	EsiActivity.restoreDashboardGraph(null, graph);
+    	EsiActivity.restoreDashboardGraph(driver, graph);
     	
     	//EsiActivity.deleteDashboardGraph(driver, graphName);
     	
@@ -948,9 +948,9 @@ public class Es284TestCase1_noDelete{
     	
     	Thread.sleep(WAIT_TIME);
     	WebElement graph = EsiActivity.getDashboardGraph(driver, graphName);
-    	EsiActivity.maximizeDashboardGraph(null, graph);
+    	EsiActivity.maximizeDashboardGraph(driver, graph);
     	EsiActivity.validateGraph(driver, graph, reporterGraphValidateName, ChartType.COLUMN, excelFileLocation, sheetName, "USD", 11, 10, 44);
-    	EsiActivity.restoreDashboardGraph(null, graph);
+    	EsiActivity.restoreDashboardGraph(driver, graph);
     	
     	//EsiActivity.deleteDashboardGraph(driver, graphName);
     	
@@ -986,9 +986,9 @@ public class Es284TestCase1_noDelete{
     	
     	Thread.sleep(WAIT_TIME);
     	WebElement graph = EsiActivity.getDashboardGraph(driver, graphName);
-    	EsiActivity.maximizeDashboardGraph(null, graph);
+    	EsiActivity.maximizeDashboardGraph(driver, graph);
     	EsiActivity.validateGraph(driver, graph, reporterGraphValidateName, ChartType.COLUMN, excelFileLocation, sheetName, "USD", 11, 10, 45);
-    	EsiActivity.restoreDashboardGraph(null, graph);
+    	EsiActivity.restoreDashboardGraph(driver, graph);
     	
     	//EsiActivity.deleteDashboardGraph(driver, graphName);
     	
@@ -1024,9 +1024,9 @@ public class Es284TestCase1_noDelete{
     	
     	Thread.sleep(WAIT_TIME);
     	WebElement graph = EsiActivity.getDashboardGraph(driver, graphName);
-    	EsiActivity.maximizeDashboardGraph(null, graph);
+    	EsiActivity.maximizeDashboardGraph(driver, graph);
     	EsiActivity.validateGraph(driver, graph, reporterGraphValidateName, ChartType.COLUMN, excelFileLocation, sheetName, "USD", 11, 10, 47);
-    	EsiActivity.restoreDashboardGraph(null, graph);
+    	EsiActivity.restoreDashboardGraph(driver, graph);
     	
     	//EsiActivity.deleteDashboardGraph(driver, graphName);
     	
@@ -1062,9 +1062,9 @@ public class Es284TestCase1_noDelete{
     	
     	Thread.sleep(WAIT_TIME);
     	WebElement graph = EsiActivity.getDashboardGraph(driver, graphName);
-    	EsiActivity.maximizeDashboardGraph(null, graph);
+    	EsiActivity.maximizeDashboardGraph(driver, graph);
     	EsiActivity.validateGraph(driver, graph, reporterGraphValidateName, ChartType.BAR, excelFileLocation, sheetName, "USD", 11, 10, 56);
-    	EsiActivity.restoreDashboardGraph(null, graph);
+    	EsiActivity.restoreDashboardGraph(driver, graph);
     	
     	//EsiActivity.deleteDashboardGraph(driver, graphName);
     	
@@ -1100,9 +1100,9 @@ public class Es284TestCase1_noDelete{
     	
     	Thread.sleep(WAIT_TIME);
     	WebElement graph = EsiActivity.getDashboardGraph(driver, graphName);
-    	EsiActivity.maximizeDashboardGraph(null, graph);
+    	EsiActivity.maximizeDashboardGraph(driver, graph);
     	EsiActivity.validateGraph(driver, graph, reporterGraphValidateName, ChartType.BAR, excelFileLocation, sheetName, "USD", 11, 10, 57);
-    	EsiActivity.restoreDashboardGraph(null, graph);
+    	EsiActivity.restoreDashboardGraph(driver, graph);
     	
     	//EsiActivity.deleteDashboardGraph(driver, graphName);
     	
@@ -1138,9 +1138,9 @@ public class Es284TestCase1_noDelete{
     	
     	Thread.sleep(WAIT_TIME);
     	WebElement graph = EsiActivity.getDashboardGraph(driver, graphName);
-    	EsiActivity.maximizeDashboardGraph(null, graph);
+    	EsiActivity.maximizeDashboardGraph(driver, graph);
     	EsiActivity.validateGraph(driver, graph, reporterGraphValidateName, ChartType.BAR, excelFileLocation, sheetName, "USD", 11, 10, 58);
-    	EsiActivity.restoreDashboardGraph(null, graph);
+    	EsiActivity.restoreDashboardGraph(driver, graph);
     	
     	//EsiActivity.deleteDashboardGraph(driver, graphName);
     	
@@ -1176,9 +1176,9 @@ public class Es284TestCase1_noDelete{
     	
     	Thread.sleep(WAIT_TIME);
     	WebElement graph = EsiActivity.getDashboardGraph(driver, graphName);
-    	EsiActivity.maximizeDashboardGraph(null, graph);
+    	EsiActivity.maximizeDashboardGraph(driver, graph);
     	EsiActivity.validateGraph(driver, graph, reporterGraphValidateName, ChartType.BAR, excelFileLocation, sheetName, "USD", 11, 10, 59);
-    	EsiActivity.restoreDashboardGraph(null, graph);
+    	EsiActivity.restoreDashboardGraph(driver, graph);
     	
     	//EsiActivity.deleteDashboardGraph(driver, graphName);
     	
